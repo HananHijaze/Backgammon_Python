@@ -73,3 +73,305 @@ Background Music Commands
 > [System] Or enter "/help" for a list of possible commands.
 > [System] Trying to quit game.
 
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [Error] Starting pip has no checkers.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [Error] Starting pip has no checkers.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Moved checker from 6 to 6.
+> [System] Moved checker from 17 to 15.
+> [Error] Invalid move.
+> [System] Moved checker from 15 to 14.
+> [System] Moved checker from 13 to 15.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: Cup.
+> [System] Roll dice result: [1, 2].
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+
+  Roll of 2
+      D. 6-4
+      E. 8-6
+      F. 13-11
+      G. 24-22
+
+  Roll of 3
+      H. 6-3
+      I. 8-5
+      J. 13-10
+      K. 24-21
+
+
+> [System] Moving...
+> [System] Moved checker from 13 to 11.
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+      D. 11-10
+
+
+> [System] Moving...
+> [System] Moved checker from 24 to 23.
+> [System] Move over.
+
+> [System] Swapping turns...
+> [System] It is now Tea's (black) move.
+> [System] You may now roll the dice or play the double.
+
+> [System] Tea has proposed doubling the stakes.
+> [System] It is now Cup's (white) move.
+> [System] You may now roll the dice or play the double.
+> [System] Your mission Cup, should you choose to accept it. Is to accept this doubling cube and defeat your enemies.
+> [System] Enter yes/no
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: Tea.
+> [System] Roll dice result: [2, 1].
+> [System] Available moves:
+  Roll of 2
+      A. 6-4
+      B. 8-6
+      C. 13-11
+      D. 24-22
+
+  Roll of 1
+      E. 6-5
+      F. 8-7
+      G. 24-23
+
+  Roll of 3
+      H. 6-3
+      I. 8-5
+      J. 13-10
+      K. 24-21
+
+
+> [System] Moving...
+> [System] Moved checker from 8 to 6.
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+
+> [Error] You can only move highlighted checkers to highlighted pips.
+
+> [System] Moving...
+> [System] Moved checker from 8 to 7.
+> [System] Move over.
+
+> [System] Swapping turns...
+> [System] It is now Cup's (white) move.
+> [System] You may now roll the dice or play the double.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 11.
+
+> [System] Rolling...
+> [System] First player to move is: Tea.
+> [System] Roll dice result: [2, 1].
+> [System] Available moves:
+  Roll of 2
+      A. 6-4
+      B. 8-6
+      C. 13-11
+      D. 24-22
+
+  Roll of 1
+      E. 6-5
+      F. 8-7
+      G. 24-23
+
+  Roll of 3
+      H. 6-3
+      I. 8-5
+      J. 13-10
+      K. 24-21
+
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move highlighted checkers to highlighted pips.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move highlighted checkers to highlighted pips.
+
+> [System] Moving...
+> [System] Moved checker from 13 to 11.
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+      D. 11-10
+
+
+> [System] Moving...
+> [System] Moved checker from 8 to 7.
+> [System] Move over.
+
+> [System] Swapping turns...
+> [System] It is now Cup's (white) move.
+> [System] You may now roll the dice or play the double.
+
+> [System] Rolling...
+> [System] Roll dice result: [1, 2, 2].
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+
+  Roll of 2
+      D. 6-4
+      E. 8-6
+      F. 13-11
+      G. 24-22
+
+  Roll of 3
+
+  Roll of 5
+
+
+> [System] Moving...
+> [System] Moved checker from 24 to 22.
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+
+  Roll of 2
+      D. 6-4
+      E. 8-6
+      F. 13-11
+      G. 24-22
+
+
+> [System] Moving...
+> [System] Moved checker from 6 to 5.
+> [System] Available moves:
+  Roll of 2
+      A. 6-4
+      B. 8-6
+      C. 13-11
+      D. 24-22
+
+
+> [System] Moving...
+> [System] Moved checker from 24 to 22.
+> [System] Move over.
+
+> [System] Swapping turns...
+> [Error] Hold on cowboy, wait out the delay.
+> [System] It is now Tea's (black) move.
+> [System] You may now roll the dice or play the double.
+
+> [System] Rolling...
+> [System] Roll dice result: [1, 2, 1].
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move from highlighted objects.
+> [Error] Die has already been rolled.
+> [Error] Die has already been rolled.
+> [Error] Die has already been rolled.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: Tea.
+> [System] Roll dice result: [2, 1].
+> [System] Available moves:
+  Roll of 2
+      A. 6-4
+      B. 8-6
+      C. 13-11
+      D. 24-22
+
+  Roll of 1
+      E. 6-5
+      F. 8-7
+      G. 24-23
+
+  Roll of 3
+      H. 6-3
+      I. 8-5
+      J. 13-10
+      K. 24-21
+
+> [Error] Die has already been rolled.
+> [Error] You can only move from highlighted objects.
+> [Error] You can only move highlighted checkers to highlighted pips.
+
+> [System] Moving...
+> [System] Moved checker from 6 to 4.
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+      D. 4-3
+
+
+> [System] Moving...
+> [System] Moved checker from 6 to 5.
+> [System] Move over.
+
+> [System] Swapping turns...
+> [Error] Hold on cowboy, wait out the delay.
+> [System] It is now Cup's (white) move.
+> [System] You may now roll the dice or play the double.
+
+> [System] Cup has proposed doubling the stakes.
+> [System] It is now Tea's (black) move.
+> [System] You may now roll the dice or play the double.
+> [System] Your mission Tea, should you choose to accept it. Is to accept this doubling cube and defeat your enemies.
+> [System] Enter yes/no
+> [Error] Game will not proceed until you accept or decline the doubling cube.
+
+> [System] Doubling cube declined.
+
+> [System] Game over.
+> [System] Congratulations, Cup won.
+> [System] Tea: 0/3 vs Cup: 1/3
+

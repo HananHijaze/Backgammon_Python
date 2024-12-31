@@ -19,7 +19,7 @@ public class MainMenuView {
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
         
         Button startGameButton = new Button("Start Game");
-        Button gameHistoryButton = new Button("Game History");
+        Button gameHistoryButton = new Button("Games History");
         Button quitButton = new Button("Quit");
 
         // Event Handlers
@@ -30,7 +30,7 @@ public class MainMenuView {
         // Add buttons to the layout
         layout.getChildren().addAll(startGameButton, gameHistoryButton, quitButton);
 
-        return new Scene(layout, 400, 300);
+        return new Scene(layout, 500, 500);
     }
 
     private void startGame() {
@@ -40,6 +40,9 @@ public class MainMenuView {
 
         primaryStage.setScene(gameScene);
         primaryStage.setTitle("Backgammon Game");
+        
+        gameView.startGame();
+
     }
 
     private void openGameHistory() {
