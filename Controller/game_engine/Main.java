@@ -23,23 +23,6 @@ public class Main extends Application {
         launch(args); // calls start method.
     }
 
-  //  @Override
-   // public void start(Stage stage) throws Exception {
-    //    MatchController root = new MatchController(stage);
-
-      //  Scene scene = new Scene(root);
-
-        //stage.setScene(scene);
-      //  stage.setTitle("Backgammon");
-      //  stage.show();
-        //setStageIcon(stage);
-
-        // Use Platform.runLater to defer setting the accelerator
-       // javafx.application.Platform.runLater(() -> {
-         //   root.setRollDiceAccelarator();
-           // root.requestFocus();
-     //   });
-//    }
     @Override
     public void start(Stage primaryStage) {
         MainMenuView mainMenu = new MainMenuView(primaryStage);

@@ -46,7 +46,6 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         this.stage = stage;
         initApplication();
         initGame();
-        initLayout();
         style();
     }
 
@@ -101,12 +100,12 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         startGame();
     }
 
-    private void startGame() {
-        if (isPlayerInfosEnteredFirstTime) {
-            promptStartGame();
-        }
+    public void startGame() {
+        // Prompt players for their information
+        promptStartGame();
 
         if (!isPromptCancel) {
+            // Handle Crawford Game if applicable
             if (!hadCrawfordGame && checkIsCrawfordGame()) {
                 isCrawfordGame = true;
                 hadCrawfordGame = true;
@@ -116,16 +115,15 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
                 infoPnl.print("New game is not a Crawford game.", MessageType.DEBUG);
             }
 
-            if (!hadCrawfordGame && GameConstants.FORCE_TEST_AFTER_CRAWFORD_RULE) {
-                isCrawfordGame = true;
-                hadCrawfordGame = true;
-                infoPnl.print("Current game is a Crawford game.");
-            }
-
             isPlayerInfosEnteredFirstTime = false;
-            gameplay.start();
+            rollDieBtn.setVisible(true);
+
+            gameplay.start(); // Start the gameplay logic
+        } else {
+            infoPnl.print("Game not started. Please enter valid information.", MessageType.ERROR);
         }
     }
+
 
     private boolean checkIsCrawfordGame() {
         return topPlayer.getScore() == Settings.TOTAL_GAMES_IN_A_MATCH - 1 || bottomPlayer.getScore() == Settings.TOTAL_GAMES_IN_A_MATCH - 1;
@@ -246,6 +244,7 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
 
         getChildren().clear();
         add(game, 0, 0, 1, 3);
+        add(rollDieBtn, 1, 2); 
     }
 
     public void setRollDiceAccelarator() {
