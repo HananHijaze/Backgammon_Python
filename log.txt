@@ -375,3 +375,31 @@ Background Music Commands
 > [System] Congratulations, Cup won.
 > [System] Tea: 0/3 vs Cup: 1/3
 
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 11.
+
+> [System] Rolling...
+> [System] First player to move is: Cup.
+> [System] Roll dice result: [1, 2].
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+
+  Roll of 2
+      D. 6-4
+      E. 8-6
+      F. 13-11
+      G. 24-22
+
+  Roll of 3
+      H. 6-3
+      I. 8-5
+      J. 13-10
+      K. 24-21
+
+> [System] Trying to quit game.
+
