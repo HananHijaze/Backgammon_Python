@@ -25,7 +25,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        MainMenuView mainMenu = new MainMenuView(primaryStage);
+        MatchController matchController = new MatchController(primaryStage); // Create MatchController instance
+        MainMenuView mainMenu = new MainMenuView(primaryStage,matchController);
         Scene mainScene = mainMenu.createScene();
 
         primaryStage.setScene(mainScene);
