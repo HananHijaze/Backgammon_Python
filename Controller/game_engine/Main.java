@@ -18,6 +18,7 @@ import ui.MainMenuView;
  * @author Braddy Yeoh, 17357376
  *
  */
+/**********/
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args); // calls start method.
