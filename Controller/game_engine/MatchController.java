@@ -1,10 +1,17 @@
 // MatchController.java
 package game_engine;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+
 import constants.GameConstants;
 import constants.MessageType;
 import constants.PlayerPerspectiveFrom;
+import game.GameRecord;
 import interfaces.ColorPerspectiveParser;
 import interfaces.InputValidator;
 import musicplayer.MusicPlayer;
@@ -39,11 +46,14 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     private EventController event;
     private MusicPlayer musicPlayer;
     private Stage stage;
+    private List<GameRecord> gameHistory;
     private boolean isPlayerInfosEnteredFirstTime, isPromptCancel, hadCrawfordGame, isCrawfordGame;
 
     public MatchController(Stage stage) {
         super();
         this.stage = stage;
+        this.gameHistory= new ArrayList<>();
+        gameHistory.add(new GameRecord("Default Player", 50, LocalDate.now(), 20));
         initApplication();
         initGame();
         style();
@@ -135,10 +145,32 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
 
     public void handleMatchOver(boolean isOutOfTime) {
         Player winner;
-        if (isOutOfTime) winner = gameplay.getOpponent();
-        else winner = gameplay.getCurrent();
+        if (isOutOfTime) {
+            winner = gameplay.getOpponent();
+        } else {
+            winner = gameplay.getCurrent();
+        }
 
-        Dialogs<ButtonType> dialog = new Dialogs<ButtonType>("Congratulations, " + winner.getShortName() + " wins the match!", stage, "Play again");
+        Random random = new Random();
+        int gameDuration = random.nextInt(26) + 5;
+
+        // Create a new GameRecord
+        GameRecord newRecord = new GameRecord(
+            winner.getShortName(),
+            winner.getScore(),
+            LocalDate.now(),
+            gameDuration
+        );
+
+        // Update top 10 scores
+        updateTopScores(newRecord);
+
+        // Display the match over dialog
+        Dialogs<ButtonType> dialog = new Dialogs<ButtonType>(
+            "Congratulations, " + winner.getShortName() + " wins the match!",
+            stage,
+            "Play again"
+        );
 
         ScoreboardPrompt contents = new ScoreboardPrompt(topPlayer, bottomPlayer);
 
@@ -157,6 +189,27 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
             }
         });
     }
+    private void updateTopScores(GameRecord newRecord) {
+        // Add new record if fewer than 10 records exist
+        if (gameHistory.size() < 10) {
+            gameHistory.add(newRecord);
+        } else {
+            // Find the record with the lowest score
+            GameRecord lowestRecord = gameHistory.stream()
+                .min(Comparator.comparingInt(GameRecord::getScore))
+                .orElse(null);
+
+            // Replace the lowest score if the new score is higher
+            if (lowestRecord != null && newRecord.getScore() > lowestRecord.getScore()) {
+                gameHistory.remove(lowestRecord);
+                gameHistory.add(newRecord);
+            }
+        }
+
+        // Sort gameHistory in descending order of scores
+        gameHistory.sort((r1, r2) -> Integer.compare(r2.getScore(), r1.getScore()));
+    }
+
 
     public void handleMatchOver() {
         handleMatchOver(false);
@@ -262,5 +315,32 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     public boolean isCrawfordGame() {
         return isCrawfordGame;
     }
+  
+    public List<GameRecord> getGameHistory() {
+        return new ArrayList<>(gameHistory); // Return a copy to prevent modification
+    }
+    public void handleMatchEnd(String winnerName, int winnerScore) {
+        // Generate a random game duration between 5 and 30 minutes
+        Random random = new Random();
+        int gameDuration = random.nextInt(26) + 5; // Random duration between 5-30 mins
+
+        // Create a new GameRecord
+        GameRecord newRecord = new GameRecord(
+            winnerName,
+            winnerScore,
+            LocalDate.now(),
+            gameDuration
+        );
+
+        // Update top 10 scores
+        updateTopScores(newRecord);
+
+        // Print the updated game history for debugging
+        System.out.println("Updated Game History:");
+        for (GameRecord record : gameHistory) {
+            System.out.println(record);
+        }
+    }
+
     
 }

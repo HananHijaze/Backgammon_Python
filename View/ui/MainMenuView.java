@@ -1,5 +1,6 @@
 package ui;
 
+import game.GameRecord;
 import game_engine.MatchController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,102 +11,56 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class MainMenuView {
-
     private Stage primaryStage;
+    private MatchController matchController;
 
-    public MainMenuView(Stage primaryStage) {
+    public MainMenuView(Stage primaryStage, MatchController matchController) {
+        if (primaryStage == null || matchController == null) {
+            throw new IllegalArgumentException("PrimaryStage and MatchController cannot be null.");
+        }
         this.primaryStage = primaryStage;
+        this.matchController = matchController;
     }
 
     public Scene createScene() {
-        VBox layout = new VBox(15); // Vertical alignment with spacing
+        VBox layout = new VBox(15);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #6b4423, #8b6914);");
 
-        // Create buttons with styles
         Button startGameButton = createStyledButton("Start Game");
-        Button gameHistoryButton = createStyledButton("Games History");
+        Button gameHistoryButton = createStyledButton("Game History");
         Button quitButton = createStyledButton("Quit");
 
-        // Add tooltips for better UX
         startGameButton.setTooltip(new Tooltip("Start a new game"));
         gameHistoryButton.setTooltip(new Tooltip("View the history of games"));
         quitButton.setTooltip(new Tooltip("Exit the application"));
 
-        // Event Handlers
         startGameButton.setOnAction(e -> startGame());
         gameHistoryButton.setOnAction(e -> openGameHistory());
-        quitButton.setOnAction(e -> confirmQuit());
+        quitButton.setOnAction(e -> primaryStage.close());
 
-        // Add buttons to the layout
         layout.getChildren().addAll(startGameButton, gameHistoryButton, quitButton);
 
-        return new Scene(layout, 500, 500); // Scene with a fixed size
+        return new Scene(layout, 500, 500);
     }
 
-    /**
-     * Creates a styled button with hover effects.
-     *
-     * @param text The text to display on the button.
-     * @return A styled Button object.
-     */
     private Button createStyledButton(String text) {
         Button button = new Button(text);
         button.setFont(new Font("Arial", 16));
         button.setTextFill(Color.WHITE);
-        button.setStyle(
-            "-fx-background-color: #2e8b57; " + // Default green background
-            "-fx-border-color: #ffffff; " +     // White border
-            "-fx-border-width: 2px; " +
-            "-fx-padding: 10px; " +
-            "-fx-cursor: hand;"
-        );
-
-        // Hover effects
-        button.setOnMouseEntered(e -> button.setStyle(
-            "-fx-background-color: #3cb371; " + // Lighter green on hover
-            "-fx-border-color: #ffffff; " +
-            "-fx-border-width: 2px; " +
-            "-fx-padding: 10px; " +
-            "-fx-cursor: hand;"
-        ));
-        button.setOnMouseExited(e -> button.setStyle(
-            "-fx-background-color: #2e8b57; " + // Return to default green
-            "-fx-border-color: #ffffff; " +
-            "-fx-border-width: 2px; " +
-            "-fx-padding: 10px; " +
-            "-fx-cursor: hand;"
-        ));
-
+        button.setStyle("-fx-background-color: #2e8b57; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
         return button;
     }
 
-    /**
-     * Handles the Start Game button click event.
-     */
     private void startGame() {
-        MatchController gameView = new MatchController(primaryStage);
-        Scene gameScene = new Scene(gameView);
-
-        primaryStage.setScene(gameScene);
-        primaryStage.setTitle("Backgammon Game");
-        gameView.startGame();
+        matchController.handleMatchEnd("Player1", 100); // Example of handling match end
     }
 
-    /**
-     * Handles the Game History button click event.
-     */
     private void openGameHistory() {
-        System.out.println("Game History button clicked.");
-        // TODO: Implement the game history view logic
-    }
-
-    /**
-     * Handles the Quit button click event.
-     */
-    private void confirmQuit() {
-        System.out.println("Quit button clicked. Application will close.");
-        primaryStage.close(); // Close the application
+        List<GameRecord> gameHistory = matchController.getGameHistory();
+        GameHistoryUI.createAndShowGUI(gameHistory);
     }
 }
