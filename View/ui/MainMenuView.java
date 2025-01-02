@@ -4,6 +4,7 @@ import game.GameRecord;
 import game_engine.MatchController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
@@ -56,7 +57,25 @@ public class MainMenuView {
     }
 
     private void startGame() {
-        matchController.handleMatchEnd("Player1", 100); // Example of handling match end
+        System.out.println("Start Game button clicked.");
+        MatchController gameView = new MatchController(primaryStage);
+        Scene gameScene = new Scene(gameView);
+
+        primaryStage.setScene(gameScene);
+        primaryStage.setTitle("Backgammon Game");
+        
+        gameView.startGame();
+    }
+
+
+
+    // Utility method to display an error message
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void openGameHistory() {
