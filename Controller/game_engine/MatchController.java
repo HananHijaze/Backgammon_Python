@@ -125,11 +125,16 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
                 infoPnl.print("New game is not a Crawford game.", MessageType.DEBUG);
             }
 
+            // Mark that player information has been entered
             isPlayerInfosEnteredFirstTime = false;
+
+            // Make the roll die button visible
             rollDieBtn.setVisible(true);
 
-            gameplay.start(); // Start the gameplay logic
+            // Start the gameplay logic
+            gameplay.start();
         } else {
+            // Display an error message if the game was not started
             infoPnl.print("Game not started. Please enter valid information.", MessageType.ERROR);
         }
     }
