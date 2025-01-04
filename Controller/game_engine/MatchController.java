@@ -2,6 +2,8 @@
 package game_engine;
 
 import java.time.LocalDate;
+
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -33,6 +35,7 @@ import ui.InfoPanel;
 import ui.RollDieButton;
 import ui.ScoreboardPrompt;
 import ui.Dialogs;
+import ui.GameHistoryUI;
 
 public class MatchController extends GridPane implements ColorPerspectiveParser, InputValidator {
     private Player bottomPlayer;
@@ -53,10 +56,10 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         super();
         this.stage = stage;
         this.gameHistory= new ArrayList<>();
-        gameHistory.add(new GameRecord("Default Player", 50, LocalDate.now(), 20));
         initApplication();
         initGame();
         style();
+        gameHistory = SysData.loadGameHistory();
     }
 
     private void initApplication() {
@@ -88,12 +91,17 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         infoPnl.reset();
         resetGame();
         game.resetTimers();
+        // Save game history
+        SysData.saveGameHistory(gameHistory);
 
+        // Show game history after resetting the application
+        GameHistoryUI.createAndShowGUI(gameHistory);
         isPlayerInfosEnteredFirstTime = true;
         isPromptCancel = false;
         hadCrawfordGame = false;
         isCrawfordGame = false;
         Settings.setTotalGames(Settings.DEFAULT_TOTAL_GAMES);
+        SysData.saveGameHistory(gameHistory);
     }
 
     public void resetGame() {
@@ -111,6 +119,8 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     }
 
     public void startGame() {
+    	   // Show game history before starting the game
+        GameHistoryUI.createAndShowGUI(gameHistory);
         // Prompt players for their information
         promptStartGame();
 
@@ -156,22 +166,14 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
             winner = gameplay.getCurrent();
         }
 
-        Random random = new Random();
-        int gameDuration = random.nextInt(26) + 5;
-
-        // Create a new GameRecord
-        GameRecord newRecord = new GameRecord(
-            winner.getShortName(),
-            winner.getScore(),
-            LocalDate.now(),
-            gameDuration
-        );
-
-        // Update top 10 scores
-        updateTopScores(newRecord);
+        // Call handleMatchEnd to update game history
+        handleMatchEnd(winner.getShortName(), winner.getScore());
+        
+        // Show the updated game history after the match ends
+        GameHistoryUI.createAndShowGUI(gameHistory);
 
         // Display the match over dialog
-        Dialogs<ButtonType> dialog = new Dialogs<ButtonType>(
+        Dialogs<ButtonType> dialog = new Dialogs<>(
             "Congratulations, " + winner.getShortName() + " wins the match!",
             stage,
             "Play again"
@@ -194,6 +196,7 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
             }
         });
     }
+
     private void updateTopScores(GameRecord newRecord) {
         // Add new record if fewer than 10 records exist
         if (gameHistory.size() < 10) {
@@ -322,7 +325,7 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     }
   
     public List<GameRecord> getGameHistory() {
-        return new ArrayList<>(gameHistory); // Return a copy to prevent modification
+        return gameHistory;
     }
     public void handleMatchEnd(String winnerName, int winnerScore) {
         // Generate a random game duration between 5 and 30 minutes
@@ -340,6 +343,9 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         // Update top 10 scores
         updateTopScores(newRecord);
 
+        // Save the updated game history to a file
+        SysData.saveGameHistory(gameHistory);
+
         // Print the updated game history for debugging
         System.out.println("Updated Game History:");
         for (GameRecord record : gameHistory) {
@@ -347,5 +353,6 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         }
     }
 
-    
+
+ 
 }
