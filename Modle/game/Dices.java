@@ -2,6 +2,7 @@ package game;
 
 import constants.DieInstance;
 import constants.GameConstants;
+import constants.GameMode;
 import interfaces.ColorParser;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
@@ -18,17 +19,8 @@ import javafx.scene.paint.Color;
  */
 public class Dices extends HBox implements ColorParser {
 	private Dice[] dices;
-	private Color color;
-	
-	
-	/**
-	 * Default Constructor
-	 * 		- Initialize the dices array with two dices.
-	 * @param color of dices
-	 */
-	public Dices(Color color) {
-		this(color, 3);
-	}
+	private int flagforinitdice=0;
+
 	
 	/**
 	 * Overloaded Constructor
@@ -37,25 +29,59 @@ public class Dices extends HBox implements ColorParser {
 	 * @param color of dices.
 	 * @param numberOfDices number of dices. 
 	 */
-	public Dices(Color color, int numberOfDices) {
-		super();
-		this.color = color;
-		dices = new Dice[numberOfDices*2];
-		setAlignment(Pos.CENTER);
-		setSpacing(GameConstants.getDiceSize().getWidth() / 4.0);
-		initDices();
-		drawDices(DieInstance.DOUBLE);
+	public Dices(String mode) {
+	    super();
+	    setAlignment(Pos.CENTER);
+	    setSpacing(GameConstants.getDiceSize().getWidth() / 4.0);
+	    initDices(mode);
+	    
+	}
+	private void initDices(String mode) {
+		
+	    switch (mode.toLowerCase()) {
+	        case "easy":
+	        case "medium":
+	            // Two red dices with maxDiceSize = 6
+	            dices = new Dice[4];
+	            dices[0] = new Dice(Color.RED, 6);
+	            dices[1] = new Dice(Color.RED, 6);
+	            //random dices to be overwritten later when we get double dice
+	            dices[2] = new Dice(Color.RED, 6);
+	            dices[3] = new Dice(Color.RED, 6);
+	            break;
+
+	        case "hard":
+	            // One red dice with maxDiceSize = 6 and one green dice with maxDiceSize = 9
+	            dices = new Dice[4];
+	            dices[0] = new Dice(Color.RED, 6);
+	            dices[1] = new Dice(Color.RED, 10);//remember to add the pictures for it to work
+	          //random dices to be overwritten later when we get double dice
+	            dices[2] = new Dice(Color.RED, 6);
+	            dices[3] = new Dice(Color.RED, 6);
+	            break;
+
+	        default:
+	            throw new IllegalArgumentException("Invalid mode: " + mode);
+	    }
+	    flagforinitdice++;
 	}
 	
-	/**
-	 * Initialize the individual dices and assign them into the dices array.
-	 */
-	private void initDices() {
-		for (int i = 0; i < dices.length; i++) {
-			dices[i] = new Dice(color,2);
-		}
-	}
 	
+	
+	public Dice[] getDices() {
+		return dices;
+	}
+
+
+
+
+	public void setDices(Dice[] dices) {
+		this.dices = dices;
+	}
+
+
+
+
 	/**
 	 * Draw the die to the board, provided this HBox is drawn as well.
 	 * @param instance instance where the dices are single, double or default.
@@ -63,11 +89,14 @@ public class Dices extends HBox implements ColorParser {
 	private void drawDices(DieInstance instance) {
 		getChildren().clear();
 		int numDices = getNumDices(instance);
+		System.out.println(numDices);
 		int i = 0;
-		if (numDices==6)
-			i = 1;
 		for (; i < numDices; i++) {
+			if (numDices==4) {
+				getChildren().add(new Dice(dices[0]));
+			}
 			getChildren().add(dices[i]);
+			
 		}
 	}
 	
@@ -76,16 +105,19 @@ public class Dices extends HBox implements ColorParser {
 	 * @return result of each dice roll in terms of an array of integers.
 	 */
 	public DieResults getTotalRoll(DieInstance instance) {
-		int numDices = getNumDices(instance);
+		if (flagforinitdice<2)
+			initDices(GameMode.getInstance().getMode());
+		int numDices = getNumDices(DieInstance.DEFAULT);
 		DieResults res = new DieResults();
 		for (int i = 0; i < numDices; i++) {
 			res.add(dices[i].draw(dices[i].roll()));
 		}
-		drawDices(instance);
 		
 		if (isDouble(res)) {
 			res = addDoubleDie(res);
-		}
+		}else
+			drawDices(instance);
+
 		return res;
 	}
 	
@@ -113,7 +145,7 @@ public class Dices extends HBox implements ColorParser {
 		int numberOfDices = getNumDices(DieInstance.DOUBLE);
 		DieResults newRes = new DieResults();
 		for (int i = 0; i < numberOfDices; i++) {
-			newRes.add(dices[i].draw(res.getFirst().getDiceResult()));
+			newRes.add(dices[0].draw(res.getFirst().getDiceResult()));
 		}
 		drawDices(DieInstance.DOUBLE);
 		return newRes;
@@ -137,6 +169,7 @@ public class Dices extends HBox implements ColorParser {
 				numDices = dices.length/2;
 				break;
 		}
+		
 		return numDices;
 	}
 	
