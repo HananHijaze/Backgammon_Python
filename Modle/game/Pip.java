@@ -42,7 +42,7 @@ public class Pip extends CheckersStorer implements ColorParser {
 		this.pipNum = pipNum;
 		this.type='r';
 		String colorString = parseColor(color);
-		
+		 
 		System.out.println("The color is: "+colorString);/*******************************************/
 		
 		InputStream input1 = getClass().getResourceAsStream("img/board/" + colorString + "_point.png");

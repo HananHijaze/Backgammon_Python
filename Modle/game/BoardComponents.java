@@ -118,7 +118,7 @@ public class BoardComponents extends HBox {
 //				rotation = 180;
 //			}
 //			
-//			Pip questPip = new Pip(Color.PURPLE, rotation, randomNum);
+//			Pip questPip = new Pip(Color.BLUE, rotation, randomNum);
 //			if(questPip!=null)
 //				questPip.setType('q');
 //			else
@@ -142,7 +142,7 @@ public class BoardComponents extends HBox {
 //		}
 //		
 //		Pip surprisePip = null;
-//		surprisePip=new Pip(Color.YELLOW, rotation, randomNum);
+//		surprisePip=new Pip(Color.GOLD, rotation, randomNum);
 //		if(surprisePip!=null)
 //			surprisePip.setType('q');
 //		else
@@ -663,7 +663,7 @@ public class BoardComponents extends HBox {
 		if (Settings.getWhiteHomeQuadrant() == Quadrant.BOTTOM_RIGHT) {
 			if (color.equals(Color.WHITE)) {
 				cubeHome = rightCubeHome;
-			} else if (color.equals(Color.BLACK)) {
+			} else if (color.equals(Color.BLACK)) { 
 				cubeHome = leftCubeHome;
 			}
 		}
