@@ -28,6 +28,7 @@ import game_engine.SysData;
 /**********/
 public class Main extends Application {
     public static void main(String[] args) {
+    	System.out.println("hi abd its work good");
     	
         launch(args); // calls start method.
     }

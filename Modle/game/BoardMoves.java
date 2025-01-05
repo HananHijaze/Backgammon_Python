@@ -221,12 +221,12 @@ public class BoardMoves extends BoardComponents implements ColorParser {
 			//
 			// So, we simply add copies of the RollMoves and set their respective
 			// dice objects.
-			if (instance == DieInstance.DOUBLE) {
-				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
-				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
-				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
-				return;
-			}
+//			if (instance == DieInstance.DOUBLE) {
+//				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
+//				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
+//				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
+//				return;
+//			}
 		}
 	}
 
@@ -335,7 +335,7 @@ public class BoardMoves extends BoardComponents implements ColorParser {
 	 * @param isSumMove boolean indicating if its a sum move, i.e. 5+10=15.
 	 * @return boolean value indicating if the move is added.
 	 */
-	private boolean addedAsMove(Moves moves, RollMoves rollMoves, Player pCurrent, int fromPip, int diceResult, boolean isSumMove) {
+	public boolean addedAsMove(Moves moves, RollMoves rollMoves, Player pCurrent, int fromPip, int diceResult, boolean isSumMove) {
 		boolean addedAsMove = false;
 		int toPip = getPossibleToPip(pCurrent, fromPip, diceResult);
 		

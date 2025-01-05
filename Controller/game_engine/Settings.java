@@ -33,7 +33,9 @@ public class Settings {
 	}
 	
 	public static void setTotalGames(int totalGames) {
+		if(totalGames>0 && totalGames%2!=0) {
 		TOTAL_GAMES_IN_A_MATCH = totalGames;
+		}
 	}
 	
 	// by default, 1 starts at bottom right of screen, i.e. quadrant 4.
@@ -123,10 +125,10 @@ public class Settings {
 		String name = null;
 		switch (pov) {
 			case BOTTOM:
-				name = "Cup";
+				name = "player1";
 				break;
 			case TOP:
-				name = "Tea";
+				name = "player2";
 				break;
 			default:
 				throw new PlayerNoPerspectiveException();
