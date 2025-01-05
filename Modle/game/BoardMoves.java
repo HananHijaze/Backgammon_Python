@@ -335,7 +335,7 @@ public class BoardMoves extends BoardComponents implements ColorParser {
 	 * @param isSumMove boolean indicating if its a sum move, i.e. 5+10=15.
 	 * @return boolean value indicating if the move is added.
 	 */
-	private boolean addedAsMove(Moves moves, RollMoves rollMoves, Player pCurrent, int fromPip, int diceResult, boolean isSumMove) {
+	public boolean addedAsMove(Moves moves, RollMoves rollMoves, Player pCurrent, int fromPip, int diceResult, boolean isSumMove) {
 		boolean addedAsMove = false;
 		int toPip = getPossibleToPip(pCurrent, fromPip, diceResult);
 		
