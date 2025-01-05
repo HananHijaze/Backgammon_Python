@@ -43,10 +43,48 @@ public class Pip extends CheckersStorer implements ColorParser {
 		this.type='r';
 		String colorString = parseColor(color);
 		 
-		System.out.println("The color is: "+colorString);/*******************************************/
+		System.out.println("The color is: "+colorString);/*******************Debug*********************/
 		
 		InputStream input1 = getClass().getResourceAsStream("img/board/" + colorString + "_point.png");
 		InputStream input2 = getClass().getResourceAsStream("img/board/" + colorString + "_point_highlighted.png");
+		normalBG = new Background(new BackgroundImage(new Image(input1), null, null, null, null));
+		highlightedBG = new Background(new BackgroundImage(new Image(input2), null, null, null, null));
+		try {
+			input1.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			input2.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		setRotate(rotation);
+		setAlignment(Pos.BOTTOM_CENTER);
+		// don't simply set point max and pref size, this will effect how the point is drawn.
+		setMinSize(GameConstants.getPipSize().getWidth(), GameConstants.getPipSize().getHeight());	// highlighted and non-highlighted should have the same width & height.
+		setNormalImage();
+	}
+	
+	public Pip(Color color, double rotation, int pipNum, char type) {
+		super();
+		this.pipNum = pipNum;
+		this.type=type;
+		String colorString = parseColor(color);
+		 
+		System.out.println("The "+ this.type + " color is: "+colorString);/*******************Debug*********************/
+		
+		//choose pip image based on type
+		String imgPath="img/board/" + colorString + "_point.png";
+		String highlightedImgPath="img/board/" + colorString + "_point_highlighted.png";
+		if(this.type=='q' || this.type=='s') {
+			imgPath="img/board/customized/" + colorString + "_point.png";
+			highlightedImgPath="img/board/customized/" + colorString + "_point_highlighted.png";
+		}
+			
+		InputStream input1 = getClass().getResourceAsStream(imgPath);
+		InputStream input2 = getClass().getResourceAsStream(highlightedImgPath);
 		normalBG = new Background(new BackgroundImage(new Image(input1), null, null, null, null));
 		highlightedBG = new Background(new BackgroundImage(new Image(input2), null, null, null, null));
 		try {

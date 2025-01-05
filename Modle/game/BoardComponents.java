@@ -102,54 +102,53 @@ public class BoardComponents extends HBox {
 			initCheckers(i);
 		}
 		
-//		//Handle question (purple) points.
-//		int randomNum;
-//		ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
-//		
-//		for(int i=0;i<MAX_QUEST_PIPS;i++) {
-//			randomNum = getNewRandomPip(randomNumbers);
-//			randomNumbers.add(randomNum);
-//			
-//			// Handles rotation of special point.
-//			double rotation = 0;
-//			if (randomNum >= 0 && randomNum <= 11) {
-//				rotation = 0;
-//			} else if (randomNum >= 12 && randomNum <= 23) {
-//				rotation = 180;
-//			}
-//			
-//			Pip questPip = new Pip(Color.BLUE, rotation, randomNum);
-//			if(questPip!=null)
-//				questPip.setType('q');
-//			else
-//				System.out.println("The question pip is NULL!!");
-//			pips[randomNum] = questPip;
-//			
-//			initCheckers(randomNum);
-//		}
-//		
-//		//Handle surprise (yellow) points.
-//		randomNum = getNewRandomPip(randomNumbers);
-//		
-//		randomNumbers.add(randomNum);
-//		
-//		// Handles rotation of special point.
-//		double rotation = 0;
-//		if (randomNum >= 0 && randomNum <= 11) {
-//			rotation = 0;
-//		} else if (randomNum >= 12 && randomNum <= 23) {
-//			rotation = 180;
-//		}
-//		
-//		Pip surprisePip = null;
-//		surprisePip=new Pip(Color.GOLD, rotation, randomNum);
-//		if(surprisePip!=null)
-//			surprisePip.setType('q');
-//		else
-//			System.out.println("The surprise pip is NULL!!");
-//		pips[randomNum] = surprisePip;
-//		
-//		initCheckers(randomNum);
+		//Handle question (purple) points.
+		int randomNum;
+		ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+		
+		for(int i=0;i<MAX_QUEST_PIPS;i++) {
+			randomNum = getNewRandomPip(randomNumbers);
+			randomNumbers.add(randomNum);
+			
+			// Handles rotation of special point.
+			double rotation = 0;
+			if (randomNum >= 0 && randomNum <= 11) {
+				rotation = 0;
+			} else if (randomNum >= 12 && randomNum <= 23) {
+				rotation = 180;
+			}
+			
+			Pip questPip = new Pip(Color.BLACK, rotation, randomNum,'q');
+			if(questPip!=null)
+				questPip.setType('q');
+			else
+				System.out.println("The question pip is NULL!!");
+			pips[randomNum] = questPip;
+			
+			initCheckers(randomNum);
+		}
+		
+		//Handle surprise (yellow) points.
+		randomNum = getNewRandomPip(randomNumbers);
+		
+		randomNumbers.add(randomNum);
+		
+		// Handles rotation of special point.
+		double rotation = 0;
+		if (randomNum >= 0 && randomNum <= 11) {
+			rotation = 0;
+		} else if (randomNum >= 12 && randomNum <= 23) {
+			rotation = 180;
+		}
+
+		Pip surprisePip=new Pip(Color.WHITE, rotation, randomNum,'s');
+		if(surprisePip!=null)
+			surprisePip.setType('q');
+		else
+			System.out.println("The surprise pip is NULL!!");
+		pips[randomNum] = surprisePip;
+		
+		initCheckers(randomNum);
 		
 		drawPips();
 	}
