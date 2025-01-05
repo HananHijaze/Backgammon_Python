@@ -2,6 +2,7 @@ package game;
 
 import constants.DieInstance;
 import constants.GameEndScore;
+import constants.GameMode;
 import constants.MoveResult;
 import constants.PlayerPerspectiveFrom;
 import constants.Quadrant;
@@ -194,7 +195,6 @@ public class Board extends BoardMoves {
 		leftBoard.setCenter(null);
 		rightBoard.setCenter(null);
 		DieResults res = null;
-		
 		switch (pov) {
 			case BOTTOM:
 				leftDices = null;
@@ -229,13 +229,13 @@ public class Board extends BoardMoves {
 		leftBoard.setCenter(null);
 		rightBoard.setCenter(null);
 		DieResults res = new DieResults();
-		
+		System.out.println("lets see who goes first!");
 		switch (instance) {
 			case SINGLE:
 				leftDices = null;
 				rightDices = null;
-				leftDices = new Dices(Color.RED);
-				rightDices = new Dices(Color.RED);
+				leftDices = new Dices(GameMode.getInstance().getMode());
+				rightDices = new Dices(GameMode.getInstance().getMode());
 				res.add(((Dices)leftDices).getTotalRoll(instance).getFirst());
 				res.add(((Dices)rightDices).getTotalRoll(instance).getFirst());
 				leftBoard.setCenter(leftDices);

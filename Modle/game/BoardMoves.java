@@ -221,12 +221,12 @@ public class BoardMoves extends BoardComponents implements ColorParser {
 			//
 			// So, we simply add copies of the RollMoves and set their respective
 			// dice objects.
-			if (instance == DieInstance.DOUBLE) {
-				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
-				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
-				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
-				return;
-			}
+//			if (instance == DieInstance.DOUBLE) {
+//				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
+//				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
+//				moves.add(new RollMoves(rollMoves).setDice(iterDieRes.next()));
+//				return;
+//			}
 		}
 	}
 
