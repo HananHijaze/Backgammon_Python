@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import constants.GameConstants;
 import constants.GameMode;
@@ -24,6 +26,7 @@ import javafx.scene.paint.Color;
  */
 public class BoardComponents extends HBox {
 	protected final int MAXPIPS = GameConstants.NUMBER_OF_PIPS;
+	protected final int MAX_QUEST_PIPS = GameConstants.NUMBER_OF_QUESTION_PIPS;
 	protected Pip[] pips;
 	protected HalfBoard leftBoard, rightBoard;
 	protected DoublingCubeHome leftCubeHome, rightCubeHome;
@@ -100,7 +103,69 @@ public class BoardComponents extends HBox {
 			
 			initCheckers(i);
 		}
+		
+//		//Handle question (purple) points.
+//		int randomNum;
+//		ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
+//		
+//		for(int i=0;i<MAX_QUEST_PIPS;i++) {
+//			randomNum = getNewRandomPip(randomNumbers);
+//			randomNumbers.add(randomNum);
+//			
+//			// Handles rotation of special point.
+//			double rotation = 0;
+//			if (randomNum >= 0 && randomNum <= 11) {
+//				rotation = 0;
+//			} else if (randomNum >= 12 && randomNum <= 23) {
+//				rotation = 180;
+//			}
+//			
+//			Pip questPip = new Pip(Color.BLUE, rotation, randomNum);
+//			if(questPip!=null)
+//				questPip.setType('q');
+//			else
+//				System.out.println("The question pip is NULL!!");
+//			pips[randomNum] = questPip;
+//			
+//			initCheckers(randomNum);
+//		}
+//		
+//		//Handle surprise (yellow) points.
+//		randomNum = getNewRandomPip(randomNumbers);
+//		
+//		randomNumbers.add(randomNum);
+//		
+//		// Handles rotation of special point.
+//		double rotation = 0;
+//		if (randomNum >= 0 && randomNum <= 11) {
+//			rotation = 0;
+//		} else if (randomNum >= 12 && randomNum <= 23) {
+//			rotation = 180;
+//		}
+//		
+//		Pip surprisePip = null;
+//		surprisePip=new Pip(Color.GOLD, rotation, randomNum);
+//		if(surprisePip!=null)
+//			surprisePip.setType('q');
+//		else
+//			System.out.println("The surprise pip is NULL!!");
+//		pips[randomNum] = surprisePip;
+//		
+//		initCheckers(randomNum);
+		
 		drawPips();
+	}
+	
+	private int getNewRandomPip(ArrayList<Integer> randomNumbers) {
+		int randomNum = (int) (Math.random() * MAXPIPS); // Generates a number between 0 and 23
+		
+		//check if it is already in the list and regenerate
+		while(randomNumbers.contains(randomNum)){
+			randomNum = (int) (Math.random() * MAXPIPS); 
+		}
+		
+		System.out.println("Pip random number is: "+randomNum);
+		return randomNum;
 	}
 
 	private void initCheckers() {
@@ -600,7 +665,7 @@ public class BoardComponents extends HBox {
 		if (Settings.getWhiteHomeQuadrant() == Quadrant.BOTTOM_RIGHT) {
 			if (color.equals(Color.WHITE)) {
 				cubeHome = rightCubeHome;
-			} else if (color.equals(Color.BLACK)) {
+			} else if (color.equals(Color.BLACK)) { 
 				cubeHome = leftCubeHome;
 			}
 		}
