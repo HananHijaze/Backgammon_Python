@@ -141,7 +141,7 @@ public class Dices extends HBox implements ColorParser {
 	 * @param res the roll die result.
 	 * @return double the roll die result.
 	 */
-	private DieResults addDoubleDie(DieResults res) {
+	public DieResults addDoubleDie(DieResults res) {
 		int numberOfDices = getNumDices(DieInstance.DOUBLE);
 		DieResults newRes = new DieResults();
 		for (int i = 0; i < numberOfDices; i++) {

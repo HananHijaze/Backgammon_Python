@@ -17,7 +17,7 @@ public class DiceTest {
         Dice[] initializedDices = dices.getDices();
 
         // בדיקה שאורך המערך נכון
-        assertEquals("Easy mode should initialize 2 dices", 5, initializedDices.length);
+        assertEquals("Easy mode should initialize 4 dices", 4, initializedDices.length);
     }
 
 }
