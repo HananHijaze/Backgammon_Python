@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import constants.GameConstants;
+import constants.GameMode;
 import constants.PlayerPerspectiveFrom;
 import constants.Quadrant;
+import game_engine.GameComponentsController;
 import game_engine.Player;
 import game_engine.Settings;
 import javafx.scene.layout.HBox;
@@ -699,14 +701,11 @@ public class BoardComponents extends HBox {
 	}
 	
 	private void initDices() {
-		/** IGNORE THIS ATM, currently considering to use red for all,
-		 * then when its the player's turn then change the dice to that
-		 * player's side than to create new HBox of dices.
-		 * 
-		 * left uses red.
-		 * right uses black.
-		 */
-		dices = new Dices(Color.RED);
+	
+	  dices = new Dices(GameMode.getInstance().getMode());
+	  
+	            
+		
 	}
 	
 	public void removeCheckers() {
