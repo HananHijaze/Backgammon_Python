@@ -53,8 +53,8 @@ public class Dices extends HBox implements ColorParser {
 	        case "hard":
 	            // One red dice with maxDiceSize = 6 and one green dice with maxDiceSize = 9
 	            dices = new Dice[4];
-	            dices[0] = new Dice(Color.RED, 6);
-	            dices[1] = new Dice(Color.RED, 10);//remember to add the pictures for it to work
+	            dices[0] = new Dice(Color.GREEN, 10);
+	            dices[1] = new Dice(Color.GREEN, 10);//remember to add the pictures for it to work
 	          //random dices to be overwritten later when we get double dice
 	            dices[2] = new Dice(Color.RED, 6);
 	            dices[3] = new Dice(Color.RED, 6);
@@ -89,7 +89,6 @@ public class Dices extends HBox implements ColorParser {
 	private void drawDices(DieInstance instance) {
 		getChildren().clear();
 		int numDices = getNumDices(instance);
-		System.out.println(numDices);
 		int i = 0;
 		for (; i < numDices; i++) {
 			if (numDices==4) {
@@ -110,7 +109,14 @@ public class Dices extends HBox implements ColorParser {
 		int numDices = getNumDices(DieInstance.DEFAULT);
 		DieResults res = new DieResults();
 		for (int i = 0; i < numDices; i++) {
-			res.add(dices[i].draw(dices[i].roll()));
+			if(dices[i].getColor().equals(Color.GREEN)) {
+				dices[i].draw(dices[i].roll());
+				dices[i].setDiceRollResult(dices[i].getDiceRollResult()-4);
+				
+			}
+			else	
+				dices[i].draw(dices[i].roll());
+				res.add(dices[i]);
 		}
 		
 		if (isDouble(res)) {

@@ -41,10 +41,5 @@ public class GameMode {
         this.mode = mode;
     }
 
-    /**
-     * Resets the singleton instance (useful for testing or reinitialization).
-     */
-    public static void resetInstance() {
-        instance = null;
-    }
+    
 }

@@ -124,5 +124,12 @@ public class Dice extends ImageView implements ColorParser {
 	public String toString() {
 		return "Dice [MAX_DICE_SIZE=" + MAX_DICE_SIZE + ", diceRollResult=" + diceRollResult + ", color=" + color + "]";
 	}
+	public int getDiceRollResult() {
+		return diceRollResult;
+	}
+	public void setDiceRollResult(int diceRollResult) {
+		this.diceRollResult = diceRollResult;
+	}
+	
 	
 }
