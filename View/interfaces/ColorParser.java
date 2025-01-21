@@ -31,7 +31,10 @@ public interface ColorParser {
 			colorString = "black";
 		} else if (color == Color.RED) {
 			colorString = "red";
+		}else if (color == Color.GREEN) {
+			colorString = "green";
 		}
+		
 		
 		return colorString;
 	}
