@@ -1,11 +1,15 @@
 package game;
-import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
 public class Question {
     private String question;           // Question text
     private List<String> answers;      // List of possible answers
+
+    @SerializedName("correct_ans")
     private String correctAns;         // Correct answer index as a string (e.g., "2")
+
     private String difficulty;         // Difficulty level as a string (e.g., "1")
 
     // Constructor
