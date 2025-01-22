@@ -13,7 +13,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.FileReader;
@@ -36,6 +39,8 @@ public class QuestionTableView extends Application {
         // Define columns
         TableColumn<Question, String> questionColumn = new TableColumn<>("Question");
         questionColumn.setCellValueFactory(new PropertyValueFactory<>("question"));
+        questionColumn.setPrefWidth(200); // Set preferred width for this column
+
 
         TableColumn<Question, List<String>> answersColumn = new TableColumn<>("Answers");
         answersColumn.setCellValueFactory(new PropertyValueFactory<>("answers"));
@@ -98,21 +103,31 @@ public class QuestionTableView extends Application {
         });
 
         // Add "Add Question" button and center it
-        Button addQuestionButton = new Button("Add Question");
+        Button addQuestionButton = createStyledButton("Add Question");
         addQuestionButton.setOnAction(e -> addNewQuestion());
 
-        HBox buttonContainer = new HBox(addQuestionButton);
-        buttonContainer.setAlignment(Pos.CENTER); // Center the button horizontally
-        buttonContainer.setStyle("-fx-padding: 10;"); // Add some padding around the button
+ 
 
         // Create a layout with the button at the top and the table below
-        VBox layout = new VBox(10, buttonContainer, tableView);
+        VBox layout = new VBox();
+        layout.setAlignment(Pos.CENTER);
+        VBox.setVgrow(tableView, Priority.ALWAYS);
 
+        layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #6b4423, #8b6914);");
         // Create the scene and set it to the stage
         Scene scene = new Scene(layout, 900, 250);
         primaryStage.setTitle("Questions Table");
         primaryStage.setScene(scene);
         primaryStage.show();
+        layout.getChildren().addAll(addQuestionButton, tableView);
+
+    }
+    private Button createStyledButton(String text) {
+        Button button = new Button(text);
+        button.setFont(new Font("Arial", 16));
+        button.setTextFill(Color.WHITE);
+        button.setStyle("-fx-background-color: #2e8b57; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
+        return button;
     }
 
     private void addNewQuestion() {
