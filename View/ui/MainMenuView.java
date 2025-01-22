@@ -2,14 +2,18 @@ package ui;
 
 import game.GameRecord;
 import game_engine.MatchController;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -45,7 +49,18 @@ public class MainMenuView {
 
         layout.getChildren().addAll(startGameButton, gameHistoryButton, quitButton);
 
+<<<<<<< Updated upstream
         return new Scene(layout, 500, 500);
+=======
+        // Add Instructions Icon
+        Label instructionsIcon = createInstructionsIcon();
+        instructionsIcon.setOnMouseClicked(e -> showInstructions());
+
+        StackPane root = new StackPane(layout, instructionsIcon);
+        StackPane.setAlignment(instructionsIcon, Pos.TOP_RIGHT);
+
+        return new Scene(root, 500, 500);
+>>>>>>> Stashed changes
     }
 
     private Button createStyledButton(String text) {
@@ -56,6 +71,19 @@ public class MainMenuView {
         return button;
     }
 
+<<<<<<< Updated upstream
+=======
+    private Label createInstructionsIcon() {
+        Label icon = new Label("\u2139"); // Unicode for "info" symbol
+        icon.setFont(new Font("Arial", 40)); // Increase font size
+        icon.setTextFill(Color.WHITE); // Set the color to white
+        icon.setStyle("-fx-cursor: hand; -fx-padding: 10;"); // Add padding for spacing
+        return icon;
+    }
+
+
+
+>>>>>>> Stashed changes
     private void startGame() {
         System.out.println("Start Game button clicked.");
         MatchController gameView = new MatchController(primaryStage);
@@ -67,6 +95,7 @@ public class MainMenuView {
         gameView.startGame();
     }
 
+<<<<<<< Updated upstream
 
 
     // Utility method to display an error message
@@ -82,4 +111,128 @@ public class MainMenuView {
         List<GameRecord> gameHistory = matchController.getGameHistory();
         GameHistoryUI.createAndShowGUI(gameHistory);
     }
+=======
+    private void openGameHistory() {
+        System.out.println("Game History button clicked.");
+        List<GameRecord> gameHistory = matchController.getGameHistory();
+        GameHistoryUI.createAndShowGUI(gameHistory);    }
+    private void openQuestionList() {
+        // Open the QuestionTableView to show the question list
+        QuestionTableView questionTableView = new QuestionTableView();
+        try {
+            Stage questionListStage = new Stage();
+            questionTableView.start(questionListStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void showInstructions() {
+        // Create a new Stage for the instructions
+        Stage instructionsStage = new Stage();
+        instructionsStage.setTitle("Game Instructions");
+
+        // Gradient background styling
+        String gradientStyle = "-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6b4423, #2e8b57);";
+
+        // Create a VBox layout for the instructions content
+        VBox instructionsLayout = new VBox(20);
+        instructionsLayout.setAlignment(Pos.TOP_LEFT);
+        instructionsLayout.setStyle(gradientStyle);
+        instructionsLayout.setPadding(new Insets(20));
+
+        // Title label
+        Label titleLabel = new Label("- Instructions -");
+        titleLabel.setFont(new Font("Arial", 24));
+        titleLabel.setTextFill(Color.WHITE);
+
+        // Create a TextFlow for rich-text formatting
+        TextFlow instructionsText = new TextFlow();
+
+        // Add formatted text
+        Text hardnessTitle = new Text("Hardness Levels:\n");
+        hardnessTitle.setFont(new Font("Arial", 18));
+        hardnessTitle.setFill(Color.WHITE);
+        hardnessTitle.setStyle("-fx-font-weight: bold;");
+
+        Text hardnessDetails = new Text(
+            "Easy: ");
+        hardnessDetails.setStyle("-fx-font-weight: bold;");
+        hardnessDetails.setFont(new Font("Arial", 16));
+        hardnessDetails.setFill(Color.WHITE);
+
+        Text easyDescription = new Text("Played with two regular dice.\n");
+        easyDescription.setFont(new Font("Arial", 16));
+        easyDescription.setFill(Color.WHITE);
+
+        Text medium = new Text("Medium: ");
+        medium.setStyle("-fx-font-weight: bold;");
+        medium.setFont(new Font("Arial", 16));
+        medium.setFill(Color.WHITE);
+
+        Text mediumDescription = new Text("Adds a question die to the easy mode dice.\n");
+        mediumDescription.setFont(new Font("Arial", 16));
+        mediumDescription.setFill(Color.WHITE);
+
+        Text hard = new Text("Hard: ");
+        hard.setStyle("-fx-font-weight: bold;");
+        hard.setFont(new Font("Arial", 16));
+        hard.setFill(Color.WHITE);
+
+        Text hardDescription = new Text(
+            "Played with two improved dice and one question die. The player must answer the question correctly to move their pieces.\n\n");
+        hardDescription.setFont(new Font("Arial", 16));
+        hardDescription.setFill(Color.WHITE);
+
+        Text stationsTitle = new Text("Stations:\n");
+        stationsTitle.setFont(new Font("Arial", 18));
+        stationsTitle.setFill(Color.WHITE);
+        stationsTitle.setStyle("-fx-font-weight: bold;");
+
+        Text stationsDetails = new Text(
+            "Question Station: In every game, there are three question stations, and their location is random.\n"
+                + "Surprise Station: In every game, there is one surprise station, and its location is selected randomly. The player who lands on the surprise station will receive an additional turn.\n\n");
+        stationsDetails.setFont(new Font("Arial", 16));
+        stationsDetails.setFill(Color.WHITE);
+
+        Text diceTitle = new Text("Dice:\n");
+        diceTitle.setFont(new Font("Arial", 18));
+        diceTitle.setFill(Color.WHITE);
+        diceTitle.setStyle("-fx-font-weight: bold;");
+
+        Text diceDetails = new Text(
+            "Regular: A fair six-sided die, each side has a number 1 to 6.\n"
+                + "Improved: A fair nine-sided die, each side has a number from -3 to 6.\n"
+                + "Question Die: The die has three sides (easy, medium, and hard) representing the question difficulty levels.\n");
+        diceDetails.setFont(new Font("Arial", 16));
+        diceDetails.setFill(Color.WHITE);
+
+        // Add all formatted text to the TextFlow
+        instructionsText.getChildren().addAll(
+            hardnessTitle, hardnessDetails, easyDescription,
+            medium, mediumDescription,
+            hard, hardDescription,
+            stationsTitle, stationsDetails,
+            diceTitle, diceDetails
+        );
+
+        // Close button
+        Button closeButton = new Button("Close");
+        closeButton.setFont(new Font("Arial", 16));
+        closeButton.setTextFill(Color.WHITE);
+        closeButton.setStyle("-fx-background-color: #6b4423; -fx-border-color: white; -fx-border-width: 2px;");
+        closeButton.setOnAction(e -> instructionsStage.close());
+
+        // Layout the components
+        instructionsLayout.getChildren().addAll(titleLabel, instructionsText, closeButton);
+        instructionsLayout.setAlignment(Pos.TOP_CENTER);
+
+        // Create a Scene and set it to the stage
+        Scene instructionsScene = new Scene(instructionsLayout, 500, 500);
+        instructionsStage.setScene(instructionsScene);
+
+        // Show the Stage
+        instructionsStage.show();
+    }
+
+>>>>>>> Stashed changes
 }
