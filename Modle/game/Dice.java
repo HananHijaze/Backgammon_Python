@@ -2,6 +2,7 @@ package game;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Random;
 import interfaces.ColorParser;
 import javafx.scene.effect.ColorAdjust;
@@ -29,12 +30,11 @@ public class Dice extends ImageView implements ColorParser {
 	 * Constructors
 	 * 		- Initialize the dices array with the possible dice images (i.e. 1-6).
 	 */
-	public Dice(Dice otherDice,int mds) {
-		this(otherDice.getColor(),mds);
+	public Dice(Dice otherDice) {
+		this(otherDice.getColor(),otherDice.MAX_DICE_SIZE);
 		this.diceRollResult = otherDice.getDiceResult();
 	}
 	public Dice(int diceRollResult) {
-		this(Color.RED,2);//to change the MAX size roles
 		this.diceRollResult = diceRollResult;
 	}
 	public Dice(Color color, int maxSize) {
@@ -42,7 +42,7 @@ public class Dice extends ImageView implements ColorParser {
 		this.color = color;
 		this.MAX_DICE_SIZE=maxSize;
 		dices = new Image[MAX_DICE_SIZE];
-		initImages();
+		initImages(color);
 		
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-0.5);
@@ -54,8 +54,8 @@ public class Dice extends ImageView implements ColorParser {
 	 * 		- adding them to the dices array.
 	 * @param color
 	 */
-	private void initImages() {
-		String colorString = parseColor(color);
+	private void initImages(Color c) {
+		String colorString = parseColor(c);
 		for (int i = 0; i < dices.length; i++) {
 			try {
 				InputStream input = getClass().getResourceAsStream("img/dices/" + colorString + "/" + (i+1) + ".png");
@@ -120,4 +120,16 @@ public class Dice extends ImageView implements ColorParser {
 	public boolean equalsValueOf(Dice otherDice) {
 		return diceRollResult == otherDice.getDiceResult();
 	}
+	@Override
+	public String toString() {
+		return "Dice [MAX_DICE_SIZE=" + MAX_DICE_SIZE + ", diceRollResult=" + diceRollResult + ", color=" + color + "]";
+	}
+	public int getDiceRollResult() {
+		return diceRollResult;
+	}
+	public void setDiceRollResult(int diceRollResult) {
+		this.diceRollResult = diceRollResult;
+	}
+	
+	
 }

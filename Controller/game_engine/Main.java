@@ -25,8 +25,10 @@ import game_engine.SysData;
  * @author Braddy Yeoh, 17357376
  *
  */
+/**********/
 public class Main extends Application {
     public static void main(String[] args) {
+    	System.out.println("hi abd its work good");
     	
         launch(args); // calls start method.
     }

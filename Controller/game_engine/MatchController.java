@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import constants.GameConstants;
+import constants.GameMode;
 import constants.MessageType;
 import constants.PlayerPerspectiveFrom;
 import game.GameRecord;
@@ -32,6 +33,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.CommandPanel;
 import ui.InfoPanel;
+import ui.ModeSelectionDialog;
 import ui.RollDieButton;
 import ui.ScoreboardPrompt;
 import ui.Dialogs;
@@ -59,8 +61,22 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         initApplication();
         initGame();
         style();
+        
         gameHistory = SysData.loadGameHistory();
     }
+    private String promptModeSelection(Stage stage) {
+        // Use the dialog to get the mode
+        ModeSelectionDialog modeDialog = new ModeSelectionDialog();
+        String selectedMode = modeDialog.showAndWait(stage);
+
+        // Default to "easy" if the player cancels or doesn't select a mode
+        if (selectedMode == null || selectedMode.isEmpty()) {
+            selectedMode = "easy";
+        }
+
+        return selectedMode; // Return the selected mode
+    }
+
 
     private void initApplication() {
         bottomPlayer = new Player(PlayerPerspectiveFrom.BOTTOM);
@@ -71,10 +87,12 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         musicPlayer = new MusicPlayer();
         isPlayerInfosEnteredFirstTime = true;
         isPromptCancel = false;
+
     }
 
     private void initGame() {
-        game = new GameComponentsController(bottomPlayer, topPlayer);
+        //this.mode = promptModeSelection(stage);
+        game = new GameComponentsController(bottomPlayer, topPlayer );
         gameplay = new GameplayController(stage, this, game, infoPnl, bottomPlayer, topPlayer);
         cmd = new CommandController(stage, this, game, gameplay, infoPnl, cmdPnl, bottomPlayer, topPlayer, musicPlayer);
         gameplay.setCommandController(cmd);
@@ -121,6 +139,8 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     public void startGame() {
     	   // Show game history before starting the game
         GameHistoryUI.createAndShowGUI(gameHistory);
+        GameMode mode=GameMode.getInstance();
+        mode.setMode(promptModeSelection(stage));
         // Prompt players for their information
         promptStartGame();
 

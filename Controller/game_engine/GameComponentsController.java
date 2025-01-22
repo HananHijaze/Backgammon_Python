@@ -32,11 +32,17 @@ public class GameComponentsController extends VBox {
 	private Bars bars;
 	private Board board;
 	private HomePanel leftHome, rightHome, mainHome, otherHome;
+
+    
+
 	
 	/**
 	 * Default Constructor
 	 * 		- Initializes the modular game components.
 	 */
+    
+	public GameComponentsController() {}//empty constructor
+	
 	public GameComponentsController(Player bottomPlayer, Player topPlayer) {
 		super();
 		initGameComponents(bottomPlayer, topPlayer);
@@ -129,6 +135,7 @@ public class GameComponentsController extends VBox {
 		getCube().setNormalImage();
 	}
 	
+
 	/**
 	 * Moves a checker from a pip to the bar.
 	 * i.e. pops a checker from one pip and push it to the bar.

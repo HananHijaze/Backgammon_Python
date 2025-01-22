@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.List;
+
 import game.GameRecord;
 import game_engine.MatchController;
 import javafx.geometry.Insets;
@@ -9,14 +11,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-
-import java.util.List;
 
 public class MainMenuView {
     private Stage primaryStage;
@@ -35,32 +39,41 @@ public class MainMenuView {
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #6b4423, #8b6914);");
 
+        // Buttons
         Button startGameButton = createStyledButton("Start Game");
         Button gameHistoryButton = createStyledButton("Game History");
+        Button questionListButton = createStyledButton("Question List");
         Button quitButton = createStyledButton("Quit");
 
+        // Tooltips
         startGameButton.setTooltip(new Tooltip("Start a new game"));
         gameHistoryButton.setTooltip(new Tooltip("View the history of games"));
+        questionListButton.setTooltip(new Tooltip("View the list of questions"));
         quitButton.setTooltip(new Tooltip("Exit the application"));
 
+        // Event Handlers
         startGameButton.setOnAction(e -> startGame());
         gameHistoryButton.setOnAction(e -> openGameHistory());
+        questionListButton.setOnAction(e -> openQuestionList());
         quitButton.setOnAction(e -> primaryStage.close());
 
-        layout.getChildren().addAll(startGameButton, gameHistoryButton, quitButton);
+        layout.getChildren().addAll(startGameButton, gameHistoryButton, questionListButton, quitButton);
 
-<<<<<<< Updated upstream
-        return new Scene(layout, 500, 500);
-=======
+        // Add Instructions Icon
+        ImageView instructionsIcon = createInstructionsIcon();
+        instructionsIcon.setOnMouseClicked(e -> showInstructions());
+
+
         // Add Instructions Icon
         Label instructionsIcon = createInstructionsIcon();
         instructionsIcon.setOnMouseClicked(e -> showInstructions());
+
 
         StackPane root = new StackPane(layout, instructionsIcon);
         StackPane.setAlignment(instructionsIcon, Pos.TOP_RIGHT);
 
         return new Scene(root, 500, 500);
->>>>>>> Stashed changes
+
     }
 
     private Button createStyledButton(String text) {
@@ -71,8 +84,7 @@ public class MainMenuView {
         return button;
     }
 
-<<<<<<< Updated upstream
-=======
+
     private Label createInstructionsIcon() {
         Label icon = new Label("\u2139"); // Unicode for "info" symbol
         icon.setFont(new Font("Arial", 40)); // Increase font size
@@ -83,7 +95,8 @@ public class MainMenuView {
 
 
 
->>>>>>> Stashed changes
+
+ 
     private void startGame() {
         System.out.println("Start Game button clicked.");
         MatchController gameView = new MatchController(primaryStage);
@@ -94,28 +107,30 @@ public class MainMenuView {
         
         gameView.startGame();
     }
+    private void openQuestionList() {
+        // Open the QuestionTableView to show the question list
+        QuestionTableView questionTableView = new QuestionTableView();
+        try {
+            Stage questionListStage = new Stage();
+            questionTableView.start(questionListStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-<<<<<<< Updated upstream
-
-
-    // Utility method to display an error message
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
+    private void showInstructions() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Instructions");
         alert.setHeaderText(null);
-        alert.setContentText(message);
+        alert.setContentText("Welcome to the game! Here's how to play...");
         alert.showAndWait();
     }
 
     private void openGameHistory() {
-        List<GameRecord> gameHistory = matchController.getGameHistory();
-        GameHistoryUI.createAndShowGUI(gameHistory);
-    }
-=======
-    private void openGameHistory() {
         System.out.println("Game History button clicked.");
         List<GameRecord> gameHistory = matchController.getGameHistory();
         GameHistoryUI.createAndShowGUI(gameHistory);    }
+  
     private void openQuestionList() {
         // Open the QuestionTableView to show the question list
         QuestionTableView questionTableView = new QuestionTableView();
@@ -234,5 +249,5 @@ public class MainMenuView {
         instructionsStage.show();
     }
 
->>>>>>> Stashed changes
+
 }

@@ -97,6 +97,7 @@ public class GameConstants {
 	public static final int MAX_CHECKERS_IN_GAME = 30;
 	public static final int MAX_CHECKERS_PER_CHECKERS_STORER = MAX_CHECKERS_IN_GAME / 2;
 	public static final int NUMBER_OF_PIPS = 24;
+	public static final int NUMBER_OF_QUESTION_PIPS = 3;
 	public static final int TEXT_CONTAINER_THRESHOLD = 100;
 
 	public static final int FONT_SIZE = 15;
