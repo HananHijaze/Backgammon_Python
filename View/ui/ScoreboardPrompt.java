@@ -1,5 +1,6 @@
 package ui;
 
+import game_engine.Player;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -41,6 +42,33 @@ public class ScoreboardPrompt extends GridPane {
     private TextField blackNameField, whiteNameField, totalGamesField;
     private Label blackLabel, whiteLabel, totalGamesLabel;
     private VBox blackScoreBox, whiteScoreBox, matchScoreBox;
+    public ScoreboardPrompt(Player topPlayer, Player bottomPlayer) {
+        initStyle();
+        initScoreboardComponents();
+
+        // Initialize with player names and scores
+        blackNameField.setText(bottomPlayer.getName());
+        whiteNameField.setText(topPlayer.getName());
+        updateScoreBox(blackScoreBox, bottomPlayer.getScore());
+        updateScoreBox(whiteScoreBox, topPlayer.getScore());
+    }
+    public String getPlayerInput(String fieldType) {
+        switch (fieldType.toLowerCase()) {
+            case "black":
+                return blackNameField.getText();
+            case "white":
+                return whiteNameField.getText();
+            case "score":
+                return totalGamesField.getText();
+            default:
+                throw new IllegalArgumentException("Invalid field type: " + fieldType);
+        }
+    }
+
+    private void updateScoreBox(VBox scoreBox, int score) {
+        Label scoreLabel = (Label) scoreBox.getChildren().get(0); // Assumes the first child is the score label
+        scoreLabel.setText(String.valueOf(score));
+    }
 
     public ScoreboardPrompt() {
         initStyle();

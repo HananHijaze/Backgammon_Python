@@ -59,9 +59,7 @@ public class MainMenuView {
 
         layout.getChildren().addAll(startGameButton, gameHistoryButton, questionListButton, quitButton);
 
-        // Add Instructions Icon
-        ImageView instructionsIcon = createInstructionsIcon();
-        instructionsIcon.setOnMouseClicked(e -> showInstructions());
+      
 
 
         // Add Instructions Icon
@@ -118,29 +116,14 @@ public class MainMenuView {
         }
     }
 
-    private void showInstructions() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Game Instructions");
-        alert.setHeaderText(null);
-        alert.setContentText("Welcome to the game! Here's how to play...");
-        alert.showAndWait();
-    }
+   
 
     private void openGameHistory() {
         System.out.println("Game History button clicked.");
         List<GameRecord> gameHistory = matchController.getGameHistory();
         GameHistoryUI.createAndShowGUI(gameHistory);    }
   
-    private void openQuestionList() {
-        // Open the QuestionTableView to show the question list
-        QuestionTableView questionTableView = new QuestionTableView();
-        try {
-            Stage questionListStage = new Stage();
-            questionTableView.start(questionListStage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+   
     private void showInstructions() {
         // Create a new Stage for the instructions
         Stage instructionsStage = new Stage();
