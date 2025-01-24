@@ -83,6 +83,7 @@ public class Dice extends ImageView implements ColorParser {
 	 * @param result of dice roll.
 	 */
 	public Dice draw(int result) {
+		System.out.println("in method draw the result is: "+result);
 		diceRollResult = result;
 		setImage(dices[result-1]);
 		setEffect(null);
