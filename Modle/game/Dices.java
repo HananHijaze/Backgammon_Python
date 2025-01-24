@@ -140,7 +140,7 @@ public class Dices extends HBox implements ColorParser {
 		if(!firstroll) 
 			qdie.draw(qdie.roll());
 		//answer=questionfunction(qdie.getDiceRollResult());
-		
+		//
 		if (isDouble(res)) {
 			res = addDoubleDie(res);
 		}else
