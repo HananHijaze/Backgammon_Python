@@ -189,6 +189,7 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 			gameplayMoves.handleEndOfMovesCalculation(getValidMoves());
 		}
 	}
+
 	
 	/**
 	 * Starts the timer for the respective player's turn.
@@ -234,7 +235,7 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 			isInTransition = true;
 		} else nextFunction();
 		return pCurrent;
-	}
+	} 
 	public void nextFunction() {
 		if (isDoubling()) stopCurrentPlayerTimer();
 		
@@ -487,8 +488,14 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 	public boolean isRolled() {
 		return isRolled;
 	}
+	public void setIsRolled(boolean isRolled) {
+		this.isRolled=isRolled;
+	}
 	public boolean isMoved() {
 		return isMoved;
+	}
+	public void setIsMoved(boolean isMoved) {
+		this.isMoved=isMoved;
 	}
 	public boolean isDoubling() {
 		return isDoubling;

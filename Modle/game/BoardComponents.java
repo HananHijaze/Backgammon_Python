@@ -124,7 +124,7 @@ public class BoardComponents extends HBox {
 			if(questPip!=null)
 				questPip.setType('q');
 			else
-				System.out.println("The question pip is NULL!!");
+				System.out.println("The question "+i+" pip is NULL!!");
 			pips[randomNum] = questPip;
 			
 			initCheckers(randomNum);
@@ -145,10 +145,10 @@ public class BoardComponents extends HBox {
 
 		Pip surprisePip=new Pip(Color.WHITE, rotation, randomNum,'s');
 		if(surprisePip!=null)
-			surprisePip.setType('q');
+			surprisePip.setType('s');
 		else
 			System.out.println("The surprise pip is NULL!!");
-		pips[randomNum] = surprisePip;
+		pips[randomNum] = surprisePip;  
 		
 		initCheckers(randomNum);
 		
@@ -163,7 +163,6 @@ public class BoardComponents extends HBox {
 			randomNum = (int) (Math.random() * MAXPIPS); 
 		}
 		
-		System.out.println("Pip random number is: "+randomNum);
 		return randomNum;
 	}
 

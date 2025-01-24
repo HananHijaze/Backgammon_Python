@@ -75,6 +75,7 @@ public class MusicPlayer {
 	
 	private void initPlaylist() { // Can implement a text file and just read from text file for the names
 		playlist = new ArrayList<String>();
+		playlist.add("death_note.aiff");
 		playlist.add("jazz.aiff");
 		playlist.add("classical.aiff");
 	}
