@@ -1,179 +1,386 @@
 package ui;
 
+import constants.GameConstants;
 import game_engine.Player;
+import game_engine.Settings;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.RadioButton;
 
+/**
+ * Class that handles layout of components in a dialog prompt.
+ * Layout is made to look like a score board.
+ * 
+ * @teamname TeaCup
+ * @author Bryan Sng, 17205050
+ * @author @LxEmily, 17200573
+ * @author Braddy Yeoh, 17357376
+ *
+ */
 public class ScoreboardPrompt extends GridPane {
+	// Display fonts.
+	private Font score = Font.loadFont(GameConstants.getFontInputStream(true, true), 150);
+	private Font match = Font.loadFont(GameConstants.getFontInputStream(), 50);
+	private Font label = Font.loadFont(GameConstants.getFontInputStream(), 20);
+	private Font field = Font.loadFont(GameConstants.getFontInputStream(), 16);
 
-    // Fonts for styling
-    private Font scoreFont = Font.font("Arial", 150);
-    private Font labelFont = Font.font("Arial", 20);
-    private Font fieldFont = Font.font("Arial", 16);
+	// Labels for player colors + total games.
+	private Labels bColor = new Labels("", getCheckerImg("black"), false);
+	private Labels wColor = new Labels("", getCheckerImg("white"), false);
+	private Labels totalGamesLabel = new Labels("VS.", true);
+	
+	// TextFields for player names + total games.
+	private TextFields bNameField, wNameField, totalGames;
+	
+	// Labels for player names.
+	private Labels bNameLabel, wNameLabel;
+	
+	// NameCards to display player colors and names.
+	private NameCard black, white;
+	
+	// ScoreCards to display player and match score.
+	private ScoreCard bScore, wScore, mScore;
+	// toggle group for mode selection
+	private ToggleGroup modeToggleGroup;
+	private RadioButton easyMode, mediumMode, hardMode;
+	private Label gameModeLabel;
 
-    // Elements for the mode selection
-    private String selectedMode;
+	private boolean isForStart;
+	
+	/**
+	 * Constructs a GridPane with a given style, 
+	 * depending on context (start/end game).
+	 * Note: End of game requires passing in the correct players for their scores.
+	 */
+	public ScoreboardPrompt() {
+		initStyle();
+		initStartComponents();
+		isForStart = true;
+		addComponents();
+		centerComponents();
+	}
+	public ScoreboardPrompt(Player bPlayer, Player wPlayer) {
+		initStyle();
+		initEndComponents(bPlayer, wPlayer);
+		isForStart = false;
+		addComponents();
+		centerComponents();
+	}
+	
+	/**
+	 * Styles the grid pane.
+	 */
+	private void initStyle() {
+		setAlignment(Pos.CENTER);
+		setVgap(5);
+		setHgap(10);
+	}
+	
+	/**
+	 * Initializes and adds components of promptStartGame().
+	 */
+	private void initStartComponents() {
+		// TextFields for player names + total games.
+		bNameField = new TextFields("Default: SUPERMAN", false);
+		wNameField = new TextFields("Default: BATMAN", false);
+		totalGames = new TextFields("11", true);
+		 bNameField.setPrefWidth(150); // Adjust width as needed
+		    wNameField.setPrefWidth(150);
+		// Name  for player names + colors
+		black = new NameCard(bColor, bNameField);
+		white = new NameCard(wColor, wNameField);
+		
+		// Garbage collection for unused variables in this prompt.
+		bNameLabel = null;
+		wNameLabel = null;
+		
+		// ScoreCards to display initial player score.
+		bScore = new ScoreCard("0", false);
+		wScore = new ScoreCard("0", false);
+		mScore = null;
+		
+		  // Initialize the label for game mode
+	    gameModeLabel = new Label("Game Mode");
+	    gameModeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 5px;");
 
-    // Scoreboard elements
-    private TextField blackNameField, whiteNameField, totalGamesField;
-    private Label blackLabel, whiteLabel, totalGamesLabel;
-    private VBox blackScoreBox, whiteScoreBox, matchScoreBox;
-    public ScoreboardPrompt(Player topPlayer, Player bottomPlayer) {
-        initStyle();
-        initScoreboardComponents();
+	    // Radio Button Group for Modes
+	    modeToggleGroup = new ToggleGroup();
 
-        // Initialize with player names and scores
-        blackNameField.setText(bottomPlayer.getName());
-        whiteNameField.setText(topPlayer.getName());
-        updateScoreBox(blackScoreBox, bottomPlayer.getScore());
-        updateScoreBox(whiteScoreBox, topPlayer.getScore());
-    }
-    public String getPlayerInput(String fieldType) {
-        switch (fieldType.toLowerCase()) {
-            case "black":
-                return blackNameField.getText();
-            case "white":
-                return whiteNameField.getText();
-            case "score":
-                return totalGamesField.getText();
-            default:
-                throw new IllegalArgumentException("Invalid field type: " + fieldType);
-        }
-    }
+	    easyMode = new RadioButton("Easy");
+	    mediumMode = new RadioButton("Medium");
+	    hardMode = new RadioButton("Hard");
 
-    private void updateScoreBox(VBox scoreBox, int score) {
-        Label scoreLabel = (Label) scoreBox.getChildren().get(0); // Assumes the first child is the score label
-        scoreLabel.setText(String.valueOf(score));
-    }
+	    easyMode.setToggleGroup(modeToggleGroup);
+	    mediumMode.setToggleGroup(modeToggleGroup);
+	    hardMode.setToggleGroup(modeToggleGroup);
 
-    public ScoreboardPrompt() {
-        initStyle();
-        initScoreboardComponents();
-        initModeSelection();
-    }
+	    easyMode.setSelected(true); // Default selection
 
-    private void initStyle() {
-        setAlignment(Pos.CENTER);
-        setVgap(10);
-        setHgap(10);
-    }
+	    styleGameModeComponents();
+	    
+	}
+	
+	/**
+	 * Initializes and adds components of onGameOver().
+	 * Note: End of game requires passing in the correct players.
+	 */
+	private void initEndComponents(Player bPlayer, Player wPlayer) {
+		// Garbage collection for unused variables in this prompt.
+		bNameField = null;
+		wNameField = null;
+		totalGames = null;
+		
+		// Labels for player names.
+		bNameLabel = new Labels(bPlayer.getName(), false);
+		wNameLabel = new Labels(wPlayer.getName(), false);
+		
+		// NameCards for player colors and names.
+		black = new NameCard(bColor, bNameLabel);
+		white = new NameCard(wColor, wNameLabel);
 
-    private void initScoreboardComponents() {
-        // Scoreboard Labels and Fields
-        blackLabel = new Label("Black Player:");
-        whiteLabel = new Label("White Player:");
-        totalGamesLabel = new Label("Match to:");
+		// Updated ScoreCards for players and current match.
+		bScore = new ScoreCard(Integer.toString(bPlayer.getScore()), false);
+		wScore = new ScoreCard(Integer.toString(wPlayer.getScore()), false);
+		mScore = new ScoreCard(Integer.toString(Settings.TOTAL_GAMES_IN_A_MATCH), true);
+	}
 
-        blackNameField = new TextField("Default: Black");
-        whiteNameField = new TextField("Default: White");
-        totalGamesField = new TextField("11");
+	/**
+	 * Adds components to grid pane.
+	 */
+	private void addComponents() {
+	    add(black, 0, 0);
+	    add(bScore, 0, 1);
+	    add(totalGamesLabel, 1, 0);
 
-        blackLabel.setFont(labelFont);
-        whiteLabel.setFont(labelFont);
-        totalGamesLabel.setFont(labelFont);
+	    if (isForStart) {
+	        add(totalGames, 1, 1);
 
-        blackNameField.setFont(fieldFont);
-        whiteNameField.setFont(fieldFont);
-        totalGamesField.setFont(fieldFont);
+	        // Horizontal box for radio buttons
+	        HBox modeBox = new HBox(15, easyMode, mediumMode, hardMode);
+	        modeBox.setAlignment(Pos.CENTER);
 
-        // Score Boxes
-        blackScoreBox = createScoreBox("0", Color.BLACK);
-        whiteScoreBox = createScoreBox("0", Color.WHITE);
-        matchScoreBox = createScoreBox("11", Color.LIGHTGRAY);
+	        VBox gameModeBox = new VBox(5, gameModeLabel, modeBox);
+	        gameModeBox.setAlignment(Pos.CENTER);
 
-        // Adding components to the layout
-        add(blackLabel, 0, 0);
-        add(blackNameField, 1, 0);
-        add(blackScoreBox, 2, 0);
+	        add(gameModeBox, 1, 2); // Add the entire group to grid layout
+	    } else {
+	        add(mScore, 1, 1);
+	    }
 
-        add(whiteLabel, 0, 1);
-        add(whiteNameField, 1, 1);
-        add(whiteScoreBox, 2, 1);
+	    add(white, 2, 0);
+	    add(wScore, 2, 1);
+	}
 
-        add(totalGamesLabel, 0, 2);
-        add(totalGamesField, 1, 2);
-        add(matchScoreBox, 2, 2);
-    }
 
-    private VBox createScoreBox(String score, Color backgroundColor) {
-        VBox box = new VBox();
-        box.setAlignment(Pos.CENTER);
-        box.setPrefSize(100, 100);
-        box.setBackground(new Background(new BackgroundFill(backgroundColor, CornerRadii.EMPTY, Insets.EMPTY)));
+	
+	/**
+	 * Centers components in the grid pane.
+	 */
+	private void centerComponents() {
+	    setHalignment(totalGamesLabel, HPos.CENTER);
+	    setHalignment(bScore, HPos.CENTER);
+	    setHalignment(wScore, HPos.CENTER);
+	    if (isForStart) {
+	        setHalignment(totalGames, HPos.CENTER);
+	        setValignment(totalGames, VPos.CENTER);
+	    } else {
+	        setHalignment(mScore, HPos.CENTER);
+	        setValignment(mScore, VPos.CENTER);
+	    }
+	}
 
-        Label scoreLabel = new Label(score);
-        scoreLabel.setFont(scoreFont);
-        scoreLabel.setTextFill(Color.WHITE);
+	
+	/**
+	 * Accesses contents of TextFields in this class.
+	 * @param string determining which TextField
+	 * @return contents of TextFields
+	 */
+	public String getPlayerInput(String string) {
+		String contents = "";
+		if (string.equals("black"))
+			contents = bNameField.getText();
+		else if (string.equals("white"))
+			contents = wNameField.getText();
+		else if (string.equals("score"))
+			contents = totalGames.getText();
+		return contents;
+	}	
+	
+	/**
+	 * Inner class to customize labels.
+	 * Constructor takes in
+	 * 		- a string to initialize display label.
+	 * 		- an ImageView to initialize display checker colors.
+	 * 		- a boolean isMatch to determine if it's a match label.
+	 */
+	private class Labels extends Label {
+	    private Labels(String string, boolean isMatch) {
+	        super(string);
+	        initStyle(isMatch);
+	    }
 
-        box.getChildren().add(scoreLabel);
-        return box;
-    }
+	    private Labels(String string, ImageView img, boolean isMatch) {
+	        super(string, img);
+	        initStyle(isMatch);
+	    }
 
-    private void initModeSelection() {
-        Label label = new Label("Select Game Mode:");
-        label.setFont(labelFont);
+	    private void initStyle(boolean isMatch) {
+	        setFont(label);
+	        setPadding(new Insets(10));
+	        setWrapText(true);
+	        setMaxWidth(Double.MAX_VALUE);
 
-        ToggleGroup modeGroup = new ToggleGroup();
+	        // Add gradient background styling
+	        setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6b4423, #2e8b57); "
+	               + "-fx-text-fill: white; -fx-border-color: white; -fx-border-width: 1px;");
 
-        RadioButton easyMode = new RadioButton("Easy");
-        RadioButton mediumMode = new RadioButton("Medium");
-        RadioButton hardMode = new RadioButton("Hard");
+	        if (isMatch) {
+	            setFont(match);
+	            setTextAlignment(TextAlignment.CENTER);
+	            setAlignment(Pos.CENTER);
+	        }
+	    }
+	}
 
-        easyMode.setToggleGroup(modeGroup);
-        mediumMode.setToggleGroup(modeGroup);
-        hardMode.setToggleGroup(modeGroup);
+	/**
+	 * Method to customize image labels for checkers.
+	 * @param string determines color of checkers
+	 * @return ImageView of the checker
+	 */
+	private ImageView getCheckerImg(String string) {
+		return new ImageView(this.getClass().getResource("/game/img/checkers/" 
+														+ string + "_checkers.png").toString());
+	}
+	
+	/**
+	 * Inner class to customize TextField.
+	 * Constructor takes in
+	 * 		- string to initialize prompt text.
+	 * 		- boolean isMatch to determine if it's for total number of games.
+	 */
+	private class TextFields extends TextField {
+	    private TextFields(String string, boolean isMatch) {
+	        super();
+	        setPromptText(string);
+	        setFont(field);
+	        setPadding(new Insets(10));
+	      
+	        if (isMatch) setCenter();
+	    }
 
-        easyMode.setSelected(true); // Default selection
+	    private void setCenter() {
+	        setFont(score);
+	        setAlignment(Pos.CENTER);
+	        setBackground(GameConstants.getScoreboardImage("black"));
+	        setPrefHeight(GameConstants.getScreenSize().getHeight() * 0.3);
+	        setPrefWidth(GameConstants.getScreenSize().getWidth() * 0.13);
+	        setStyle("-fx-text-fill: LIGHTGRAY; -fx-background-color: #6b4423; "
+	               + "-fx-border-color: white; -fx-border-width: 2px;");
+	    }
+	}
 
-        Button confirmButton = new Button("Confirm");
-        confirmButton.setOnAction(e -> {
-            selectedMode = ((RadioButton) modeGroup.getSelectedToggle()).getText();
-            Stage stage = (Stage) confirmButton.getScene().getWindow();
-            stage.close();
-        });
+	
+	/**
+	 * Inner class to make a name card, 
+	 * consisting of player colors and names.
+	 * 		- player names are TextFields/Labels, depending on start/end game.
+	 */
+	private class NameCard extends HBox {
+		private NameCard(Labels color, Labels name) {
+			getChildren().addAll(color, name);
+			initStyle();
+		}
+		private NameCard(Labels color, TextFields name) {
+			getChildren().addAll(color, name);
+			initStyle();
+		}
+		
+		private void initStyle() {
+			setMinWidth(GameConstants.getScreenSize().getWidth() * 0.13);
+			setMaxWidth(GameConstants.getScreenSize().getWidth() * 0.13);
+			setMaxHeight(this.getMaxWidth() * 0.5);
+			setAlignment(Pos.CENTER);
+		}
+	}
+	
+	/**
+	 * Inner class to make a score card, consisting of a score against a background.
+	 * Constructor takes in 
+	 * 		- a string for the score.
+	 * 		- a boolean isMatchCard to determine if it's a match card (background + text color).
+	 */
+	private class ScoreCard extends VBox {
+		TextScore score;
+		
+		private ScoreCard(String string, boolean isMatchCard) {
+			score = new TextScore(string);	
+			getChildren().addAll(score);
+			initStyle(isMatchCard);
+		}
+		
+		private void initStyle(boolean isMatchCard) {
+			setAlignment(Pos.CENTER);
+			setMinHeight(GameConstants.getScreenSize().getHeight() * 0.3);
+			setPrefWidth(GameConstants.getScreenSize().getWidth() * 0.13);
+			setMaxWidth(GameConstants.getScreenSize().getWidth() * 0.13);
+			if (isMatchCard) {
+				setBackground(GameConstants.getScoreboardImage("black"));
+				score.setFill(Color.LIGHTGRAY);
+			}
+			else setBackground(GameConstants.getScoreboardImage("white"));
+		}
+	}
+	/**
+	 * Inner class to customize text within a score board.
+	 * 		- Constructor takes in a string to initialize the display text.
+	 */
+	private class TextScore extends Text {
+		private TextScore(String string) {
+			super(string);
+			setFont(score);
+			setAlignment(Pos.CENTER);
+		}
+	}
+	public String getSelectedMode() {
+	    RadioButton selectedRadioButton = (RadioButton) modeToggleGroup.getSelectedToggle();
+	    return selectedRadioButton.getText(); // Returns "Easy", "Medium", or "Hard"
+	}
+	private void styleGameModeComponents() {
+	    // Style the label
+		 gameModeLabel.setStyle("-fx-font-size: 24px; "
+                 + "-fx-font-weight: bold; "
+                 + "-fx-padding: 10px; "
+                 + "-fx-text-fill: white; "
+                 + "-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6b4423, #2e8b57); "
+                 + "-fx-border-color: white; "
+                 + "-fx-border-width: 2px; "
+                 + "-fx-alignment: center; "
+                 + "-fx-background-radius: 10px;");
 
-        VBox modeBox = new VBox(10, label, easyMode, mediumMode, hardMode, confirmButton);
-        modeBox.setAlignment(Pos.CENTER);
+	    // Apply styles to radio buttons
+	    String radioButtonStyle ="-fx-font-size: 20px; "
+	            + "-fx-text-fill: black; " // Set text color to black
+	            + "-fx-padding: 5px;";
+	    easyMode.setStyle(radioButtonStyle);
+	    mediumMode.setStyle(radioButtonStyle);
+	    hardMode.setStyle(radioButtonStyle);
+	    
+	}
 
-        Stage modeStage = new Stage();
-        modeStage.initModality(Modality.APPLICATION_MODAL);
-        modeStage.setTitle("Mode Selection");
-        modeStage.setScene(new Scene(modeBox, 300, 200));
-        modeStage.showAndWait();
-    }
 
-    public String getSelectedMode() {
-        return selectedMode;
-    }
 
-    public static void main(String[] args) {
-        // Example usage: launch a scoreboard prompt with mode selection
-        ScoreboardPrompt prompt = new ScoreboardPrompt();
-        String mode = prompt.getSelectedMode();
-        System.out.println("Selected Mode: " + mode);
-    }
 }

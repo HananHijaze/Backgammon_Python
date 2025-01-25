@@ -231,6 +231,25 @@ public class MainMenuView {
         // Show the Stage
         instructionsStage.show();
     }
+    private void styleButtons(Button button) {
+        button.setFont(new Font("Arial", 16)); // Set the font and size
+        button.setTextFill(Color.WHITE); // Set the text color
+        button.setStyle("-fx-background-color: #6b4423; " // Set the background color
+                       + "-fx-border-color: white; " // Add a white border
+                       + "-fx-border-width: 2px; " // Border thickness
+                       + "-fx-background-radius: 5px; " // Rounded corners
+                       + "-fx-padding: 5px 15px;"); // Padding for button
+        button.setOnMouseEntered(e -> button.setStyle("-fx-background-color: #8c5a2b; "
+                                                    + "-fx-border-color: white; "
+                                                    + "-fx-border-width: 2px; "
+                                                    + "-fx-background-radius: 5px; "
+                                                    + "-fx-padding: 5px 15px;")); // Hover effect
+        button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #6b4423; "
+                                                   + "-fx-border-color: white; "
+                                                   + "-fx-border-width: 2px; "
+                                                   + "-fx-background-radius: 5px; "
+                                                   + "-fx-padding: 5px 15px;")); // Default style
+    }
 
 
 }

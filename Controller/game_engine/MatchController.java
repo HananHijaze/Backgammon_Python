@@ -112,8 +112,6 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         // Save game history
         SysData.saveGameHistory(gameHistory);
 
-        // Show game history after resetting the application
-        GameHistoryUI.createAndShowGUI(gameHistory);
         isPlayerInfosEnteredFirstTime = true;
         isPromptCancel = false;
         hadCrawfordGame = false;
@@ -137,8 +135,6 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     }
 
     public void startGame() {
-    	   // Show game history before starting the game
-        GameHistoryUI.createAndShowGUI(gameHistory);
         GameMode mode=GameMode.getInstance();
         mode.setMode(promptModeSelection(stage));
         // Prompt players for their information
@@ -244,47 +240,54 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     }
 
     private void promptStartGame() {
-        Dialogs<promptResults> dialog = new Dialogs<promptResults>("Please enter player names and number of games to play", stage, "Start");
+		// Create dialog.
+		Dialogs<promptResults> dialog = new Dialogs<promptResults>("Please enter player names and number of games to play", stage, "Start");
+		
+		// Create dialog contents.
+		ScoreboardPrompt contents = new ScoreboardPrompt();
+		
+		// Add contents to dialog.
+		dialog.getDialogPane().setContent(contents);
+		
+		// On click start button, return player names as result.
+		// Else result is null, cancel the game.
+		dialog.setResultConverter(click -> {
+			if (click == dialog.getButton())
+				return new promptResults(contents.getPlayerInput("black"), contents.getPlayerInput("white"), contents.getPlayerInput("score"));
+			return null;
+		});
+		
+		// Show dialog to get player input.
+		Optional<promptResults> result = dialog.showAndWait();
+		
+		// If result is present and name is not empty, change player names.
+		// If result is null, cancel starting the game.
+		result.ifPresent((promptResults results) -> {
+			if (results.bName.length() != 0)
+				cmd.runCommand("/name black " + results.bName);
+			if (results.wName.length() != 0)
+				cmd.runCommand("/name white " + results.wName);			
 
-        ScoreboardPrompt contents = new ScoreboardPrompt();
-
-        dialog.getDialogPane().setContent(contents);
-
-        dialog.setResultConverter(click -> {
-            if (click == dialog.getButton())
-                return new promptResults(contents.getPlayerInput("black"), contents.getPlayerInput("white"), contents.getPlayerInput("score"));
-            return null;
+			String userInput = results.totalGames;
+			if (userInput.length() == 0 || isValidInput(userInput)) {
+				if (userInput.length() != 0) {
+					Settings.setTotalGames(Integer.parseInt(userInput));
+					game.getPlayerPanel(Settings.getTopPerspectiveColor()).updateTotalGames();
+					game.getPlayerPanel(Settings.getBottomPerspectiveColor()).updateTotalGames();
+				}
+				infoPnl.print("Max totalGames per game set to " + Settings.TOTAL_GAMES_IN_A_MATCH + ".");
+				isPromptCancel = false;
+			} else {
+				infoPnl.print("You must play to a positive odd number less than 100. Please try again.", MessageType.ERROR);
+				isPromptCancel = true;
+				promptStartGame();
+			}
         });
-
-        Optional<promptResults> result = dialog.showAndWait();
-
-        result.ifPresent((promptResults results) -> {
-            if (results.bName.length() != 0)
-                cmd.runCommand("/name black " + results.bName);
-            if (results.wName.length() != 0)
-                cmd.runCommand("/name white " + results.wName);
-
-            String userInput = results.totalGames;
-            if (userInput.length() == 0 || isValidInput(userInput)) {
-                if (userInput.length() != 0) {
-                    Settings.setTotalGames(Integer.parseInt(userInput));
-                    game.getPlayerPanel(Settings.getTopPerspectiveColor()).updateTotalGames();
-                    game.getPlayerPanel(Settings.getBottomPerspectiveColor()).updateTotalGames();
-                }
-                infoPnl.print("Max totalGames per game set to " + Settings.TOTAL_GAMES_IN_A_MATCH + ".");
-                isPromptCancel = false;
-            } else {
-                infoPnl.print("You must play to a positive odd number less than 100. Please try again.", MessageType.ERROR);
-                isPromptCancel = true;
-                promptStartGame();
-            }
-        });
-        if (!result.isPresent()) {
-            isPromptCancel = true;
-            infoPnl.print("Game not started.");
-        }
-    }
-
+		if (!result.isPresent()) {
+			isPromptCancel = true;
+			infoPnl.print("Game not started.");
+		}
+	}
     private static class promptResults {
         String bName;
         String wName;
