@@ -139,7 +139,6 @@ public class Dices extends HBox implements ColorParser {
 				dices[i].setDiceRollResult(dices[i].getDiceRollResult()-4);
 			res.add(dices[i]);
 		}
-		System.out.println(GameMode.getInstance().getMode());
 		if (!GameMode.getInstance().getMode().equals("easy")) {
 		if(!firstroll) 
 			qdie.draw(qdie.roll());
