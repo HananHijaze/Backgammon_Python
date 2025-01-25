@@ -14127,3 +14127,10 @@
 > [Error] You can only move after rolling.
 > [System] Trying to quit game.
 
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Game not started.
+> [Error] Game not started. Please enter valid information.
+> [System] Trying to quit game.
+
