@@ -350,7 +350,7 @@ public class QuestionTableView extends Application {
         }
     }
 
-    private ObservableList<Question> getQuestionData() {
+    public ObservableList<Question> getQuestionData() {
         try {
             // Get the file path from resources
             URL resource = getClass().getClassLoader().getResource("Questions.json");
