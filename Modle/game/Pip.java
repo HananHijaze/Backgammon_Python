@@ -42,8 +42,6 @@ public class Pip extends CheckersStorer implements ColorParser {
 		this.pipNum = pipNum;
 		this.type='r';
 		String colorString = parseColor(color);
-		 
-		System.out.println("The color is: "+colorString);/*******************Debug*********************/
 		
 		InputStream input1 = getClass().getResourceAsStream("img/board/" + colorString + "_point.png");
 		InputStream input2 = getClass().getResourceAsStream("img/board/" + colorString + "_point_highlighted.png");
@@ -62,6 +60,7 @@ public class Pip extends CheckersStorer implements ColorParser {
 		
 		setRotate(rotation);
 		setAlignment(Pos.BOTTOM_CENTER);
+		
 		// don't simply set point max and pref size, this will effect how the point is drawn.
 		setMinSize(GameConstants.getPipSize().getWidth(), GameConstants.getPipSize().getHeight());	// highlighted and non-highlighted should have the same width & height.
 		setNormalImage();
@@ -72,8 +71,6 @@ public class Pip extends CheckersStorer implements ColorParser {
 		this.pipNum = pipNum;
 		this.type=type;
 		String colorString = parseColor(color);
-		 
-		System.out.println("The "+ this.type + " color is: "+colorString);/*******************Debug*********************/
 		
 		//choose pip image based on type
 		String imgPath="img/board/" + colorString + "_point.png";

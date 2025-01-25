@@ -142,7 +142,6 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 			infoPnl.print("Incorrect syntax: expected /move fro to.", MessageType.ERROR);
 			return;
 		}
-		
 		// conversion from one-based index to zero-based.
 		String fro, to;
 		if (isPlayerInput) {
@@ -272,6 +271,31 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 		if (gameplay.isRolled() && !gameplay.isMoved()) {
 			gameplay.move();
 		}
+		
+		/*checks the type of pip the player moved the checker to*/
+		Pip p = game.getBoard().getPips()[Integer.parseInt(to)];
+		
+		/*a surprise pip gives the player an extra turn*/
+		if(p.getType()=='s') {
+			System.out.println("surprise pip number: "+p.getPipNumber());
+			
+			gameplay.setIsMoved(true);
+			gameplay.setIsRolled(true);
+			runCommand("/next",true);
+			gameplay.setIsMoved(true);
+			gameplay.setIsRolled(true);
+			runCommand("/next",true);
+			
+			gameplay.setIsRolled(false);
+			runCommand("/roll",true);
+		}
+		
+		/*a question pip displays a question that the player must answer*/
+		else if(p.getType()=='q') {
+			System.out.println("question pip number: "+p.getPipNumber());
+			
+		}
+		
 		gameplay.unhighlightPips();
 	}
 	
@@ -316,6 +340,7 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 			
 			if (!gameplay.isRolled()) {
 				infoPnl.print("Rolling...", MessageType.ANNOUNCEMENT);
+				System.out.println("Rolling...");/*debug*/
 				gameplay.roll();
 				event.resetSelections();
 				soundFXPlayer.playDiceSound();

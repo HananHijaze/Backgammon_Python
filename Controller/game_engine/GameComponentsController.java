@@ -157,7 +157,9 @@ public class GameComponentsController extends VBox {
 			
 			pips[fro].drawCheckers();
 			bar.drawCheckers();
+			
 		}
+		
 		return moveResult;
 	}
 	

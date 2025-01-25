@@ -19,6 +19,8 @@ import javafx.scene.paint.Color;
  */
 public class Dices extends HBox implements ColorParser {
 	private Dice[] dices;
+	private Dice qdie;
+	private boolean firstroll=true;
 	private int flagforinitdice=0;
 
 	
@@ -40,8 +42,7 @@ public class Dices extends HBox implements ColorParser {
 		
 	    switch (mode.toLowerCase()) {
 	        case "easy":
-	        case "medium":
-	            // Two red dices with maxDiceSize = 6
+	        	  // Two red dices with maxDiceSize = 6
 	            dices = new Dice[4];
 	            dices[0] = new Dice(Color.RED, 6);
 	            dices[1] = new Dice(Color.RED, 6);
@@ -50,14 +51,26 @@ public class Dices extends HBox implements ColorParser {
 	            dices[3] = new Dice(Color.RED, 6);
 	            break;
 
+	        case "medium":
+	            // Two red dices with maxDiceSize = 6
+	            dices = new Dice[4];
+	            dices[0] = new Dice(Color.RED, 6);
+	            dices[1] = new Dice(Color.RED, 6);
+	            //random dices to be overwritten later when we get double dice
+	            dices[2] = new Dice(Color.RED, 6);
+	            dices[3] = new Dice(Color.RED, 6);
+	            qdie=new Dice(Color.BLACK,3);
+	            break;
+
 	        case "hard":
-	            // One red dice with maxDiceSize = 6 and one green dice with maxDiceSize = 9
 	            dices = new Dice[4];
 	            dices[0] = new Dice(Color.GREEN, 10);
 	            dices[1] = new Dice(Color.GREEN, 10);//remember to add the pictures for it to work
 	          //random dices to be overwritten later when we get double dice
-	            dices[2] = new Dice(Color.RED, 6);
-	            dices[3] = new Dice(Color.RED, 6);
+	            dices[2] = new Dice(Color.GREEN, 10);
+	            dices[3] = new Dice(Color.GREEN, 10);
+	            qdie=new Dice(Color.BLACK,3);
+
 	            break;
 
 	        default:
@@ -90,13 +103,23 @@ public class Dices extends HBox implements ColorParser {
 		getChildren().clear();
 		int numDices = getNumDices(instance);
 		int i = 0;
+		int result=dices[0].getDiceRollResult();
+		if(dices[0].getColor().equals(Color.GREEN))
+			result+=4;
 		for (; i < numDices; i++) {
-			if (numDices==4) {
-				getChildren().add(new Dice(dices[0]));
+			if (instance.equals(DieInstance.DOUBLE)) {
+				dices[i]=new Dice(dices[0]);
+				System.out.println(dices[i]);
+				dices[i].draw(result);
 			}
 			getChildren().add(dices[i]);
 			
 		}
+		if(!firstroll) 
+			getChildren().add(qdie);
+
+		else
+			firstroll=!firstroll;
 	}
 	
 	/**
@@ -104,26 +127,25 @@ public class Dices extends HBox implements ColorParser {
 	 * @return result of each dice roll in terms of an array of integers.
 	 */
 	public DieResults getTotalRoll(DieInstance instance) {
-		if (flagforinitdice<2)
+		if (flagforinitdice<2)//based on the game mode we want to initiate dices 
 			initDices(GameMode.getInstance().getMode());
 		int numDices = getNumDices(DieInstance.DEFAULT);
 		DieResults res = new DieResults();
-		for (int i = 0; i < numDices; i++) {
-			if(dices[i].getColor().equals(Color.GREEN)) {
-				dices[i].draw(dices[i].roll());
+		for (int i = 0; i < numDices; i++) {	
+			dices[i].draw(dices[i].roll());
+			if(dices[i].getColor().equals(Color.GREEN))
 				dices[i].setDiceRollResult(dices[i].getDiceRollResult()-4);
-				
-			}
-			else	
-				dices[i].draw(dices[i].roll());
-				res.add(dices[i]);
+			res.add(dices[i]);
 		}
-		
+		if(!firstroll) 
+			qdie.draw(qdie.roll());
+		//answer=questionfunction(qdie.getDiceRollResult());
+		//
 		if (isDouble(res)) {
 			res = addDoubleDie(res);
 		}else
 			drawDices(instance);
-
+	
 		return res;
 	}
 	
@@ -151,7 +173,7 @@ public class Dices extends HBox implements ColorParser {
 		int numberOfDices = getNumDices(DieInstance.DOUBLE);
 		DieResults newRes = new DieResults();
 		for (int i = 0; i < numberOfDices; i++) {
-			newRes.add(dices[0].draw(res.getFirst().getDiceResult()));
+			newRes.add(dices[0]);
 		}
 		drawDices(DieInstance.DOUBLE);
 		return newRes;
@@ -179,6 +201,12 @@ public class Dices extends HBox implements ColorParser {
 		return numDices;
 	}
 	
+	
+	/**************************************************************************************************
+	 * ***********************************************************************************************
+	 * @param instance
+	 * @return
+	 */
 	// Used to hard-create double rolls, added in Board's calculateMoves() method.
 	// Activated by FORCE_DOUBLE_INSTANCE constant in GameConstants.
 	public DieResults getDoubleRoll(DieInstance instance) {
