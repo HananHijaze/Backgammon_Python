@@ -115,18 +115,20 @@ public class Dices extends HBox implements ColorParser {
 			getChildren().add(dices[i]);
 			
 		}
+		if (!GameMode.getInstance().getMode().equals("easy")) {
 		if(!firstroll) 
 			getChildren().add(qdie);
 
 		else
 			firstroll=!firstroll;
 	}
-	
+	}
 	/**
 	 * Returns an array of integers, containing the result of each dice roll.
 	 * @return result of each dice roll in terms of an array of integers.
 	 */
 	public DieResults getTotalRoll(DieInstance instance) {
+
 		if (flagforinitdice<2)//based on the game mode we want to initiate dices 
 			initDices(GameMode.getInstance().getMode());
 		int numDices = getNumDices(DieInstance.DEFAULT);
@@ -137,10 +139,13 @@ public class Dices extends HBox implements ColorParser {
 				dices[i].setDiceRollResult(dices[i].getDiceRollResult()-4);
 			res.add(dices[i]);
 		}
+		System.out.println(GameMode.getInstance().getMode());
+		if (!GameMode.getInstance().getMode().equals("easy")) {
 		if(!firstroll) 
 			qdie.draw(qdie.roll());
 		//answer=questionfunction(qdie.getDiceRollResult());
 		//
+		}
 		if (isDouble(res)) {
 			res = addDoubleDie(res);
 		}else

@@ -1,6 +1,7 @@
 package ui;
 
 import constants.GameConstants;
+import constants.GameMode;
 import game_engine.Player;
 import game_engine.Settings;
 import javafx.geometry.HPos;
@@ -56,7 +57,7 @@ public class ScoreboardPrompt extends GridPane {
 	private ScoreCard bScore, wScore, mScore;
 	// toggle group for mode selection
 	private ToggleGroup modeToggleGroup;
-	private RadioButton easyMode, mediumMode, hardMode;
+	//private RadioButton easyMode, mediumMode, hardMode;
 	private Label gameModeLabel;
 
 	private boolean isForStart;
@@ -114,21 +115,26 @@ public class ScoreboardPrompt extends GridPane {
 		mScore = null;
 		
 		  // Initialize the label for game mode
-	    gameModeLabel = new Label("Game Mode");
+	    gameModeLabel = new Label("Game Mode\n      "+GameMode.getInstance().getMode());
 	    gameModeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 5px;");
+	    
+	
+	    
 
-	    // Radio Button Group for Modes
-	    modeToggleGroup = new ToggleGroup();
+	    
 
-	    easyMode = new RadioButton("Easy");
-	    mediumMode = new RadioButton("Medium");
-	    hardMode = new RadioButton("Hard");
-
-	    easyMode.setToggleGroup(modeToggleGroup);
-	    mediumMode.setToggleGroup(modeToggleGroup);
-	    hardMode.setToggleGroup(modeToggleGroup);
-
-	    easyMode.setSelected(true); // Default selection
+//	    // Radio Button Group for Modes
+//	    modeToggleGroup = new ToggleGroup();
+//
+//	    easyMode = new RadioButton("Easy");
+//	    mediumMode = new RadioButton("Medium");
+//	    hardMode = new RadioButton("Hard");
+//
+//	    easyMode.setToggleGroup(modeToggleGroup);
+//	    mediumMode.setToggleGroup(modeToggleGroup);
+//	    hardMode.setToggleGroup(modeToggleGroup);
+//
+//	    easyMode.setSelected(true); // Default selection
 
 	    styleGameModeComponents();
 	    
@@ -169,11 +175,11 @@ public class ScoreboardPrompt extends GridPane {
 	    if (isForStart) {
 	        add(totalGames, 1, 1);
 
-	        // Horizontal box for radio buttons
-	        HBox modeBox = new HBox(15, easyMode, mediumMode, hardMode);
-	        modeBox.setAlignment(Pos.CENTER);
+//	        // Horizontal box for radio buttons
+//	        HBox modeBox = new HBox(15, easyMode, mediumMode, hardMode);
+//	        modeBox.setAlignment(Pos.CENTER);
 
-	        VBox gameModeBox = new VBox(5, gameModeLabel, modeBox);
+	        VBox gameModeBox = new VBox(5, gameModeLabel);
 	        gameModeBox.setAlignment(Pos.CENTER);
 
 	        add(gameModeBox, 1, 2); // Add the entire group to grid layout
@@ -375,9 +381,9 @@ public class ScoreboardPrompt extends GridPane {
 	    String radioButtonStyle ="-fx-font-size: 20px; "
 	            + "-fx-text-fill: black; " // Set text color to black
 	            + "-fx-padding: 5px;";
-	    easyMode.setStyle(radioButtonStyle);
-	    mediumMode.setStyle(radioButtonStyle);
-	    hardMode.setStyle(radioButtonStyle);
+//	    easyMode.setStyle(radioButtonStyle);
+//	    mediumMode.setStyle(radioButtonStyle);
+//	    hardMode.setStyle(radioButtonStyle);
 	    
 	}
 
