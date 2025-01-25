@@ -33,10 +33,18 @@ public class Settings {
 	}
 	
 	public static void setTotalGames(int totalGames) {
-		if(totalGames>0 && totalGames%2!=0) {
-		TOTAL_GAMES_IN_A_MATCH = totalGames;
-		}
+	    if (totalGames > 0 && totalGames % 2 != 0) {
+	        TOTAL_GAMES_IN_A_MATCH = totalGames;
+	    } else {
+	        // Example: Show error in a dialog (JavaFX)
+	        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+	        alert.setTitle("Invalid Input");
+	        alert.setHeaderText(null);
+	        alert.setContentText("Total games must be a positive odd number.");
+	        alert.showAndWait();
+	    }
 	}
+
 	
 	// by default, 1 starts at bottom right of screen, i.e. quadrant 4.
 	public static Quadrant getMainQuadrant() {
@@ -125,10 +133,10 @@ public class Settings {
 		String name = null;
 		switch (pov) {
 			case BOTTOM:
-				name = "player1";
+				name = "BATMAN";
 				break;
 			case TOP:
-				name = "player2";
+				name = "SUPERMAN";
 				break;
 			default:
 				throw new PlayerNoPerspectiveException();
