@@ -42,6 +42,7 @@ public class QuestionManager {
         // Pick a random question
         Random random = new Random();
         Question question = filteredQuestions.get(random.nextInt(filteredQuestions.size()));
+        System.out.println(question);
 
         // Show the question dialog
         new QuestionDialog(question, selectedAnswer -> {

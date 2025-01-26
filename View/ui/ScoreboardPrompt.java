@@ -96,8 +96,8 @@ public class ScoreboardPrompt extends GridPane {
 	 */
 	private void initStartComponents() {
 		// TextFields for player names + total games.
-		bNameField = new TextFields("Default: SUPERMAN", false);
-		wNameField = new TextFields("Default: BATMAN", false);
+		bNameField = new TextFields("Default: YAGAMI LIGHT", false);
+		wNameField = new TextFields("Default: L.RYUZAKI", false);
 		totalGames = new TextFields("11", true);
 		 bNameField.setPrefWidth(150); // Adjust width as needed
 		    wNameField.setPrefWidth(150);
@@ -114,14 +114,9 @@ public class ScoreboardPrompt extends GridPane {
 		wScore = new ScoreCard("0", false);
 		mScore = null;
 		
-		  // Initialize the label for game mode
-	    gameModeLabel = new Label("Game Mode\n      "+GameMode.getInstance().getMode());
+		// Initialize the label for game mode
+	    gameModeLabel = new Label("Game Level:\n      "+GameMode.getInstance().getMode().toUpperCase());
 	    gameModeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 5px;");
-	    
-	
-	    
-
-	    
 
 //	    // Radio Button Group for Modes
 //	    modeToggleGroup = new ToggleGroup();
