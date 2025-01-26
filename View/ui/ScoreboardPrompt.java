@@ -246,7 +246,7 @@ public class ScoreboardPrompt extends GridPane {
 	        setMaxWidth(Double.MAX_VALUE);
 
 	        // Add gradient background styling
-	        setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6b4423, #2e8b57); "
+	        setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ad1111, #0a0a0a); "
 	               + "-fx-text-fill: white; -fx-border-color: white; -fx-border-width: 1px;");
 
 	        if (isMatch) {
@@ -289,7 +289,7 @@ public class ScoreboardPrompt extends GridPane {
 	        setBackground(GameConstants.getScoreboardImage("black"));
 	        setPrefHeight(GameConstants.getScreenSize().getHeight() * 0.3);
 	        setPrefWidth(GameConstants.getScreenSize().getWidth() * 0.13);
-	        setStyle("-fx-text-fill: LIGHTGRAY; -fx-background-color: #6b4423; "
+	        setStyle("-fx-text-fill: WHITE; -fx-background-color: #0a0a0a; "
 	               + "-fx-border-color: white; -fx-border-width: 2px;");
 	    }
 	}
@@ -366,7 +366,7 @@ public class ScoreboardPrompt extends GridPane {
                  + "-fx-font-weight: bold; "
                  + "-fx-padding: 10px; "
                  + "-fx-text-fill: white; "
-                 + "-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6b4423, #2e8b57); "
+                 + "-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ad1111, #0a0a0a); "
                  + "-fx-border-color: white; "
                  + "-fx-border-width: 2px; "
                  + "-fx-alignment: center; "

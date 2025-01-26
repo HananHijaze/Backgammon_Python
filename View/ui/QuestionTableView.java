@@ -7,6 +7,7 @@ import game.Question;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,8 +18,10 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Reader;
@@ -50,7 +53,7 @@ public class QuestionTableView extends Application {
             {
                 textArea.setWrapText(true);
                 textArea.setEditable(false);
-                textArea.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+                textArea.setStyle("-fx-background-color: white; -fx-border-color: black;");
             }
 
             @Override
@@ -106,27 +109,33 @@ public class QuestionTableView extends Application {
         Button addQuestionButton = createStyledButton("Add Question");
         addQuestionButton.setOnAction(e -> addNewQuestion());
 
+        // Add a label
+        Label note = new Label("- IMPORTANT: Double click Question to Edit/Delete -");
+        note.setFont(Font.font("Arial", FontWeight.BOLD, 24)); // Bold and size 24
+        note.setTextFill(Color.WHITE);
+        
+        // Add margin to the label
+        VBox.setMargin(note, new Insets(10, 0, 20, 0)); // Top, Right, Bottom, Left
  
-
         // Create a layout with the button at the top and the table below
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
         VBox.setVgrow(tableView, Priority.ALWAYS);
 
-        layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #6b4423, #8b6914);");
+        layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #ad1111, #0a0a0a);");
         // Create the scene and set it to the stage
-        Scene scene = new Scene(layout, 1200, 450);
+        Scene scene = new Scene(layout, 1200, 850);
         primaryStage.setTitle("Questions Table");
         primaryStage.setScene(scene);
         primaryStage.show();
-        layout.getChildren().addAll(addQuestionButton, tableView);
+        layout.getChildren().addAll(addQuestionButton, note, tableView);
 
     }
     private Button createStyledButton(String text) {
         Button button = new Button(text);
         button.setFont(new Font("Arial", 16));
         button.setTextFill(Color.WHITE);
-        button.setStyle("-fx-background-color: #2e8b57; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
+        button.setStyle("-fx-background-color: #0a0a0a; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
         return button;
     }
 
@@ -330,42 +339,56 @@ public class QuestionTableView extends Application {
 
     private void saveQuestionsToFile() {
         try {
-            // Get the file path from resources
-            URL resource = getClass().getClassLoader().getResource("Questions.json");
-            if (resource == null) {
-                throw new IllegalArgumentException("Questions.json not found in resources");
-            }
-            String filePath = resource.toURI().getPath();
-            filePath = filePath.replaceFirst("^/(.:/)", "$1"); // Fix leading slash on Windows
-            filePath = filePath.replace("%20", " "); // Decode spaces
+            // Specify the path to the Questions.json file in the /Backgammon_Python directory
+            String filePath = "Backgammon_Python/Questions.json"; // Relative path to your file
 
-            try (FileWriter writer = new FileWriter(filePath)) {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                // Create the file and parent directories if they don't exist
+                file.getParentFile().mkdirs();
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write("{ \"questions\": [] }"); // Initialize with an empty JSON structure
+                }
+            }
+
+            // Write the questions to the file
+            try (FileWriter writer = new FileWriter(file)) {
                 Gson gson = new Gson();
                 JsonObject jsonObject = new JsonObject();
-                jsonObject.add("questions", gson.toJsonTree(questionData));
-                gson.toJson(jsonObject, writer);
+                jsonObject.add("questions", gson.toJsonTree(questionData)); // Convert questionData to JSON
+                gson.toJson(jsonObject, writer); // Write JSON to file
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+
+
     public ObservableList<Question> getQuestionData() {
         try {
-            // Get the file path from resources
-            URL resource = getClass().getClassLoader().getResource("Questions.json");
-            if (resource == null) {
-                throw new IllegalArgumentException("Questions.json not found in resources");
-            }
-            String filePath = resource.toURI().getPath();
-            filePath = filePath.replaceFirst("^/(.:/)", "$1"); // Fix leading slash on Windows
-            filePath = filePath.replace("%20", " "); // Decode spaces
+            String filePath = "Backgammon_Python/Questions.json";
+            System.out.println("Looking for file at: " + filePath);
 
-            try (Reader reader = new FileReader(filePath)) {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                System.out.println("File not found, creating a new one.");
+                file.getParentFile().mkdirs();
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write("{ \"questions\": [] }");
+                }
+            }
+
+            System.out.println("File found. Reading data...");
+            try (Reader reader = new FileReader(file)) {
                 Gson gson = new Gson();
                 Type listType = new TypeToken<List<Question>>() {}.getType();
                 JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+
+                System.out.println("File content: " + jsonObject); // Debug the content
                 List<Question> questions = gson.fromJson(jsonObject.get("questions"), listType);
+
+                System.out.println("Parsed questions: " + questions);
                 return FXCollections.observableArrayList(questions);
             }
         } catch (Exception e) {
@@ -373,6 +396,7 @@ public class QuestionTableView extends Application {
             return FXCollections.observableArrayList();
         }
     }
+
 
     public static void main(String[] args) {
         launch(args);

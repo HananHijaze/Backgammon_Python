@@ -47,7 +47,7 @@ public class MainMenuView {
     public Scene createScene() {
         VBox layout = new VBox(15);
         layout.setAlignment(Pos.CENTER);
-        layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #6b4423, #8b6914);");
+        layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #ad1111, #0a0a0a);");
 
         // Buttons
         Button startGameButton = createStyledButton("Start Game");
@@ -88,7 +88,7 @@ public class MainMenuView {
         Button button = new Button(text);
         button.setFont(new Font("Arial", 16));
         button.setTextFill(Color.WHITE);
-        button.setStyle("-fx-background-color: #2e8b57; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
+        button.setStyle("-fx-background-color: #0a0a0a; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
         return button;
     }
 
@@ -144,7 +144,7 @@ public class MainMenuView {
         instructionsStage.setTitle("Game Instructions");
 
         // Gradient background styling
-        String gradientStyle = "-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6b4423, #2e8b57);";
+        String gradientStyle = "-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ad1111, #0a0a0a);";
 
         // Create a VBox layout for the instructions content
         VBox instructionsLayout = new VBox(20);
@@ -231,7 +231,7 @@ public class MainMenuView {
         Button closeButton = new Button("Close");
         closeButton.setFont(new Font("Arial", 16));
         closeButton.setTextFill(Color.WHITE);
-        closeButton.setStyle("-fx-background-color: #6b4423; -fx-border-color: white; -fx-border-width: 2px;");
+        closeButton.setStyle("-fx-background-color: #0a0a0a; -fx-border-color: white; -fx-border-width: 2px;");
         closeButton.setOnAction(e -> instructionsStage.close());
 
         // Layout the components

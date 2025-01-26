@@ -28,8 +28,8 @@ public class QuestionDialog extends JDialog {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
                 GradientPaint gradient = new GradientPaint(
-                        0, 0, new Color(107, 68, 35), // Brown
-                        getWidth(), getHeight(), new Color(46, 139, 87) // Green
+                        0, 0, new Color(0,0,0), // Black
+                        getWidth(), getHeight(), new Color(173, 17, 17) // Red
                 );
                 g2d.setPaint(gradient);
                 g2d.fillRect(0, 0, getWidth(), getHeight());
@@ -64,7 +64,7 @@ public class QuestionDialog extends JDialog {
 
         // Submit button
         JButton submitButton = new JButton("Submit");
-        submitButton.setBackground(new Color(107, 68, 35));
+        submitButton.setBackground(new Color(0,0,0));
         submitButton.setForeground(Color.WHITE);
         submitButton.setFont(new Font("Arial", Font.BOLD, 16));
         submitButton.setFocusPainted(false);
