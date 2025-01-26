@@ -8853,3 +8853,353 @@
 > [System] Or enter "/help" for a list of possible commands.
 > [System] Trying to quit game.
 
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: YAGAMI LIGHT.
+> [System] Roll dice result: [4, -3].
+> [System] Available moves:
+  Roll of 4
+      A. 6-2
+      B. 8-4
+      C. 13-9
+      D. 24-20
+
+  Roll of -3
+      E. 6-9
+      F. 8-11
+      G. 13-16
+
+  Roll of 1
+
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: YAGAMI LIGHT.
+> [System] Roll dice result: [4, -3].
+> [System] Available moves:
+  Roll of 4
+      A. 6-2
+      B. 8-4
+      C. 13-9
+      D. 24-20
+
+  Roll of -3
+      E. 6-9
+      F. 8-11
+      G. 13-16
+
+  Roll of 1
+
+> [System] Trying to quit game.
+> [System] Game log saved to log.txt
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: YAGAMI LIGHT.
+> [System] Roll dice result: [6, 4].
+> [System] Available moves:
+  Roll of 6
+      A. 8-2
+      B. 13-7
+      C. 24-18
+
+  Roll of 4
+      D. 6-2
+      E. 8-4
+      F. 13-9
+      G. 24-20
+
+  Roll of 10
+      H. 13-3
+      I. 24-14
+
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: YAGAMI LIGHT.
+> [System] Roll dice result: [0, -3].
+> [System] Available moves:
+  Roll of 0
+      A. 6-6
+      B. 8-8
+      C. 13-13
+      D. 24-24
+
+  Roll of -3
+      E. 6-9
+      F. 8-11
+      G. 13-16
+
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 5.
+
+> [System] Rolling...
+> [System] First player to move is: L.RYUZAKI.
+> [System] Roll dice result: [2, 6].
+> [System] Available moves:
+  Roll of 2
+      A. 6-4
+      B. 8-6
+      C. 13-11
+      D. 24-22
+
+  Roll of 6
+      E. 8-2
+      F. 13-7
+      G. 24-18
+
+  Roll of 8
+      H. 13-5
+      I. 24-16
+
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 3.
+
+> [System] Rolling...
+> [System] First player to move is: L.RYUZAKI.
+> [System] Roll dice result: [1, 2].
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+
+  Roll of 2
+      D. 6-4
+      E. 8-6
+      F. 13-11
+      G. 24-22
+
+  Roll of 3
+      H. 6-3
+      I. 8-5
+      J. 13-10
+      K. 24-21
+
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 11.
+
+> [System] Rolling...
+> [System] First player to move is: L.RYUZAKI.
+> [System] Roll dice result: [1, 2].
+> [System] Available moves:
+  Roll of 1
+      A. 6-5
+      B. 8-7
+      C. 24-23
+
+  Roll of 2
+      D. 6-4
+      E. 8-6
+      F. 13-11
+      G. 24-22
+
+  Roll of 3
+      H. 6-3
+      I. 8-5
+      J. 13-10
+      K. 24-21
+
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Game not started.
+> [Error] Game not started. Please enter valid information.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Game not started.
+> [Error] Game not started. Please enter valid information.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Game not started.
+> [Error] Game not started. Please enter valid information.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 11.
+
+> [System] Rolling...
+> [System] First player to move is: L.RYUZAKI.
+> [System] Roll dice result: [3, 6].
+> [System] Available moves:
+  Roll of 3
+      A. 6-3
+      B. 8-5
+      C. 13-10
+      D. 24-21
+
+  Roll of 6
+      E. 8-2
+      F. 13-7
+      G. 24-18
+
+  Roll of 9
+      H. 13-4
+      I. 24-15
+
+> [System] Trying to quit game.
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 11.
+
+> [System] Rolling...
+> [System] First player to move is: L.RYUZAKI.
+> [System] Roll dice result: [3, 6].
+> [System] Available moves:
+  Roll of 3
+      A. 6-3
+      B. 8-5
+      C. 13-10
+      D. 24-21
+
+  Roll of 6
+      E. 8-2
+      F. 13-7
+      G. 24-18
+
+  Roll of 9
+      H. 13-4
+      I. 24-15
+
+
+> [System] Moving...
+> [System] Moved checker from 6 to 3.
+> [System] Available moves:
+  Roll of 6
+      A. 8-2
+      B. 13-7
+      C. 24-18
+
+
+> [System] Moving...
+> [System] Moved checker from 13 to 7.
+> [System] Move over.
+
+> [System] Swapping turns...
+> [System] It is now YAGAMI LIGHT's (black) move.
+> [System] You may now roll the dice or play the double.
+
+> [System] YAGAMI LIGHT has proposed doubling the stakes.
+> [System] It is now L.RYUZAKI's (white) move.
+> [System] You may now roll the dice or play the double.
+> [System] Your mission L.RYUZAKI, should you choose to accept it. Is to accept this doubling cube and defeat your enemies.
+> [System] Enter yes/no
+
+> [System] Doubling cube declined.
+
+> [System] Game over.
+> [System] Congratulations, YAGAMI LIGHT won.
+> [System] YAGAMI LIGHT: 1/11 vs L.RYUZAKI: 0/11
+
+> [System] Welcome to Backgammon!
+> [System] Enter "/start" below to start a new game.
+> [System] Or enter "/help" for a list of possible commands.
+> [System] Max totalGames per game set to 11.
+
+> [System] Rolling...
+> [System] First player to move is: L.RYUZAKI.
+> [System] Roll dice result: [3, 6].
+> [System] Available moves:
+  Roll of 3
+      A. 6-3
+      B. 8-5
+      C. 13-10
+      D. 24-21
+
+  Roll of 6
+      E. 8-2
+      F. 13-7
+      G. 24-18
+
+  Roll of 9
+      H. 13-4
+      I. 24-15
+
+
+> [System] Moving...
+> [System] Moved checker from 6 to 3.
+> [System] Available moves:
+  Roll of 6
+      A. 8-2
+      B. 13-7
+      C. 24-18
+
+
+> [System] Moving...
+> [System] Moved checker from 13 to 7.
+> [System] Move over.
+
+> [System] Swapping turns...
+> [System] It is now YAGAMI LIGHT's (black) move.
+> [System] You may now roll the dice or play the double.
+
+> [System] YAGAMI LIGHT has proposed doubling the stakes.
+> [System] It is now L.RYUZAKI's (white) move.
+> [System] You may now roll the dice or play the double.
+> [System] Your mission L.RYUZAKI, should you choose to accept it. Is to accept this doubling cube and defeat your enemies.
+> [System] Enter yes/no
+
+> [System] Doubling cube declined.
+
+> [System] Game over.
+> [System] Congratulations, YAGAMI LIGHT won.
+> [System] YAGAMI LIGHT: 1/11 vs L.RYUZAKI: 0/11
+
+> [System] Enter /start if you wish to resume the game.
+
+> [System] Enter /quit if you wish to quit.
+> [System] Trying to quit game.
+

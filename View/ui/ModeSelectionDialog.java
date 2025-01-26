@@ -59,7 +59,7 @@ public class ModeSelectionDialog {
         confirmBtn.setFont(Font.font("Arial", 16));
         confirmBtn.setStyle("-fx-background-color: #0a0a0a; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;");
         confirmBtn.setEffect(new DropShadow(10, Color.BLACK));
-        confirmBtn.setOnMouseEntered(e -> confirmBtn.setStyle("-fx-background-color: #2e8b57; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;"));
+        confirmBtn.setOnMouseEntered(e -> confirmBtn.setStyle("-fx-background-color: #ad1111; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;"));
         confirmBtn.setOnMouseExited(e -> confirmBtn.setStyle("-fx-background-color: #0a0a0a; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;"));
 
         confirmBtn.setOnAction(event -> {

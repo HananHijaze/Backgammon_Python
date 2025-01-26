@@ -161,7 +161,7 @@ public class Dices extends HBox implements ColorParser {
 	    }
 
 	    // Handle doubles
-	    if (isDouble(res) && rollcount > 0) {
+	    if (isDouble(res) && rollcount > 1) {
 	        res = addDoubleDie(res);
 	    } else {
 	        drawDices(instance);
