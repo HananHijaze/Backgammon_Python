@@ -223,10 +223,9 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 		stopCurrentPlayerTimer();
 		
 		infoPnl.print("Swapping turns...", MessageType.ANNOUNCEMENT);
-		
 		// pause for 2 seconds before "next-ing".
 		if (Settings.ENABLE_NEXT_PAUSE) {
-			nextPause = new Timeline(new KeyFrame(Duration.seconds(2), ev -> {
+			nextPause = new Timeline(new KeyFrame(Duration.seconds(0.5), ev -> {
 				isInTransition = false;
 				nextFunction();
 			}));
@@ -240,10 +239,17 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 		if (isDoubling()) stopCurrentPlayerTimer();
 		
 		infoPnl.print("It is now " + pOpponent.getName() + "'s (" + parseColor(pOpponent.getColor()) + ") move.");
+		System.out.println("It is now " + pOpponent.getName() + "'s (" + parseColor(pOpponent.getColor()) + ") move.");
 		swapPlayers();
 		game.getBoard().swapPipLabels();
-		
 		handleNecessitiesOfEachTurn();
+		
+		if(cmd.isLandedSurprise()) {
+			swapPlayers();
+			game.getBoard().swapPipLabels();
+			handleNecessitiesOfEachTurn();
+			cmd.setLandedSurprise(false);
+		}
 		
 		// if doubling cube can be highlighted,
 		// then player can choose to roll or play double.
