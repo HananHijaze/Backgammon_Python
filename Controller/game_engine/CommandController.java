@@ -39,7 +39,7 @@ import ui.InfoPanel;
 public class CommandController implements ColorParser, InputValidator, IndexOffset {
 	private Stage stage;
 	private GameComponentsController game;
-	private GameplayController gameplay;
+	private GameplayController gameplay; 
 	private EventController event;
 	private InfoPanel infoPnl;
 	private CommandPanel cmdPnl;
@@ -47,6 +47,7 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 	private MatchController root;
 	private MusicPlayer musicPlayer;
 	private SoundEffectsPlayer soundFXPlayer;
+	private boolean landedSurprise=false;
 	
 	public CommandController(Stage stage, MatchController root, GameComponentsController game,
 			GameplayController gameplay, InfoPanel infoPnl, CommandPanel cmdPnl, Player bottomPlayer, Player topPlayer, MusicPlayer musicPlayer) {
@@ -272,33 +273,29 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 			gameplay.move();
 		}
 		
-		/*checks the type of pip the player moved the checker to*/
+		//gets the type of pip the player moved the checker to/
 		Pip p = game.getBoard().getPips()[Integer.parseInt(to)];
 		
-		/*a surprise pip gives the player an extra turn*/
+		//first time the player lands on a surprise pip/
 		if(p.getType()=='s') {
 			System.out.println("surprise pip number: "+p.getPipNumber());
-			
-			gameplay.setIsMoved(true);
-			gameplay.setIsRolled(true);
-			runCommand("/next",true);
-			gameplay.setIsMoved(true);
-			gameplay.setIsRolled(true);
-			runCommand("/next",true);
-			
-			gameplay.setIsRolled(false);
-			runCommand("/roll",true);
+			this.landedSurprise=true;
 		}
 		
-		/*a question pip displays a question that the player must answer*/
+		//a question pip displays a question that the player must answer/
 		else if(p.getType()=='q') {
-			System.out.println("question pip number: "+p.getPipNumber());
-			
+			System.out.println("question pip number: "+p.getPipNumber());	
 		}
 		
 		gameplay.unhighlightPips();
 	}
 	
+	public boolean isLandedSurprise() {
+		return landedSurprise;
+	}
+	public void setLandedSurprise(boolean landedSurprise) {
+		this.landedSurprise = landedSurprise;
+	}
 	public String correct(int pipNum) {
 		return gameplay.correct(pipNum);
 	}
@@ -340,7 +337,6 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 			
 			if (!gameplay.isRolled()) {
 				infoPnl.print("Rolling...", MessageType.ANNOUNCEMENT);
-				System.out.println("Rolling...");/*debug*/
 				gameplay.roll();
 				event.resetSelections();
 				soundFXPlayer.playDiceSound();
@@ -367,9 +363,11 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 			DieResults res = game.getBoard().rollDices(pov);
 			if (res != null) {
 				infoPnl.print("Roll dice results: " + res);
+				System.out.println("Roll dice results: " + res);
 				soundFXPlayer.playDiceSound();
 			} else {
 				infoPnl.print("Player number incorrect. It must be either 1 or 2.", MessageType.ERROR);
+				System.out.println("Player number incorrect. It must be either 1 or 2.");
 			}
 		}
 	}

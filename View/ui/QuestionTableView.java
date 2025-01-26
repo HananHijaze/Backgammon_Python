@@ -115,7 +115,7 @@ public class QuestionTableView extends Application {
 
         layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #6b4423, #8b6914);");
         // Create the scene and set it to the stage
-        Scene scene = new Scene(layout, 900, 250);
+        Scene scene = new Scene(layout, 1200, 450);
         primaryStage.setTitle("Questions Table");
         primaryStage.setScene(scene);
         primaryStage.show();

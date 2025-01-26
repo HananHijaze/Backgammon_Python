@@ -53,6 +53,8 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     private Stage stage;
     private List<GameRecord> gameHistory;
     private boolean isPlayerInfosEnteredFirstTime, isPromptCancel, hadCrawfordGame, isCrawfordGame;
+    private long gameStartTime;
+    private long gameEndTime;
 
     public MatchController(Stage stage) {
         super();
@@ -64,6 +66,18 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         
         gameHistory = SysData.loadGameHistory();
     }
+ // Use the shared MusicPlayer instance passed from Main
+    public MatchController(Stage stage, MusicPlayer musicPlayer) {
+        super();
+        this.stage = stage;
+        this.musicPlayer = musicPlayer;
+        this.gameHistory = new ArrayList<>();
+        initApplication();
+        initGame();
+        style();
+        gameHistory = SysData.loadGameHistory();
+    }
+
     private String promptModeSelection(Stage stage) {
         // Use the dialog to get the mode
         ModeSelectionDialog modeDialog = new ModeSelectionDialog();
@@ -84,7 +98,6 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         infoPnl = new InfoPanel();
         rollDieBtn = new RollDieButton();
         cmdPnl = new CommandPanel();
-        musicPlayer = new MusicPlayer();
         isPlayerInfosEnteredFirstTime = true;
         isPromptCancel = false;
 
@@ -135,6 +148,7 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     }
 
     public void startGame() {
+    	 gameStartTime = System.currentTimeMillis(); 
         GameMode mode=GameMode.getInstance();
         mode.setMode(promptModeSelection(stage));
         // Prompt players for their information
@@ -351,16 +365,15 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         return gameHistory;
     }
     public void handleMatchEnd(String winnerName, int winnerScore) {
-        // Generate a random game duration between 5 and 30 minutes
-        Random random = new Random();
-        int gameDuration = random.nextInt(26) + 5; // Random duration between 5-30 mins
+    	  gameEndTime = System.currentTimeMillis(); // Record the end time
+    	  int gameDurationInMinutes = (int) ((gameEndTime - gameStartTime) / 60000); // Calculate duration
 
         // Create a new GameRecord
         GameRecord newRecord = new GameRecord(
             winnerName,
             winnerScore,
             LocalDate.now(),
-            gameDuration
+            gameDurationInMinutes
         );
 
         // Update top 10 scores
@@ -374,6 +387,7 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         for (GameRecord record : gameHistory) {
             System.out.println(record);
         }
+        
     }
 
 

@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import musicplayer.MusicPlayer;
 import ui.MainMenuView;
 import ui.GameHistoryUI;
 import game_engine.MatchController;
@@ -36,10 +37,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         // Create MatchController and load game history
         MatchController matchController = new MatchController(primaryStage);
-
+        MusicPlayer musicPlayer = new MusicPlayer();
      
         // Show the main menu
-        MainMenuView mainMenu = new MainMenuView(primaryStage, matchController);
+        MainMenuView mainMenu = new MainMenuView(primaryStage, matchController, musicPlayer);
         Scene mainScene = mainMenu.createScene();
 
         primaryStage.setScene(mainScene);

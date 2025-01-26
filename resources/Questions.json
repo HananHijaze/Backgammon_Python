@@ -1,499 +1,202 @@
 {
     "questions": [
         {
-            "question": "What is the primary goal of software maintenance?",
+            "question": "What is the primary goal of Agile development?",
             "answers": [
-                "1. To fix existing bugs only",
-                "2. To improve system performance and add new features",
-                "3. To completely rewrite the system",
-                "4. To document the software for new developers"
+                "To reduce customer involvement",
+                "To deliver working software quickly",
+                "To finalize documentation before starting coding",
+                "To prioritize features based on business needs"
+            ],
+            "correct_ans": "2",
+            "difficulty": "1"
+        },
+        {
+            "question": "How does Agile improve visibility in a project?",
+            "answers": [
+                "By delivering working software incrementally",
+                "By creating detailed requirement documentation",
+                "By ensuring strict deadlines are met",
+                "By focusing on predictive planning"
             ],
             "correct_ans": "1",
             "difficulty": "2"
         },
         {
-            "question": "Which testing strategy uses graphs to simulate system behavior for test planning?",
+            "question": "Which Agile practice involves dividing the project into short cycles and delivering increments?",
             "answers": [
-                "1. Control-flow testing",
-                "2. Data-flow testing",
-                "3. Black box testing",
-                "4. White box testing"
+                "Sprint Planning",
+                "Iterative Development",
+                "Waterfall Methodology",
+                "Milestone Review"
             ],
-            "correct_ans": "3",
+            "correct_ans": "2",
             "difficulty": "3"
         },
         {
-            "question": "What is a common challenge in software project management?",
+            "question": "What is the role of a Scrum Master in a Scrum team?",
             "answers": [
-                "1. Over-communication within the team",
-                "2. Keeping the project within budget and time constraints",
-                "3. Using the most advanced programming languages",
-                "4. Finding enough software to copy from"
+                "To manage the team",
+                "To facilitate and remove impediments",
+                "To write code for the team",
+                "To prioritize backlog items"
+            ],
+            "correct_ans": "2",
+            "difficulty": "1"
+        },
+        {
+            "question": "What are the three key roles in Scrum?",
+            "answers": [
+                "Scrum Leader, Product Manager, and Developer",
+                "Product Owner, Scrum Master, and Development Team",
+                "Project Manager, Tester, and Developer",
+                "Designer, Developer, and Scrum Facilitator"
             ],
             "correct_ans": "2",
             "difficulty": "2"
         },
         {
-            "question": "What is a prototype?",
+            "question": "Which Scrum event is used to inspect and adapt the process?",
             "answers": [
-                "1. Initial display of user interface",
-                "2. Testing process",
-                "3. Name of the last stage in production",
-                "4. all answers is uncorrect"
+                "Sprint Review",
+                "Sprint Retrospective",
+                "Sprint Planning",
+                "Daily Scrum"
+            ],
+            "correct_ans": "2",
+            "difficulty": "3"
+        },
+        {
+            "question": "What is the purpose of an SRS document?",
+            "answers": [
+                "To define how code is written",
+                "To specify system requirements",
+                "To describe testing strategies",
+                "To plan project timelines"
+            ],
+            "correct_ans": "2",
+            "difficulty": "1"
+        },
+        {
+            "question": "What type of error occurs when requirements are missing or undefined?",
+            "answers": [
+                "Overlapping Requirements",
+                "Contradictory Requirements",
+                "Missing Requirements",
+                "Excessive Requirements"
+            ],
+            "correct_ans": "3",
+            "difficulty": "2"
+        },
+        {
+            "question": "What is the System Requirement Review (SRR) primarily used for?",
+            "answers": [
+                "To evaluate testing results",
+                "To verify and validate requirements",
+                "To finalize the system design",
+                "To deploy the system"
+            ],
+            "correct_ans": "2",
+            "difficulty": "3"
+        },
+        {
+            "question": "What is the primary purpose of unit testing?",
+            "answers": [
+                "To test individual pieces of code",
+                "To validate system integration",
+                "To assess performance",
+                "To check user interface functionality"
             ],
             "correct_ans": "1",
             "difficulty": "1"
         },
         {
-            "question": "Which is a key principle of Agile software development?",
+            "question": "What should a test case document include?",
             "answers": [
-                "1. Comprehensive documentation over working software",
-                "2. Following a plan strictly",
-                "3. Customer collaboration over contract negotiation",
-                "4. Process and tools over individuals and interactions"
-            ],
-            "correct_ans": "3",
-            "difficulty": "1"
-        },
-        {
-            "question": "In software engineering, what is 'refactoring' primarily used for?",
-            "answers": [
-                "1. Adding new features",
-                "2. Improving the existing code without changing its functionality",
-                "3. Fixing bugs",
-                "4. Changing software functionality"
+                "A description of coding standards",
+                "Test steps, expected outcomes, and test data",
+                "A list of stakeholders",
+                "System performance benchmarks"
             ],
             "correct_ans": "2",
             "difficulty": "2"
         },
         {
-            "question": "What does 'scalability' refer to in software engineering?",
+            "question": "How does JUnit ensure test isolation?",
             "answers": [
-                "1. The ability to add new team members",
-                "2. The software's ability to handle increasing amounts of data",
-                "3. The size of the software",
-                "4. The cost of the software"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "In a software development team, what is the role of a 'Scrum Master'?",
-            "answers": [
-                "1. To write the most code",
-                "2. To manage the project budget",
-                "3. To facilitate Agile practices and remove impediments",
-                "4. To design the software's user interface"
-            ],
-            "correct_ans": "3",
-            "difficulty": "2"
-        },
-        {
-            "question": "What is 'continuous integration' in software development?",
-            "answers": [
-                "1. Keeping code integrated with customer needs",
-                "2. Regularly merging code changes into a shared repository",
-                "3. Constant communication with the client",
-                "4. Uninterrupted software development"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Which of the following best describes 'pair programming'?",
-            "answers": [
-                "1. Two programmers working on different parts of the same project",
-                "2. Two programmers working together at one workstation",
-                "3. A programming competition between two developers",
-                "4. A mentoring session between a senior and junior programmer"
-            ],
-            "correct_ans": "2",
-            "difficulty": "1"
-        },
-        {
-            "question": "What is the main purpose of a 'code review'?",
-            "answers": [
-                "1. To evaluate the coding skills of the programmer",
-                "2. To find and fix bugs and improve code quality",
-                "3. To determine the salary of the programmer",
-                "4. To measure the speed of coding"
-            ],
-            "correct_ans": "2",
-            "difficulty": "1"
-        },
-        {
-            "question": "What is 'technical debt'?",
-            "answers": [
-                "1. The cost of additional resources needed for a project",
-                "2. The money paid to software developers",
-                "3. The cost of not fixing bugs in a software",
-                "4. The future cost incurred due to earlier quick fixes instead of proper solutions"
-            ],
-            "correct_ans": "4",
-            "difficulty": "2"
-        },
-        {
-            "question": "What is the purpose of regression testing?",
-            "answers": [
-                "1. To check for the introduction of new features",
-                "2. To ensure that changes do not introduce new faults",
-                "3. To test the system's performance under load",
-                "4. To validate the user interface"
+                "By using a single instance for all tests",
+                "By executing each test in its own instance",
+                "By grouping similar tests in suites",
+                "By running tests in parallel"
             ],
             "correct_ans": "2",
             "difficulty": "3"
         },
         {
-            "question": "Which of the following is an example of black box testing?",
+            "question": "What is the main goal of a code review?",
             "answers": [
-                "1. Testing based on code coverage",
-                "2. Testing based on the functionality without knowing the internal workings",
-                "3. Testing that focuses exclusively on the user interface",
-                "4. Testing that requires an understanding of the software's algorithms"
+                "To update documentation",
+                "To identify and fix errors early",
+                "To finalize deployment steps",
+                "To write test cases"
             ],
             "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "What is a key characteristic of automated tests in software development?",
-            "answers": [
-                "1. They eliminate the need for manual testing",
-                "2. They are only used in white box testing",
-                "3. They allow tests to be run repeatedly over time to check for regressions",
-                "4. They are less reliable than manual tests"
-            ],
-            "correct_ans": "3",
-            "difficulty": "2"
-        },
-        {
-            "question": "What is architectural drift?",
-            "answers": [
-                "1. A new version of the software architecture",
-                "2. The process of updating the system's documentation",
-                "3. Introduction of major design decisions that do not align with the guiding architecture",
-                "4. The physical movement of the development team to a new location"
-            ],
-            "correct_ans": "3",
-            "difficulty": "3"
-        },
-        {
-            "question": "What role do connectors play in software architecture?",
-            "answers": [
-                "1. They serve as the user interface components",
-                "2. They manage the database connections exclusively",
-                "3. They regulate interactions between components",
-                "4. They represent the software's deployment on hardware devices"
-            ],
-            "correct_ans": "3",
-            "difficulty": "2"
-        },
-        {
-            "question": "What is the primary advantage of Model Driven Engineering (MDE)?",
-            "answers": [
-                "1. It eliminates the need for software testing",
-                "2. It allows for consideration of systems at higher levels of abstraction and automatic code generation",
-                "3. It focuses exclusively on improving software aesthetics",
-                "4. It simplifies the manual coding process without generating code"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        },
-        {
-            "question": "Sequence Diagram:",
-            "answers": [
-                "1. Shows the sequence of all operations in the system",
-                "2. Shows the sequence of interactions between the actors and the objects within a system",
-                "3. Shows the sequence of interactions only of the players",
-                "4. Show the sequence of interactions only of the objects"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Model Driven Engineering is (MDE)",
-            "answers": [
-                "1. is the engineering of all the UML diagrams",
-                "2. from this type of Engineering they started to know what models are",
-                "3. Is the same as computer science engineering",
-                "4. An approach to software development in which the main products of the development process are models"
-            ],
-            "correct_ans": "4",
-            "difficulty": "3"
-        },
-        {
-            "question": "Which diagram is a UML diagram?",
-            "answers": [
-                "1. ERD: Entity Relationship Diagram",
-                "2. DFD: Data Flow Diagram",
-                "3. Use case",
-                "4. All answers are incorrect"
-            ],
-            "correct_ans": "3",
             "difficulty": "1"
         },
         {
-            "question": "What is the primary purpose of defining requirements in software development?",
+            "question": "What is one benefit of code reviews in software development?",
             "answers": [
-                "1. To decide the programming language to be used",
-                "2. To understand and define what the customer needs",
-                "3. To finalize the software design",
-                "4. To estimate the cost of the project"
+                "Reduced project timelines",
+                "Improved collaboration and maintainability",
+                "Increased testing time",
+                "Limited error identification"
             ],
             "correct_ans": "2",
             "difficulty": "2"
         },
         {
-            "question": "What are non-functional requirements in a software project?",
+            "question": "Which guideline ensures maintainability during code reviews?",
             "answers": [
-                "1. Requirements that are not essential",
-                "2. Requirements related to the system's overall properties like security and performance",
-                "3. Requirements that are related to specific functionalities",
-                "4. Requirements that change during the project lifecycle"
+                "Avoiding all comments",
+                "Ensuring proper use of logging and exceptions",
+                "Prioritizing speed over clarity",
+                "Skipping redundant code checks"
             ],
             "correct_ans": "2",
-            "difficulty": "2"
+            "difficulty": "3"
         },
         {
-            "question": "What is a key goal of the contract survey?",
+            "question": "What is the purpose of the Factory Method design pattern?",
             "answers": [
-                "1. To select the programming languages to be used",
-                "2. To ensure there is a mutual understanding of the documents between client and developers",
-                "3. To complete the software development ahead of schedule",
-                "4. To reduce the software's feature set"
+                "To simplify database access",
+                "To encapsulate object creation",
+                "To reduce system performance overhead",
+                "To automate testing"
             ],
             "correct_ans": "2",
-            "difficulty": "2"
+            "difficulty": "1"
         },
         {
-            "question": "Which factor does NOT affect the scope of a contract survey?",
+            "question": "What are the components of the MVC pattern?",
             "answers": [
-                "1. The marketing strategy for the software",
-                "2. The importance and size of the project",
-                "3. The complexity of the project",
-                "4. The experience level of the team"
+                "Model, View, Controller",
+                "Manager, View, Coordinator",
+                "Mainframe, Validator, Controller",
+                "Monitor, View, Client"
             ],
             "correct_ans": "1",
             "difficulty": "2"
         },
         {
-            "question": "What is the purpose of creating prototypes in the requirements analysis phase?",
+            "question": "How does the Observer design pattern work?",
             "answers": [
-                "1. To provide a final version of the software",
-                "2. To understand user needs and test functionalities",
-                "3. To define the software's database structure",
-                "4. To decide on the software's coding standards"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Which of the following best describes functional requirements?",
-            "answers": [
-                "1. General constraints and performance quality of the system",
-                "2. Specific actions or behaviors the system must perform",
-                "3. Regulations and ethical considerations external to the system",
-                "4. Development environments and programming languages used"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Why is Agile methodology considered effective in managing changing requirements?",
-            "answers": [
-                "1. Because it follows a strict plan with no changes allowed",
-                "2. Because it emphasizes on comprehensive documentation",
-                "3. Because it accommodates changes rapidly and focuses on incremental development",
-                "4. Because it completely eliminates the need for requirements"
-            ],
-            "correct_ans": "3",
-            "difficulty": "2"
-        },
-        {
-            "question": "What type of maintenance involves adapting the system to new environments?",
-            "answers": [
-                "1. Corrective maintenance",
-                "2. Adaptive maintenance",
-                "3. Perfective maintenance",
-                "4. Preventive maintenance"
-            ],
-            "correct_ans": "2",
-            "difficulty": "1"
-        },
-        {
-            "question": "Which of the following is NOT a characteristic of a maintenance programmer?",
-            "answers": [
-                "1. Must be able to diagnose and repair issues",
-                "2. Should only focus on adding new features",
-                "3. Requires excellent documentation skills",
-                "4. Must ensure changes do not introduce regression faults"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Why is maintenance programming considered challenging by most programmers?",
-            "answers": [
-                "1. It involves only simple, repetitive tasks",
-                "2. It is seen as less creative than initial development",
-                "3. It is often undervalued and poorly compensated",
-                "4. Maintenance tasks are straightforward and lack complexity"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Which of the following is NOT a focus of a proposal survey?",
-            "answers": [
-                "1. Clarifying and properly documenting the customer's requirements",
-                "2. Estimating the costs, resources, and time required",
-                "3. Finalizing the software development tools to be used",
-                "4. Identifying risks and settling formal aspects"
-            ],
-            "correct_ans": "3",
-            "difficulty": "2"
-        },
-        {
-            "question": "What is a key principle of Agile software development?",
-            "answers": [
-                "1.Extensive planning at the beginning of a project to ensure there are no changes in the requirements.",
-                "2.Strong documentation is more important than working software.",
-                "3.Regular adaptation to changing circumstances and user feedback.",
-                "4.Complete each project phase before starting the next one without any overlap."
-            ],
-            "correct_ans": "3",
-            "difficulty": "1"
-        },
-        {
-            "question": "Why did the software fail in 2005?",
-            "answers": [
-                "1. The customers would always press the developers about the time",
-                "2. Inaccurate estimates of needed resources",
-                "3. Unmanaged risks",
-                "4. Answers 2 and 3 are correct"
-            ],
-            "correct_ans": "4",
-            "difficulty": "2"
-        },
-        {
-            "question": "Development Testing is:",
-            "answers": [
-                "where the system is tested during development to discover bugs and defects",
-                "where a separate testing team test a complete version of the system before it is released to users",
-                "where users or potential users of a system test the system in their own environment",
-                "4. Answers 1 and 2 are correct"
-            ],
-            "correct_ans": "1",
-            "difficulty": "3"
-        },
-        {
-            "question": "Which of these are the activities of the software process",
-            "answers": [
-                "1. Development",
-                "2. Verification",
-                "3. evolution",
-                "4. All the answers are correct"
-            ],
-            "correct_ans": "4",
-            "difficulty": "3"
-        },
-        {
-            "question": "What does a staff development program describe",
-            "answers": [
-                "1. How to divide the work between the employees",
-                "2. Deciding which of the team will work on the project and who will not",
-                "3. How to increase the number of employees in the team",
-                "4. How will the skills of the project team members be developed"
-            ],
-            "correct_ans": "4",
-            "difficulty": "1"
-        },
-        {
-            "question": ": Model Driven Engineering is (MDE)",
-            "answers": [
-                "1. is the engineering of all the UML diagrams",
-                "2. from this type of Engineering they started to know what models are",
-                "3. Is the same as computer science engineering",
-                "4. An approach to software development in which the main products of the development process is models"
-            ],
-            "correct_ans": "4",
-            "difficulty": "3"
-        },
-        {
-            "question": "which diagram is a UML diagram?",
-            "answers": [
-                "1. ERD : Entity Relationship Diagram",
-                "2. DFD: Data Flow Diagram",
-                "3. use case",
-                "4. all answers is uncorrect"
-            ],
-            "correct_ans": "3",
-            "difficulty": "1"
-        },
-        {
-            "question": "What is the role of ethnography in requirement analysis?",
-            "answers": [
-                "1. To document the software development process",
-                "2. To observe and analyze how users actually work",
-                "3. To design the user interface of the software",
-                "4. To assess the scalability of the software"
+                "By directly modifying dependent components",
+                "By notifying observers when a subject changes",
+                "By creating multiple instances of the observer",
+                "By isolating components entirely from each other"
             ],
             "correct_ans": "2",
             "difficulty": "3"
-        },
-        {
-            "question": "Why are requirements in a software project often considered incomplete or inconsistent?",
-            "answers": [
-                "1. Because they are not important for the project",
-                "2. Because it's impossible to gather all user needs accurately",
-                "3. Because they are always changing",
-                "4. Because developers do not understand them correctly"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "What does Requirement Traceability refer to in software development?",
-            "answers": [
-                "1. The ability to track changes in software code",
-                "2. The process of documenting the source of each requirement",
-                "3. The method of testing software requirements",
-                "4. The practice of updating software documentation"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        },
-        {
-            "question": "What are the main types of requirements in software engineering?",
-            "answers": [
-                "1. Functional and Non-Functional Requirements",
-                "2. Technical and Non-Technical Requirements",
-                "3. Internal and External Requirements",
-                "4. Mandatory and Optional Requirements"
-            ],
-            "correct_ans": "1",
-            "difficulty": "1"
-        },
-        {
-            "question": "How are 'user requirements' and 'system requirements' different?",
-            "answers": [
-                "1. User requirements are about the software interface, while system requirements are about the underlying architecture",
-                "2. User requirements are defined by developers, while system requirements are defined by users",
-                "3. User requirements are general needs from the customer's perspective, while system requirements are detailed technical specifications",
-                "4. There is no difference; they are the same"
-            ],
-            "correct_ans": "3",
-            "difficulty": "2"
-        },
-        {
-            "question": "What challenges might arise in collecting and analyzing software requirements?",
-            "answers": [
-                "1. Stakeholders not understanding their own needs",
-                "2. Lack of technical tools for analysis",
-                "3. Too many requirements to analyze",
-                "4. Developers' reluctance to follow requirements"
-            ],
-            "correct_ans": "1",
-            "difficulty": "2"
         }
     ]
 }

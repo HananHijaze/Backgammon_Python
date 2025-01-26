@@ -3,7 +3,9 @@ package game_engine;
 import java.util.Optional;
 import constants.DieInstance;
 import constants.GameEndScore;
+import constants.GameMode;
 import constants.MessageType;
+import game.CorrectQ;
 import game.DieResults;
 import game.DoublingCube;
 import game.Home;
@@ -111,6 +113,10 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 			}
 		} else {
 			rollResult = game.getBoard().rollDices(pCurrent.getPOV());
+			if (GameMode.getInstance().getMode().equals("hard")&&CorrectQ.getInstance().isCorrect()) {
+				nextFunction();
+				CorrectQ.getInstance().setCorrect(false);
+			}
 		}
 		
 		infoPnl.print("Roll dice result: " + rollResult + ".");
@@ -223,10 +229,9 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 		stopCurrentPlayerTimer();
 		
 		infoPnl.print("Swapping turns...", MessageType.ANNOUNCEMENT);
-		
 		// pause for 2 seconds before "next-ing".
 		if (Settings.ENABLE_NEXT_PAUSE) {
-			nextPause = new Timeline(new KeyFrame(Duration.seconds(2), ev -> {
+			nextPause = new Timeline(new KeyFrame(Duration.seconds(0.5), ev -> {
 				isInTransition = false;
 				nextFunction();
 			}));
@@ -240,10 +245,17 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 		if (isDoubling()) stopCurrentPlayerTimer();
 		
 		infoPnl.print("It is now " + pOpponent.getName() + "'s (" + parseColor(pOpponent.getColor()) + ") move.");
+		System.out.println("It is now " + pOpponent.getName() + "'s (" + parseColor(pOpponent.getColor()) + ") move.");
 		swapPlayers();
 		game.getBoard().swapPipLabels();
-		
 		handleNecessitiesOfEachTurn();
+		
+		if(cmd.isLandedSurprise()) {
+			swapPlayers();
+			game.getBoard().swapPipLabels();
+			handleNecessitiesOfEachTurn();
+			cmd.setLandedSurprise(false);
+		}
 		
 		// if doubling cube can be highlighted,
 		// then player can choose to roll or play double.

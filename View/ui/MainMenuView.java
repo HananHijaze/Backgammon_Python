@@ -21,10 +21,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import musicplayer.MusicPlayer;
 
 public class MainMenuView {
     private Stage primaryStage;
     private MatchController matchController;
+    private MusicPlayer musicPlayer;
 
     public MainMenuView(Stage primaryStage, MatchController matchController) {
         if (primaryStage == null || matchController == null) {
@@ -32,6 +34,14 @@ public class MainMenuView {
         }
         this.primaryStage = primaryStage;
         this.matchController = matchController;
+    }
+    public MainMenuView(Stage primaryStage, MatchController matchController, MusicPlayer musicPlayer) {
+        if (primaryStage == null || matchController == null || musicPlayer == null) {
+            throw new IllegalArgumentException("PrimaryStage, MatchController, and MusicPlayer cannot be null.");
+        }
+        this.primaryStage = primaryStage;
+        this.matchController = matchController;
+        this.musicPlayer = musicPlayer;
     }
 
     public Scene createScene() {
@@ -98,13 +108,21 @@ public class MainMenuView {
     private void startGame() {
         System.out.println("Start Game button clicked.");
         MatchController gameView = new MatchController(primaryStage);
-        Scene gameScene = new Scene(gameView);
 
+        Scene gameScene = new Scene(gameView);
         primaryStage.setScene(gameScene);
         primaryStage.setTitle("Backgammon Game");
-        
+
+        // Avoid restarting the music if already playing
+        if (!musicPlayer.isPlaying()) {
+            musicPlayer.play();
+        }
+
         gameView.startGame();
     }
+
+    
+    
     private void openQuestionList() {
         // Open the QuestionTableView to show the question list
         QuestionTableView questionTableView = new QuestionTableView();
