@@ -66,6 +66,18 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         
         gameHistory = SysData.loadGameHistory();
     }
+ // Use the shared MusicPlayer instance passed from Main
+    public MatchController(Stage stage, MusicPlayer musicPlayer) {
+        super();
+        this.stage = stage;
+        this.musicPlayer = musicPlayer;
+        this.gameHistory = new ArrayList<>();
+        initApplication();
+        initGame();
+        style();
+        gameHistory = SysData.loadGameHistory();
+    }
+
     private String promptModeSelection(Stage stage) {
         // Use the dialog to get the mode
         ModeSelectionDialog modeDialog = new ModeSelectionDialog();
@@ -86,7 +98,6 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         infoPnl = new InfoPanel();
         rollDieBtn = new RollDieButton();
         cmdPnl = new CommandPanel();
-        musicPlayer = new MusicPlayer();
         isPlayerInfosEnteredFirstTime = true;
         isPromptCancel = false;
 

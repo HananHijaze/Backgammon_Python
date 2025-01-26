@@ -17,7 +17,7 @@ import constants.GameConstants;
  *
  */
 public class MusicPlayer {
-	private final String defaultMusic = "jazz.aiff";
+	private final String defaultMusic = "death_note.aiff";
 	private MediaPlayer mediaPlayer;
 	private Media media;
 	private ArrayList<String> playlist;
@@ -182,4 +182,8 @@ public class MusicPlayer {
 	public void reset() {
 		random();
 	}
+	public boolean isPlaying() {
+	    return mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING;
+	}
+
 }
