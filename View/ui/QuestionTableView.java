@@ -1,6 +1,7 @@
 package ui;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import game.Question;
@@ -339,8 +340,8 @@ public class QuestionTableView extends Application {
 
     private void saveQuestionsToFile() {
         try {
-            // Specify the path to the Questions.json file in the /Backgammon_Python directory
-            String filePath = "Backgammon_Python/Questions.json"; // Relative path to your file
+            // Specify the path to the Questions.json file
+            String filePath = "Backgammon_Python/Questions.json";
 
             File file = new File(filePath);
             if (!file.exists()) {
@@ -351,12 +352,12 @@ public class QuestionTableView extends Application {
                 }
             }
 
-            // Write the questions to the file
+            // Write the questions to the file with pretty printing
             try (FileWriter writer = new FileWriter(file)) {
-                Gson gson = new Gson();
+                Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Enable pretty printing
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.add("questions", gson.toJsonTree(questionData)); // Convert questionData to JSON
-                gson.toJson(jsonObject, writer); // Write JSON to file
+                gson.toJson(jsonObject, writer); // Write JSON to file with pretty printing
             }
         } catch (Exception e) {
             e.printStackTrace();
