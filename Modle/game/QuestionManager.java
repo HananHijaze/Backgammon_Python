@@ -20,8 +20,19 @@ public class QuestionManager {
             throw new RuntimeException("No questions available!");
         }
     }
+    
 
-    public void displayQuestion(int difficulty, Consumer<Boolean> callback) {
+    public List<Question> getQuestions() {
+		return questions;
+	}
+
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
+
+	public void displayQuestion(int difficulty, Consumer<Boolean> callback) {
         if (questions == null || questions.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No questions available.", "Error", JOptionPane.ERROR_MESSAGE);
             callback.accept(false);
