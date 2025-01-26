@@ -19,8 +19,8 @@ public class GameHistoryUI {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
-                Color color1 = new Color(107, 68, 35); // Brown color from MenuView
-                Color color2 = new Color(46, 139, 87); // Green color from MenuView
+                Color color1 = new Color(0, 0, 0); // Brown color from MenuView
+                Color color2 = new Color(173,17,17); // Green color from MenuView
                 GradientPaint gp = new GradientPaint(0, 0, color1, getWidth(), getHeight(), color2);
                 g2d.setPaint(gp);
                 g2d.fillRect(0, 0, getWidth(), getHeight());
@@ -47,9 +47,9 @@ public class GameHistoryUI {
         JTable table = new JTable(tableModel);
         table.setFont(new Font("Arial", Font.PLAIN, 14));
         table.setRowHeight(25);
-        table.setGridColor(new Color(245, 222, 179)); // Light brown for grid lines
+        table.setGridColor(new Color(0,0,0)); // Black for grid lines
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 16));
-        table.getTableHeader().setBackground(new Color(46, 139, 87)); // Green header
+        table.getTableHeader().setBackground(new Color(0,0,0)); // Red header
         table.getTableHeader().setForeground(Color.WHITE);
         table.setBackground(new Color(240, 248, 255));
         table.setForeground(Color.DARK_GRAY);
@@ -60,7 +60,7 @@ public class GameHistoryUI {
         // Add a close button with styling
         JButton closeButton = new JButton("Close");
         closeButton.setFont(new Font("Arial", Font.BOLD, 14));
-        closeButton.setBackground(new Color(107, 68, 35)); // Brown button
+        closeButton.setBackground(new Color(0,0,0)); // Black button
         closeButton.setForeground(Color.WHITE);
         closeButton.setFocusPainted(false);
         closeButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));

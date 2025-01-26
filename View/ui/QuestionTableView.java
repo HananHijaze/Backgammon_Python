@@ -7,6 +7,7 @@ import game.Question;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.FileReader;
@@ -50,7 +52,7 @@ public class QuestionTableView extends Application {
             {
                 textArea.setWrapText(true);
                 textArea.setEditable(false);
-                textArea.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+                textArea.setStyle("-fx-background-color: white; -fx-border-color: black;");
             }
 
             @Override
@@ -106,27 +108,33 @@ public class QuestionTableView extends Application {
         Button addQuestionButton = createStyledButton("Add Question");
         addQuestionButton.setOnAction(e -> addNewQuestion());
 
+        // Add a label
+        Label note = new Label("- IMPORTANT: Double click Question to Edit/Delete -");
+        note.setFont(Font.font("Arial", FontWeight.BOLD, 24)); // Bold and size 24
+        note.setTextFill(Color.WHITE);
+        
+        // Add margin to the label
+        VBox.setMargin(note, new Insets(10, 0, 20, 0)); // Top, Right, Bottom, Left
  
-
         // Create a layout with the button at the top and the table below
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
         VBox.setVgrow(tableView, Priority.ALWAYS);
 
-        layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #6b4423, #8b6914);");
+        layout.setStyle("-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #ad1111, #0a0a0a);");
         // Create the scene and set it to the stage
-        Scene scene = new Scene(layout, 1200, 450);
+        Scene scene = new Scene(layout, 1200, 850);
         primaryStage.setTitle("Questions Table");
         primaryStage.setScene(scene);
         primaryStage.show();
-        layout.getChildren().addAll(addQuestionButton, tableView);
+        layout.getChildren().addAll(addQuestionButton, note, tableView);
 
     }
     private Button createStyledButton(String text) {
         Button button = new Button(text);
         button.setFont(new Font("Arial", 16));
         button.setTextFill(Color.WHITE);
-        button.setStyle("-fx-background-color: #2e8b57; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
+        button.setStyle("-fx-background-color: #0a0a0a; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-padding: 10px;");
         return button;
     }
 

@@ -63,6 +63,7 @@ public class QuestionManager {
 
             callback.accept(isCorrect);
         }).setVisible(true);
+        
     }
 
 }
