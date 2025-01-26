@@ -21,6 +21,7 @@ public class Dices extends HBox implements ColorParser {
 	private Dice[] dices;
 	private Dice qdie;
 	private boolean firstroll=true;
+	private int rollcount=0;
 	private int flagforinitdice=0;
 	QuestionManager m = new QuestionManager();
 
@@ -129,7 +130,7 @@ public class Dices extends HBox implements ColorParser {
 	 * @return result of each dice roll in terms of an array of integers.
 	 */
 	public DieResults getTotalRoll(DieInstance instance) {
-
+		rollcount++;
 		if (flagforinitdice<2)//based on the game mode we want to initiate dices 
 			initDices(GameMode.getInstance().getMode());
 		
@@ -161,7 +162,7 @@ public class Dices extends HBox implements ColorParser {
 		}	
 		
 		}
-		if (isDouble(res)) {
+		if (isDouble(res)&&rollcount>1) {
 			res = addDoubleDie(res);
 		}else
 			drawDices(instance);
