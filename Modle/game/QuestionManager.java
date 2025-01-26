@@ -7,68 +7,53 @@ import javax.swing.*;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
 public class QuestionManager {
     private List<Question> questions;
 
-    // בנאי שטוען שאלות אוטומטית
     public QuestionManager() {
-        // יצירת מופע של QuestionTableView לטעינת השאלות
         QuestionTableView questionTableView = new QuestionTableView();
         this.questions = questionTableView.getQuestionData();
-        System.out.println(questions);
 
         if (questions.isEmpty()) {
             throw new RuntimeException("No questions available!");
         }
     }
 
-    public boolean displayQuestion(int difficulty) {
+    public void displayQuestion(int difficulty, Consumer<Boolean> callback) {
         if (questions == null || questions.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No questions available.", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            callback.accept(false);
+            return;
         }
 
-        // יצירת JFrame
-        JFrame frame = new JFrame("Backgammon Quiz");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setVisible(false);
-
-        // סינון השאלות לפי דרגת קושי
+        // Filter questions by difficulty
         List<Question> filteredQuestions = questions.stream()
                 .filter(q -> Integer.parseInt(q.getDifficulty()) == difficulty)
                 .collect(Collectors.toList());
 
         if (filteredQuestions.isEmpty()) {
-            JOptionPane.showMessageDialog(frame, "No questions found for this difficulty level.", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            JOptionPane.showMessageDialog(null, "No questions found for this difficulty level.", "Error", JOptionPane.ERROR_MESSAGE);
+            callback.accept(false);
+            return;
         }
 
-        // בחירת שאלה רנדומלית מתוך הרשימה המסוננת
+        // Pick a random question
         Random random = new Random();
         Question question = filteredQuestions.get(random.nextInt(filteredQuestions.size()));
-        System.out.println(question);
 
-        // הצגת הדיאלוג
-        QuestionDialog dialog = new QuestionDialog(frame, question);
-        dialog.setVisible(true);
-
-        // אימות התשובה
-        String selectedAnswer = dialog.getSelectedAnswer();
-        if (selectedAnswer != null) {
+        // Show the question dialog
+        new QuestionDialog(question, selectedAnswer -> {
             int correctIndex = Integer.parseInt(question.getCorrectAns()) - 1;
             String correctAnswer = question.getAnswers().get(correctIndex);
 
-            if (selectedAnswer.equals(correctAnswer)) {
-                JOptionPane.showMessageDialog(frame, "Correct!", "Result", JOptionPane.INFORMATION_MESSAGE);
-                return true;
-            } else {
-                JOptionPane.showMessageDialog(frame, "Incorrect! The correct answer was: " + correctAnswer, "Result", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-        }
-        return false;
-		
+            boolean isCorrect = selectedAnswer.equals(correctAnswer);
+            String message = isCorrect ? "Correct!" : "Incorrect! The correct answer was: " + correctAnswer;
+            int messageType = isCorrect ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE;
+
+            SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null, message, "Result", messageType));
+            callback.accept(isCorrect);
+        }).setVisible(true);
     }
 }

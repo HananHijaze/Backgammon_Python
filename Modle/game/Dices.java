@@ -22,6 +22,7 @@ public class Dices extends HBox implements ColorParser {
 	private Dice qdie;
 	private boolean firstroll=true;
 	private int flagforinitdice=0;
+	QuestionManager m = new QuestionManager();
 
 	
 	/**
@@ -131,8 +132,11 @@ public class Dices extends HBox implements ColorParser {
 
 		if (flagforinitdice<2)//based on the game mode we want to initiate dices 
 			initDices(GameMode.getInstance().getMode());
+		
 		int numDices = getNumDices(DieInstance.DEFAULT);
 		DieResults res = new DieResults();
+		
+		
 		for (int i = 0; i < numDices; i++) {	
 			dices[i].draw(dices[i].roll());
 			if(dices[i].getColor().equals(Color.GREEN))
@@ -140,10 +144,22 @@ public class Dices extends HBox implements ColorParser {
 			res.add(dices[i]);
 		}
 		if (!GameMode.getInstance().getMode().equals("easy")) {
-		if(!firstroll) 
+		if(!firstroll) {
 			qdie.draw(qdie.roll());
-		//answer=questionfunction(qdie.getDiceRollResult());
-		//
+		   m.displayQuestion(qdie.getDiceRollResult(),isCorrect ->{
+			   if (isCorrect) {
+			        System.out.println("Player answered correctly!");
+			    } else {
+			        System.out.println("Player answered incorrectly.");
+			    }
+			   if(GameMode.getInstance().getMode().equals("hard")) {
+		    		CorrectQ.getInstance().setCorrect(isCorrect);
+		    		
+		    	}
+		   });
+		    
+		}	
+		
 		}
 		if (isDouble(res)) {
 			res = addDoubleDie(res);

@@ -3,7 +3,9 @@ package game_engine;
 import java.util.Optional;
 import constants.DieInstance;
 import constants.GameEndScore;
+import constants.GameMode;
 import constants.MessageType;
+import game.CorrectQ;
 import game.DieResults;
 import game.DoublingCube;
 import game.Home;
@@ -111,6 +113,10 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 			}
 		} else {
 			rollResult = game.getBoard().rollDices(pCurrent.getPOV());
+			if (GameMode.getInstance().getMode().equals("hard")&&CorrectQ.getInstance().isCorrect()) {
+				nextFunction();
+				CorrectQ.getInstance().setCorrect(false);
+			}
 		}
 		
 		infoPnl.print("Roll dice result: " + rollResult + ".");
