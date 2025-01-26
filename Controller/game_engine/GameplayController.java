@@ -113,10 +113,11 @@ public class GameplayController implements ColorParser, ColorPerspectiveParser, 
 			}
 		} else {
 			rollResult = game.getBoard().rollDices(pCurrent.getPOV());
-			if (GameMode.getInstance().getMode().equals("hard")&&CorrectQ.getInstance().isCorrect()) {
-				nextFunction();
-				CorrectQ.getInstance().setCorrect(false);
-			}
+//			if (GameMode.getInstance().getMode().equals("hard")&&!CorrectQ.getInstance().isCorrect()) {
+//				nextFunction();
+//				CorrectQ.getInstance().setCorrect(true);
+//				
+//			}
 		}
 		
 		infoPnl.print("Roll dice result: " + rollResult + ".");

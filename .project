@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Questions.json</name>
-			<type>1</type>
-			<location>C:/Users/hanan/Downloads/Questions.json</location>
-		</link>
-	</linkedResources>
 </projectDescription>

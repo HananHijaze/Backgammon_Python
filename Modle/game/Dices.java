@@ -130,46 +130,74 @@ public class Dices extends HBox implements ColorParser {
 	 * @return result of each dice roll in terms of an array of integers.
 	 */
 	public DieResults getTotalRoll(DieInstance instance) {
-		rollcount++;
-		if (flagforinitdice<2)//based on the game mode we want to initiate dices 
-			initDices(GameMode.getInstance().getMode());
-		
-		int numDices = getNumDices(DieInstance.DEFAULT);
-		DieResults res = new DieResults();
-		
-		
-		for (int i = 0; i < numDices; i++) {	
-			dices[i].draw(dices[i].roll());
-			if(dices[i].getColor().equals(Color.GREEN))
-				dices[i].setDiceRollResult(dices[i].getDiceRollResult()-4);
-			res.add(dices[i]);
-		}
-		if (!GameMode.getInstance().getMode().equals("easy")) {
-		if(!firstroll) {
-			qdie.draw(qdie.roll());
-		   m.displayQuestion(qdie.getDiceRollResult(),isCorrect ->{
-			   if (isCorrect) {
-			        System.out.println("Player answered correctly!");
-			    } else {
-			        System.out.println("Player answered incorrectly.");
-			    }
-			   if(GameMode.getInstance().getMode().equals("hard")) {
-		    		CorrectQ.getInstance().setCorrect(isCorrect);
-		    		
-		    	}
-		   });
-		    
-		}	
-		
-		}
-		if (isDouble(res)&&rollcount>1) {
-			res = addDoubleDie(res);
-		}else
-			drawDices(instance);
-	
-		return res;
+	    rollcount++;
+	    if (flagforinitdice < 2) // Based on the game mode, we want to initiate dices
+	        initDices(GameMode.getInstance().getMode());
+	    
+	    int numDices = getNumDices(DieInstance.DEFAULT);
+	    DieResults res = new DieResults();
+
+	    // Roll all regular dices
+	    for (int i = 0; i < numDices; i++) {
+	        dices[i].draw(dices[i].roll());
+	        if (dices[i].getColor().equals(Color.GREEN))
+	            dices[i].setDiceRollResult(dices[i].getDiceRollResult() - 4);
+	        res.add(dices[i]);
+	    }
+
+	    if (!GameMode.getInstance().getMode().equals("easy")) {
+	        if (!firstroll) {
+	            qdie.draw(qdie.roll());
+	            boolean answeredCorrectly = false;
+
+	            // Keep asking questions in hard mode until answered correctly
+	            do {
+	                answeredCorrectly = askQuestionAndWait(qdie.getDiceRollResult());
+	                if (GameMode.getInstance().getMode().equals("hard") && !answeredCorrectly) {
+	                    System.out.println("Incorrect answer! Showing a new question...");
+	                }
+	            } while (GameMode.getInstance().getMode().equals("hard") && !answeredCorrectly);
+	        }
+	    }
+
+	    // Handle doubles
+	    if (isDouble(res) && rollcount > 0) {
+	        res = addDoubleDie(res);
+	    } else {
+	        drawDices(instance);
+	    }
+
+	    return res;
 	}
-	
+
+	/**
+	 * Asks a question and waits for the player's response.
+	 * Returns true if the answer is correct, false otherwise.
+	 */
+	private boolean askQuestionAndWait(int questionIndex) {
+	    final Object lock = new Object();
+	    final boolean[] isCorrect = {false};
+
+	    // Display the question dialog
+	    m.displayQuestion(questionIndex, userAnswer -> {
+	        synchronized (lock) {
+	            isCorrect[0] = userAnswer; // Store the user's answer
+	            lock.notify(); // Notify the waiting thread
+	        }
+	    });
+
+	    // Wait for the user to answer
+	    synchronized (lock) {
+	        try {
+	            lock.wait(); // Wait until the callback is triggered
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return isCorrect[0];
+	}
+
 	/**
 	 * Checks if result of die roll is a double instance.
 	 * @param res, result of die roll.
