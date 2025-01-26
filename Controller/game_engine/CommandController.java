@@ -3,6 +3,8 @@ package game_engine;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
+
 import constants.GameConstants;
 import constants.MessageType;
 import constants.MoveResult;
@@ -12,6 +14,7 @@ import game.DoublingCube;
 import game.DoublingCubeHome;
 import game.Home;
 import game.Pip;
+import game.QuestionManager;
 import interfaces.ColorParser;
 import interfaces.IndexOffset;
 import interfaces.InputValidator;
@@ -48,6 +51,7 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 	private MusicPlayer musicPlayer;
 	private SoundEffectsPlayer soundFXPlayer;
 	private boolean landedSurprise=false;
+	private QuestionManager qm; 
 	
 	public CommandController(Stage stage, MatchController root, GameComponentsController game,
 			GameplayController gameplay, InfoPanel infoPnl, CommandPanel cmdPnl, Player bottomPlayer, Player topPlayer, MusicPlayer musicPlayer) {
@@ -61,6 +65,7 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 		this.cmdPnl = cmdPnl;
 		this.musicPlayer = musicPlayer;
 		soundFXPlayer = new SoundEffectsPlayer();
+		this.qm=new QuestionManager();
 	}
 	public void setEventController(EventController event) {
 		this.event = event;
@@ -284,7 +289,17 @@ public class CommandController implements ColorParser, InputValidator, IndexOffs
 		
 		//a question pip displays a question that the player must answer/
 		else if(p.getType()=='q') {
-			System.out.println("question pip number: "+p.getPipNumber());	
+			System.out.println("question pip number: "+p.getPipNumber());
+			Random rand = new Random();
+			int randomDiff=rand.nextInt(3)+1;
+			
+			qm.displayQuestion(randomDiff,isCorrect ->{
+				   if (isCorrect) {
+				        System.out.println("Player answered correctly!");
+				    } else {
+				        System.out.println("Player answered incorrectly.");
+				    }
+			});
 		}
 		
 		gameplay.unhighlightPips();
