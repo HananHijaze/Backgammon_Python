@@ -95,15 +95,11 @@ public class MainMenuView {
 
     private Label createInstructionsIcon() {
         Label icon = new Label("\u2139"); // Unicode for "info" symbol
-        icon.setFont(new Font("Arial", 40)); // Increase font size
+        icon.setFont(new Font("Arial", 46)); // Increase font size
         icon.setTextFill(Color.WHITE); // Set the color to white
         icon.setStyle("-fx-cursor: hand; -fx-padding: 10;"); // Add padding for spacing
         return icon;
     }
-
-
-
-
  
     private void startGame() {
         System.out.println("Start Game button clicked.");

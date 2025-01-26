@@ -133,10 +133,10 @@ public class Settings {
 		String name = null;
 		switch (pov) {
 			case BOTTOM:
-				name = "BATMAN";
+				name = "L.RYUZAKI";
 				break;
 			case TOP:
-				name = "SUPERMAN";
+				name = "YAGAMI LIGHT";
 				break;
 			default:
 				throw new PlayerNoPerspectiveException();
