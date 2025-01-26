@@ -21,6 +21,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Reader;
@@ -338,42 +339,56 @@ public class QuestionTableView extends Application {
 
     private void saveQuestionsToFile() {
         try {
-            // Get the file path from resources
-            URL resource = getClass().getClassLoader().getResource("Questions.json");
-            if (resource == null) {
-                throw new IllegalArgumentException("Questions.json not found in resources");
-            }
-            String filePath = resource.toURI().getPath();
-            filePath = filePath.replaceFirst("^/(.:/)", "$1"); // Fix leading slash on Windows
-            filePath = filePath.replace("%20", " "); // Decode spaces
+            // Specify the path to the Questions.json file in the /Backgammon_Python directory
+            String filePath = "Backgammon_Python/Questions.json"; // Relative path to your file
 
-            try (FileWriter writer = new FileWriter(filePath)) {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                // Create the file and parent directories if they don't exist
+                file.getParentFile().mkdirs();
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write("{ \"questions\": [] }"); // Initialize with an empty JSON structure
+                }
+            }
+
+            // Write the questions to the file
+            try (FileWriter writer = new FileWriter(file)) {
                 Gson gson = new Gson();
                 JsonObject jsonObject = new JsonObject();
-                jsonObject.add("questions", gson.toJsonTree(questionData));
-                gson.toJson(jsonObject, writer);
+                jsonObject.add("questions", gson.toJsonTree(questionData)); // Convert questionData to JSON
+                gson.toJson(jsonObject, writer); // Write JSON to file
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+
+
     public ObservableList<Question> getQuestionData() {
         try {
-            // Get the file path from resources
-            URL resource = getClass().getClassLoader().getResource("Questions.json");
-            if (resource == null) {
-                throw new IllegalArgumentException("Questions.json not found in resources");
-            }
-            String filePath = resource.toURI().getPath();
-            filePath = filePath.replaceFirst("^/(.:/)", "$1"); // Fix leading slash on Windows
-            filePath = filePath.replace("%20", " "); // Decode spaces
+            String filePath = "Backgammon_Python/Questions.json";
+            System.out.println("Looking for file at: " + filePath);
 
-            try (Reader reader = new FileReader(filePath)) {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                System.out.println("File not found, creating a new one.");
+                file.getParentFile().mkdirs();
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write("{ \"questions\": [] }");
+                }
+            }
+
+            System.out.println("File found. Reading data...");
+            try (Reader reader = new FileReader(file)) {
                 Gson gson = new Gson();
                 Type listType = new TypeToken<List<Question>>() {}.getType();
                 JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+
+                System.out.println("File content: " + jsonObject); // Debug the content
                 List<Question> questions = gson.fromJson(jsonObject.get("questions"), listType);
+
+                System.out.println("Parsed questions: " + questions);
                 return FXCollections.observableArrayList(questions);
             }
         } catch (Exception e) {
@@ -381,6 +396,7 @@ public class QuestionTableView extends Application {
             return FXCollections.observableArrayList();
         }
     }
+
 
     public static void main(String[] args) {
         launch(args);

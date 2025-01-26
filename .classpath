@@ -2,11 +2,11 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" output="bin" path="Modle"/>
+	<classpathentry kind="src" path="Backgammon_Python"/>
 	<classpathentry kind="src" output="bin" path="View"/>
 	<classpathentry kind="src" path="Controller"/>
-	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/karem/Desktop/New folder/gson-2.8.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hanan/Downloads/gson-2.8.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
