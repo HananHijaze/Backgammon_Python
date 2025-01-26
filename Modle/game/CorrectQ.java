@@ -5,7 +5,9 @@ public class CorrectQ {
     private boolean isCorrect;
 
     // Private constructor to prevent instantiation
-    private CorrectQ() {}
+    private CorrectQ() {
+    	this.isCorrect=true;
+    }
 
     // Static method to get the single instance
     public static CorrectQ getInstance() {

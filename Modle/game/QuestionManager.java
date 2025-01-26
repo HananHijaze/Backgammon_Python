@@ -53,8 +53,16 @@ public class QuestionManager {
             String message = isCorrect ? "Correct!" : "Incorrect! The correct answer was: " + correctAnswer;
             int messageType = isCorrect ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE;
 
-            SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null, message, "Result", messageType));
+            // Ensure the result dialog is always on top
+            SwingUtilities.invokeLater(() -> {
+                JDialog resultDialog = new JDialog();
+                resultDialog.setAlwaysOnTop(true); // Make it always on top
+                JOptionPane.showMessageDialog(resultDialog, message, "Result", messageType);
+                resultDialog.dispose(); // Dispose of the dialog once closed
+            });
+
             callback.accept(isCorrect);
         }).setVisible(true);
     }
+
 }
