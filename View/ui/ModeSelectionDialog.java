@@ -33,8 +33,8 @@ public class ModeSelectionDialog {
         LinearGradient gradient = new LinearGradient(
                 0, 0, 1, 1, true,
                 javafx.scene.paint.CycleMethod.NO_CYCLE,
-                new Stop(0, Color.web("#6b4423")), // Brown
-                new Stop(1, Color.web("#2e8b57"))  // Green
+                new Stop(0, Color.web("#ad1111")), // Brown
+                new Stop(1, Color.web("#0a0a0a"))  // Green
         );
 
         VBox layout = new VBox(15);
@@ -57,10 +57,10 @@ public class ModeSelectionDialog {
 
         Button confirmBtn = new Button("Confirm");
         confirmBtn.setFont(Font.font("Arial", 16));
-        confirmBtn.setStyle("-fx-background-color: #6b4423; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;");
+        confirmBtn.setStyle("-fx-background-color: #0a0a0a; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;");
         confirmBtn.setEffect(new DropShadow(10, Color.BLACK));
         confirmBtn.setOnMouseEntered(e -> confirmBtn.setStyle("-fx-background-color: #2e8b57; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;"));
-        confirmBtn.setOnMouseExited(e -> confirmBtn.setStyle("-fx-background-color: #6b4423; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;"));
+        confirmBtn.setOnMouseExited(e -> confirmBtn.setStyle("-fx-background-color: #0a0a0a; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;"));
 
         confirmBtn.setOnAction(event -> {
             RadioButton selectedButton = (RadioButton) modeGroup.getSelectedToggle();
