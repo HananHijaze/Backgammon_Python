@@ -1,202 +1,202 @@
 {
-    "questions": [
-        {
-            "question": "What is the primary goal of Agile development?",
-            "answers": [
-                "To reduce customer involvement",
-                "To deliver working software quickly.",
-                "To finalize documentation before starting coding",
-                "To prioritize features based on business needs"
-            ],
-            "correct_ans": "2",
-            "difficulty": "1"
-        },
-        {
-            "question": "How does Agile improve visibility in a project?",
-            "answers": [
-                "By delivering working software incrementally.",
-                "By creating detailed requirement documentation",
-                "By ensuring strict deadlines are met",
-                "By focusing on predictive planning"
-            ],
-            "correct_ans": "1",
-            "difficulty": "2"
-        },
-        {
-            "question": "Which Agile practice involves dividing the project into short cycles and delivering increments?",
-            "answers": [
-                "Sprint Planning",
-                "Iterative Development.",
-                "Waterfall Methodology",
-                "Milestone Review"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        },
-        {
-            "question": "What is the role of a Scrum Master in a Scrum team?",
-            "answers": [
-                "To manage the team",
-                "To facilitate and remove impediments.",
-                "To write code for the team",
-                "To prioritize backlog items"
-            ],
-            "correct_ans": "2",
-            "difficulty": "1"
-        },
-        {
-            "question": "What are the three key roles in Scrum?",
-            "answers": [
-                "Scrum Leader, Product Manager, and Developer",
-                "Product Owner, Scrum Master, and Development Team.",
-                "Project Manager, Tester, and Developer",
-                "Designer, Developer, and Scrum Facilitator"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Which Scrum event is used to inspect and adapt the process?",
-            "answers": [
-                "Sprint Review",
-                "Sprint Retrospective.",
-                "Sprint Planning",
-                "Daily Scrum"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        },
-        {
-            "question": "What is the purpose of an SRS document?",
-            "answers": [
-                "To define how code is written",
-                "To specify system requirements.",
-                "To describe testing strategies",
-                "To plan project timelines"
-            ],
-            "correct_ans": "2",
-            "difficulty": "1"
-        },
-        {
-            "question": "What type of error occurs when requirements are missing or undefined?",
-            "answers": [
-                "Overlapping Requirements",
-                "Contradictory Requirements",
-                "Missing Requirements.",
-                "Excessive Requirements"
-            ],
-            "correct_ans": "3",
-            "difficulty": "2"
-        },
-        {
-            "question": "What is the System Requirement Review (SRR) primarily used for?",
-            "answers": [
-                "To evaluate testing results",
-                "To verify and validate requirements.",
-                "To finalize the system design",
-                "To deploy the system"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        },
-        {
-            "question": "What is the primary purpose of unit testing?",
-            "answers": [
-                "To test individual pieces of code.",
-                "To validate system integration",
-                "To assess performance",
-                "To check user interface functionality"
-            ],
-            "correct_ans": "1",
-            "difficulty": "1"
-        },
-        {
-            "question": "What should a test case document include?",
-            "answers": [
-                "A description of coding standards",
-                "Test steps, expected outcomes, and test data.",
-                "A list of stakeholders",
-                "System performance benchmarks"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "How does JUnit ensure test isolation?",
-            "answers": [
-                "By using a single instance for all tests",
-                "By executing each test in its own instance.",
-                "By grouping similar tests in suites",
-                "By running tests in parallel"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        },
-        {
-            "question": "What is the main goal of a code review?",
-            "answers": [
-                "To update documentation",
-                "To identify and fix errors early.",
-                "To finalize deployment steps",
-                "To write test cases"
-            ],
-            "correct_ans": "2",
-            "difficulty": "1"
-        },
-        {
-            "question": "What is one benefit of code reviews in software development?",
-            "answers": [
-                "Reduced project timelines",
-                "Improved collaboration and maintainability.",
-                "Increased testing time",
-                "Limited error identification"
-            ],
-            "correct_ans": "2",
-            "difficulty": "2"
-        },
-        {
-            "question": "Which guideline ensures maintainability during code reviews?",
-            "answers": [
-                "Avoiding all comments",
-                "Ensuring proper use of logging and exceptions.",
-                "Prioritizing speed over clarity",
-                "Skipping redundant code checks"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        },
-        {
-            "question": "What is the purpose of the Factory Method design pattern?",
-            "answers": [
-                "To simplify database access",
-                "To reduce system performance overhead",
-				"To encapsulate object creation.",
-                "To automate testing"
-            ],
-            "correct_ans": "3",
-            "difficulty": "1"
-        },
-        {
-            "question": "What are the components of the MVC pattern?",
-            "answers": [
-                "Model, View, Controller.",
-                "Manager, View, Coordinator",
-                "Mainframe, Validator, Controller",
-                "Monitor, View, Client"
-            ],
-            "correct_ans": "1",
-            "difficulty": "2"
-        },
-        {
-            "question": "How does the Observer design pattern work?",
-            "answers": [
-                "By directly modifying dependent components",
-                "By notifying observers when a subject changes.",
-                "By creating multiple instances of the observer",
-                "By isolating components entirely from each other"
-            ],
-            "correct_ans": "2",
-            "difficulty": "3"
-        }
-    ]
+  "questions": [
+    {
+      "question": "What is the primary goal of Agile development?",
+      "answers": [
+        "To reduce customer involvement",
+        "To deliver working software quickly.",
+        "To finalize documentation before starting coding",
+        "To prioritize features based on business needs"
+      ],
+      "correct_ans": "2",
+      "difficulty": "1"
+    },
+    {
+      "question": "How does Agile improve visibility in a project?",
+      "answers": [
+        "By delivering working software incrementally.",
+        "By creating detailed requirement documentation",
+        "By ensuring strict deadlines are met",
+        "By focusing on predictive planning"
+      ],
+      "correct_ans": "1",
+      "difficulty": "2"
+    },
+    {
+      "question": "Which Agile practice involves dividing the project into short cycles and delivering increments?",
+      "answers": [
+        "Sprint Planning",
+        "Iterative Development.",
+        "Waterfall Methodology",
+        "Milestone Review"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is the role of a Scrum Master in a Scrum team?",
+      "answers": [
+        "To manage the team",
+        "To facilitate and remove impediments.",
+        "To write code for the team",
+        "To prioritize backlog items"
+      ],
+      "correct_ans": "2",
+      "difficulty": "1"
+    },
+    {
+      "question": "What are the three key roles in Scrum?",
+      "answers": [
+        "Scrum Leader, Product Manager, and Developer",
+        "Product Owner, Scrum Master, and Development Team.",
+        "Project Manager, Tester, and Developer",
+        "Designer, Developer, and Scrum Facilitator"
+      ],
+      "correct_ans": "2",
+      "difficulty": "2"
+    },
+    {
+      "question": "Which Scrum event is used to inspect and adapt the process?",
+      "answers": [
+        "Sprint Review",
+        "Sprint Retrospective.",
+        "Sprint Planning",
+        "Daily Scrum"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is the purpose of an SRS document?",
+      "answers": [
+        "To define how code is written",
+        "To specify system requirements.",
+        "To describe testing strategies",
+        "To plan project timelines"
+      ],
+      "correct_ans": "2",
+      "difficulty": "1"
+    },
+    {
+      "question": "What type of error occurs when requirements are missing or undefined?",
+      "answers": [
+        "Overlapping Requirements",
+        "Contradictory Requirements",
+        "Missing Requirements.",
+        "Excessive Requirements"
+      ],
+      "correct_ans": "3",
+      "difficulty": "2"
+    },
+    {
+      "question": "What is the System Requirement Review (SRR) primarily used for?",
+      "answers": [
+        "To evaluate testing results",
+        "To verify and validate requirements.",
+        "To finalize the system design",
+        "To deploy the system"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is the primary purpose of unit testing?",
+      "answers": [
+        "To test individual pieces of code.",
+        "To validate system integration",
+        "To assess performance",
+        "To check user interface functionality"
+      ],
+      "correct_ans": "1",
+      "difficulty": "1"
+    },
+    {
+      "question": "What should a test case document include?",
+      "answers": [
+        "A description of coding standards",
+        "Test steps, expected outcomes, and test data.",
+        "A list of stakeholders",
+        "System performance benchmarks"
+      ],
+      "correct_ans": "2",
+      "difficulty": "2"
+    },
+    {
+      "question": "How does JUnit ensure test isolation?",
+      "answers": [
+        "By using a single instance for all tests",
+        "By executing each test in its own instance.",
+        "By grouping similar tests in suites",
+        "By running tests in parallel"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is the main goal of a code review?",
+      "answers": [
+        "To update documentation",
+        "To identify and fix errors early.",
+        "To finalize deployment steps",
+        "To write test cases"
+      ],
+      "correct_ans": "2",
+      "difficulty": "1"
+    },
+    {
+      "question": "What is one benefit of code reviews in software development?",
+      "answers": [
+        "Reduced project timelines",
+        "Improved collaboration and maintainability.",
+        "Increased testing time",
+        "Limited error identification"
+      ],
+      "correct_ans": "2",
+      "difficulty": "2"
+    },
+    {
+      "question": "Which guideline ensures maintainability during code reviews?",
+      "answers": [
+        "Avoiding all comments",
+        "Ensuring proper use of logging and exceptions.",
+        "Prioritizing speed over clarity",
+        "Skipping redundant code checks"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is the purpose of the Factory Method design pattern?",
+      "answers": [
+        "To simplify database access",
+        "To reduce system performance overhead",
+        "To encapsulate object creation.",
+        "To automate testing"
+      ],
+      "correct_ans": "3",
+      "difficulty": "1"
+    },
+    {
+      "question": "What are the components of the MVC pattern?",
+      "answers": [
+        "Model, View, Controller.",
+        "Manager, View, Coordinator",
+        "Mainframe, Validator, Controller",
+        "Monitor, View, Client"
+      ],
+      "correct_ans": "1",
+      "difficulty": "2"
+    },
+    {
+      "question": "How does the Observer design pattern work?",
+      "answers": [
+        "By directly modifying dependent components",
+        "By notifying observers when a subject changes.",
+        "By creating multiple instances of the observer",
+        "By isolating components entirely from each other"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    }
+  ]
 }

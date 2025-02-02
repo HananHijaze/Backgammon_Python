@@ -343,7 +343,7 @@ public class QuestionTableView extends Application {
     private void saveQuestionsToFile() {
         try {
             // Specify the path to the Questions.json file
-            String filePath = "Backgammon_Python/Questions.json";
+            String filePath = "Backgammon_Python/Software Engineering.json";
 
             File file = new File(filePath);
             if (!file.exists()) {
