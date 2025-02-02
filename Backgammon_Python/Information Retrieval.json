@@ -1,0 +1,202 @@
+{
+  "questions": [
+    {
+      "question": "What is the primary objective of Information Retrieval?",
+      "answers": [
+        "To store data efficiently",
+        "To retrieve relevant information from large datasets.",
+        "To secure information in databases",
+        "To analyze data trends"
+      ],
+      "correct_ans": "2",
+      "difficulty": "1"
+    },
+    {
+      "question": "Which model is commonly used to represent documents and queries in Information Retrieval?",
+      "answers": [
+        "Vector Space Model.",
+        "Relational Model",
+        "Hierarchical Model",
+        "Network Model"
+      ],
+      "correct_ans": "1",
+      "difficulty": "2"
+    },
+    {
+      "question": "What does TF-IDF stand for in the context of IR?",
+      "answers": [
+        "Term Frequency - Inverse Document Frequency.",
+        "Text Frequency - Inverse Data Frequency",
+        "Term File - Indexed Document Function",
+        "Text File - Integrated Data Format"
+      ],
+      "correct_ans": "1",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is an inverted index in Information Retrieval?",
+      "answers": [
+        "An index that stores documents in reverse order",
+        "A data structure mapping terms to the documents that contain them.",
+        "A method to reverse search queries",
+        "An index that ranks documents based on popularity"
+      ],
+      "correct_ans": "2",
+      "difficulty": "1"
+    },
+    {
+      "question": "Which metric measures the fraction of retrieved documents that are relevant?",
+      "answers": [
+        "Recall",
+        "Precision.",
+        "F1-Score",
+        "Accuracy"
+      ],
+      "correct_ans": "2",
+      "difficulty": "2"
+    },
+    {
+      "question": "What does recall measure in Information Retrieval?",
+      "answers": [
+        "The proportion of relevant documents retrieved out of all relevant documents.",
+        "The speed of retrieving documents",
+        "The quality of document ranking",
+        "The total number of documents retrieved"
+      ],
+      "correct_ans": "1",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is BM25 in Information Retrieval?",
+      "answers": [
+        "A probabilistic retrieval model used for ranking documents.",
+        "A type of database index",
+        "A clustering algorithm",
+        "A machine learning technique for classification"
+      ],
+      "correct_ans": "1",
+      "difficulty": "1"
+    },
+    {
+      "question": "Which similarity measure is commonly used in the vector space model for ranking documents?",
+      "answers": [
+        "Euclidean distance",
+        "Cosine similarity.",
+        "Manhattan distance",
+        "Jaccard index"
+      ],
+      "correct_ans": "2",
+      "difficulty": "2"
+    },
+    {
+      "question": "What does 'stemming' refer to in Information Retrieval?",
+      "answers": [
+        "Removing punctuation from documents",
+        "Reducing words to their base or root form.",
+        "Segmenting text into sentences",
+        "Identifying the language of a document"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    },
+    {
+      "question": "What is a stop word in the context of IR?",
+      "answers": [
+        "A word that indicates the end of a query",
+        "Common words that are filtered out before processing.",
+        "A term that stops a search from returning results",
+        "A word used to mark important keywords"
+      ],
+      "correct_ans": "2",
+      "difficulty": "1"
+    },
+    {
+      "question": "What is query expansion in Information Retrieval?",
+      "answers": [
+        "Increasing the length of the query arbitrarily",
+        "Enhancing a query with additional relevant terms.",
+        "Reducing the query to a single keyword",
+        "Ignoring synonyms during search"
+      ],
+      "correct_ans": "2",
+      "difficulty": "2"
+    },
+    {
+      "question": "In language models for IR, what does 'smoothing' refer to?",
+      "answers": [
+        "Adjusting term weights to account for rare events.",
+        "Removing noise from query data",
+        "Normalizing document lengths",
+        "Enhancing query speed"
+      ],
+      "correct_ans": "1",
+      "difficulty": "3"
+    },
+    {
+      "question": "Which technique involves using user feedback to improve search results?",
+      "answers": [
+        "Relevance feedback.",
+        "Query truncation",
+        "Index compression",
+        "Document clustering"
+      ],
+      "correct_ans": "1",
+      "difficulty": "1"
+    },
+    {
+      "question": "What is the purpose of Latent Semantic Indexing (LSI) in IR?",
+      "answers": [
+        "To reduce the dimensionality of term-document matrices and uncover latent relationships.",
+        "To encrypt documents for secure storage",
+        "To segment documents into individual words",
+        "To rank documents based solely on length"
+      ],
+      "correct_ans": "1",
+      "difficulty": "2"
+    },
+    {
+      "question": "What is the role of indexing in Information Retrieval systems?",
+      "answers": [
+        "To sort documents by date",
+        "To create efficient data structures that enable fast retrieval of documents.",
+        "To display search results in random order",
+        "To generate summaries of documents"
+      ],
+      "correct_ans": "2",
+      "difficulty": "3"
+    },
+    {
+      "question": "Which metric combines both precision and recall into a single score?",
+      "answers": [
+        "F1-Score.",
+        "Mean Average Precision",
+        "R-Precision",
+        "Recall Ratio"
+      ],
+      "correct_ans": "1",
+      "difficulty": "1"
+    },
+    {
+      "question": "In the vector space model, what is the significance of document vectors?",
+      "answers": [
+        "They represent documents as mathematical vectors in a multi-dimensional space.",
+        "They store document metadata only",
+        "They encrypt the document contents",
+        "They limit the number of search results"
+      ],
+      "correct_ans": "1",
+      "difficulty": "2"
+    },
+    {
+      "question": "What is one main advantage of probabilistic models in Information Retrieval?",
+      "answers": [
+        "They account for uncertainty and variability in relevance estimation.",
+        "They require less computational power",
+        "They ignore user behavior completely",
+        "They guarantee 100% accuracy in search results"
+      ],
+      "correct_ans": "1",
+      "difficulty": "3"
+    }
+  ]
+}

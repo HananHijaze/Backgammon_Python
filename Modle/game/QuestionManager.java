@@ -11,9 +11,10 @@ import java.util.function.Consumer;
 
 public class QuestionManager {
     private List<Question> questions;
+    private QuestionTableView questionTableView;
 
     public QuestionManager() {
-        QuestionTableView questionTableView = new QuestionTableView();
+        questionTableView = new QuestionTableView();
         this.questions = questionTableView.getQuestionData();
 
         if (questions.isEmpty()) {
@@ -33,6 +34,7 @@ public class QuestionManager {
 
 
 	public void displayQuestion(int difficulty, Consumer<Boolean> callback) {
+		questions = questionTableView.getQuestionData();
         if (questions == null || questions.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No questions available.", "Error", JOptionPane.ERROR_MESSAGE);
             callback.accept(false);

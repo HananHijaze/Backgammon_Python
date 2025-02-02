@@ -1,0 +1,206 @@
+{
+    "questions": [
+      {
+        "question": "What is the primary goal of Artificial Intelligence?",
+        "answers": [
+          "To automate repetitive tasks",
+          "To create systems that can mimic human intelligence.",
+          "To replace human workers entirely",
+          "To design faster computer hardware"
+        ],
+        "correct_ans": "2",
+        "difficulty": "1"
+      },
+      {
+        "question": "How does AI improve decision-making in various industries?",
+        "answers": [
+          "By providing data-driven insights that help optimize choices.",
+          "By ensuring that decisions are made solely by human intuition",
+          "By completely eliminating the need for data analysis",
+          "By enforcing rigid decision protocols regardless of context"
+        ],
+        "correct_ans": "1",
+        "difficulty": "2"
+      },
+      {
+        "question": "Which AI technique involves learning from data without being explicitly programmed for every scenario?",
+        "answers": [
+          "Rule-based systems",
+          "Machine Learning.",
+          "Hard-coded algorithms",
+          "Deterministic programming"
+        ],
+        "correct_ans": "2",
+        "difficulty": "3"
+      },
+      {
+        "question": "What is the primary purpose of machine learning within AI?",
+        "answers": [
+          "To enable computers to learn from data and improve over time.",
+          "To manually program every possible outcome",
+          "To design and manufacture computer hardware",
+          "To secure networks against unauthorized access"
+        ],
+        "correct_ans": "1",
+        "difficulty": "1"
+      },
+      {
+        "question": "What are the main types of machine learning?",
+        "answers": [
+          "Supervised, unsupervised, and reinforcement learning.",
+          "Linear, nonlinear, and sequential learning",
+          "Deep learning and shallow learning",
+          "Static and dynamic learning"
+        ],
+        "correct_ans": "1",
+        "difficulty": "2"
+      },
+      {
+        "question": "Which algorithm is commonly used for classification tasks in AI?",
+        "answers": [
+          "K-Nearest Neighbors (KNN).",
+          "Bubble Sort",
+          "Quick Sort",
+          "Depth-First Search"
+        ],
+        "correct_ans": "1",
+        "difficulty": "3"
+      },
+      {
+        "question": "What is the purpose of neural networks in the context of AI?",
+        "answers": [
+          
+          "To increase data storage capacity",
+          "To create static models that never change",
+		  "To simulate the human brain's structure and function for pattern recognition.",
+          "To perform simple arithmetic operations only"
+        ],
+        "correct_ans": "3",
+        "difficulty": "1"
+      },
+      {
+        "question": "What does overfitting in a machine learning model refer to?",
+        "answers": [
+          "The model performs exceptionally well on training data but poorly on new, unseen data.",
+          "The model is too simple to capture complex patterns in the data",
+          "The model's performance continuously improves with more training",
+          "The model completely ignores noise in the dataset"
+        ],
+        "correct_ans": "1",
+        "difficulty": "2"
+      },
+      {
+        "question": "Which concept is central to reinforcement learning in AI?",
+        "answers": [
+          "Reward and punishment mechanisms to guide behavior.",
+          "Using pre-labeled datasets for supervised training",
+          "Implementing fixed decision trees without adaptation",
+          "Relying solely on unsupervised clustering techniques"
+        ],
+        "correct_ans": "1",
+        "difficulty": "3"
+      },
+      {
+        "question": "What is the role of backpropagation in training neural networks?",
+        "answers": [
+          "It updates the weights by propagating the error backwards through the network.",
+          "It initializes the network with random weights",
+          "It prevents the network from learning by freezing parameters",
+          "It formats the input data for further processing"
+        ],
+        "correct_ans": "1",
+        "difficulty": "1"
+      },
+      {
+        "question": "What should a good training dataset for AI models include?",
+        "answers": [
+          "High-quality, diverse, and accurately labeled data.",
+          "Only data that confirms the model's initial predictions",
+          "Randomly generated data without any labels",
+          "Minimal data to reduce processing time regardless of quality"
+        ],
+        "correct_ans": "1",
+        "difficulty": "2"
+      },
+      {
+        "question": "How does unsupervised learning work in AI?",
+        "answers": [
+          "By discovering inherent patterns and structures in unlabeled data.",
+          "By relying on pre-labeled examples during training",
+          "By simulating rewards and punishments for correct outputs",
+          "By manually classifying each data point before analysis"
+        ],
+        "correct_ans": "1",
+        "difficulty": "3"
+      },
+      {
+        "question": "What is the main goal of Natural Language Processing (NLP) in AI?",
+        "answers": [
+          "To enable computers to understand, interpret, and generate human language.",
+          "To increase the speed of computer hardware",
+          "To convert images into numerical data exclusively",
+          "To manage database transactions more efficiently"
+        ],
+        "correct_ans": "1",
+        "difficulty": "1"
+      },
+      {
+        "question": "What is one benefit of using AI in the healthcare industry?",
+        "answers": [
+          "Improved diagnostic accuracy and personalized treatment plans.",
+          "Increased administrative workload",
+          "Slower processing of patient data",
+          "Reduced integration with medical devices"
+        ],
+        "correct_ans": "1",
+        "difficulty": "2"
+      },
+      {
+        "question": "Which practice helps ensure that an AI model generalizes well to unseen data?",
+        "answers": [
+          "Using regularization techniques and cross-validation during training.",
+          "Relying solely on the training dataset without validation",
+          "Overfitting the model to achieve high training accuracy",
+          "Ignoring the performance on validation datasets"
+        ],
+        "correct_ans": "1",
+        "difficulty": "3"
+      },
+      {
+        "question": "What is the purpose of a loss function in machine learning?",
+        "answers": [
+          "To measure the error between the model's predictions and the actual values.",
+          "To update the input data formats",
+          "To increase the complexity of the model unnecessarily",
+          "To enforce strict data privacy during training"
+        ],
+        "correct_ans": "1",
+        "difficulty": "1"
+      },
+      {
+        "question": "What are the core components of a typical deep learning model?",
+        "answers": [
+          
+          "Data preprocessing, sorting, and storing mechanisms",
+          "Compilation, linking, and execution modules",
+		  "An input layer, one or more hidden layers, and an output layer.",
+          "User interface, middleware, and database components"
+        ],
+        "correct_ans": "3",
+        "difficulty": "2"
+      },
+      {
+        "question": "How does the convolution operation work in Convolutional Neural Networks (CNNs)?",
+        "answers": [
+          
+          "By combining multiple decision trees to form a forest",
+		  "By applying filters to the input data to extract spatial features.",
+          "By sorting pixel values in a specific order",
+          "By sequentially processing data without any filtering"
+        ],
+        "correct_ans": "2",
+        "difficulty": "3"
+      }
+    ]
+  }
+  

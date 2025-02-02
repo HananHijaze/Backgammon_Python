@@ -15,6 +15,7 @@ import constants.GameMode;
 import constants.MessageType;
 import constants.PlayerPerspectiveFrom;
 import game.GameRecord;
+import game.QType;
 import interfaces.ColorPerspectiveParser;
 import interfaces.InputValidator;
 import musicplayer.MusicPlayer;
@@ -34,6 +35,7 @@ import javafx.stage.Stage;
 import ui.CommandPanel;
 import ui.InfoPanel;
 import ui.ModeSelectionDialog;
+import ui.QuestionTypeSelectionDialog;
 import ui.RollDieButton;
 import ui.ScoreboardPrompt;
 import ui.Dialogs;
@@ -91,7 +93,17 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
         return selectedMode; // Return the selected mode
     }
 
+    private String promptQtype(Stage stage) {
+    	QuestionTypeSelectionDialog typeDialog = new QuestionTypeSelectionDialog();
+        String selectedType = typeDialog.showAndWait(stage);
+        
+        if (selectedType == null || selectedType.isEmpty()) {
+            selectedType = "Questions";
+        }
 
+        return selectedType; // Return the selected mode
+
+    	}
     private void initApplication() {
         bottomPlayer = new Player(PlayerPerspectiveFrom.BOTTOM);
         topPlayer = new Player(PlayerPerspectiveFrom.TOP);
@@ -151,6 +163,7 @@ public class MatchController extends GridPane implements ColorPerspectiveParser,
     	 gameStartTime = System.currentTimeMillis(); 
         GameMode mode=GameMode.getInstance();
         mode.setMode(promptModeSelection(stage));
+        QType.getInstance().setType(promptQtype(stage));
         // Prompt players for their information
         promptStartGame();
 

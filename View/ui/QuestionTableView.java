@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+
+import game.QType;
 import game.Question;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -368,7 +370,7 @@ public class QuestionTableView extends Application {
 
     public ObservableList<Question> getQuestionData() {
         try {
-            String filePath = "Backgammon_Python/Questions.json";
+            String filePath = "Backgammon_Python/"+QType.getInstance().getType()+".json";
             System.out.println("Looking for file at: " + filePath);
 
             File file = new File(filePath);
